@@ -1,0 +1,26 @@
+{
+  "name": "captcha-canvas",
+  "version": "1.0.0",
+  "description": "A captcha generator by using node-canvas and canvas-constructor.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShreyashKira/captcha-canvas.git"
+  },
+  "keywords": [
+    "captcha",
+    "canvas",
+    "image",
+    "generator",
+    "wick"
+  ],
+  "author": "ShreyashKira",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ShreyashKira/captcha-canvas/issues"
+  },
+  "homepage": "https://github.com/ShreyashKira/captcha-canvas#readme"
+}
