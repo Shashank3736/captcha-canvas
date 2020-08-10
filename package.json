@@ -4,7 +4,7 @@
   "description": "A captcha generator by using node-canvas and canvas-constructor.",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/ShreyashKira/captcha-canvas/issues"
   },
-  "homepage": "https://github.com/ShreyashKira/captcha-canvas#readme"
+  "homepage": "https://github.com/ShreyashKira/captcha-canvas#readme",
+  "dependencies": {
+    "canvas": "^2.6.1",
+    "canvas-constructor": "^4.1.0"
+  }
 }
