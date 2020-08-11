@@ -4,7 +4,8 @@
   "description": "A captcha generator by using node-canvas and canvas-constructor.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
