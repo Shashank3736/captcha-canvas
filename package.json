@@ -26,6 +26,7 @@
   "homepage": "https://github.com/ShreyashKira/captcha-canvas#readme",
   "dependencies": {
     "canvas": "^2.6.1",
-    "canvas-constructor": "^4.1.0"
+    "canvas-constructor": "^4.1.0",
+    "gifencoder": "^2.0.1"
   }
 }

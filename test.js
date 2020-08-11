@@ -3,4 +3,5 @@ const fs = require('fs');
 
 const captcha = new Captcha()
 
-fs.writeFileSync(`./captcha/default.png`, captcha.create())
+fs.writeFileSync(`./assets/captcha/default.png`, captcha.create())
+//fs.writeFileSync('./assets/captcha/default.gif', captcha.createGif())

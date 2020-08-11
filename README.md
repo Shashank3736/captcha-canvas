@@ -3,7 +3,7 @@ A captcha generator by using node-canvas and canvas-constructor. It is capable t
 
 #### Captcha Image:
 
-![captcha](./captcha/AFFEEB.png)
+![captcha](./assets/captcha/AFFEEB.png)
 
 ### Features
 
@@ -40,4 +40,4 @@ fs.writeFileSync('./image.png', buffer); //will create image.png file of the cap
 
 #### Default:
 
-![Default](./captcha/default.png)
+![Default](./assets/captcha/default.png)
