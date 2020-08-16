@@ -1,6 +1,5 @@
 const { Canvas } = require("canvas-constructor");
 const crypto = require('crypto');
-const GIF = require('gifencoder');
 class CaptchaGenerator {
     constructor(options = {}) {
         this.height = options.height || 200;
@@ -55,20 +54,6 @@ class CaptchaGenerator {
         }
         if(options.noBuffer) return canvas
         return canvas.toBuffer()
-    }
-    createGif(options = {}) {
-        let frames = options.frames || 2
-        let repeat = options.repeat || 0
-        let delay = options.delay || 1000
-        const gif = new GIF(this.width, this.height);
-        gif.start();
-        gif.setRepeat(repeat);
-        gif.setDelay(delay);
-        for(let i = 0; i < frames; i++) {
-            gif.addFrame(this.create({noBuffer: true}))
-        }
-        gif.finish();
-        return gif.out.getData()
     }
 }
 
