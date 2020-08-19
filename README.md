@@ -24,17 +24,20 @@ const buffer = captcha.create(); //returns buffer of the captcha image
 fs.writeFileSync('./image.png', buffer); //will create image.png file of the captcha
 ```
 
-- **options.height**: Set height of the captcha image (default value: 200)
-- **options.width**: Set width of the captcha image (default value: 600)
-- **options.color**: Set color of the captcha text and trace line (default value: #32cf7e)
-- **options.font**: Set font for the captcha text (default value: Sans)
-- **options.characters**: Length of captcha text (default value: 6) [Note: if you set options.text then this option will not be considered]
-- **options.text**: Text for the captcha image (default value is created randomly by crypto)
-- **options.noDecoy**: Remove decoy background text by saying it to true. (default value: false)
-- **options.decoyColor**: Set color for the background text. (default value: #646566)
-- **options.noTrace**: Remove trace line from the text by setting it to true (default value: false)
-- **options.traceSize**: Set trace line width. (default value: 3)
-- **options.fontSize**: Set font size for the captcha. (default value: 40px)
+| Options   | Description | Default Value | Type |
+|-----------|:-----------:|:-------------:|:----:|
+| height    | Set height of the captcha image | 200 | number |
+| width | Set width of the captcha image | 600 | number |
+| color | Set color of the captcha text and trace line | #32cf7e | color code |
+| font | Set font for the captcha text | Comic Sans | canvas font |
+| characters* | Length of captcha text | 6 | number |
+| text | Text for the captcha image | Random String | String |
+| noDecoy | Remove decoy background text by saying it to true. | false | Boolean |
+| decoyColor | Set color for the background text. | #646566 | color code |
+| noTrace | Remove trace line from the text by setting it to true | false | Boolean |
+| traceSize | Set trace line width. | 3 | number |
+| fontSize | Set font size for the captcha. | 40px | canvas font size |
+ *1 Note: if you set options.text then this option will not be considered
 
 ## Examples:
 
