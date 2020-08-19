@@ -24,6 +24,8 @@ const buffer = captcha.create(); //returns buffer of the captcha image
 fs.writeFileSync('./image.png', buffer); //will create image.png file of the captcha
 ```
 
+# Customisation 
+
 | Options   | Description | Default Value | Type |
 |-----------|:-----------:|:-------------:|:----:|
 | height    | Set height of the captcha image | 200 | number |
