@@ -43,7 +43,7 @@ fs.writeFileSync('./image.png', buffer); //will create image.png file of the cap
 | traceSize | Set trace line width. | 3 | number |
 | fontSize | Set font size for the captcha. | 40px | canvas font size |
 
- ###### *1 Note: if you set options.text then this option will not be considered
+*1 Note: if you set options.text then this option will not be considered
 
 ## Examples:
 
