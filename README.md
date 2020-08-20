@@ -1,5 +1,5 @@
 # captcha-canvas
-A captcha generator by using node-canvas and canvas-constructor. It is capable to generate captcha like wick. 
+This is an npm package [captcha-canvas](https://npmjs.com/package/captcha-canvas) helps you to make custom captcha of all types. The package uses `canvas` and `canvas-constructor` to create captcha imagas. See installation section to know how to install. 
 
 #### Captcha Image:
 
@@ -7,9 +7,12 @@ A captcha generator by using node-canvas and canvas-constructor. It is capable t
 
 ### Features
 
-* Highly customisable
-* Easy to use.
-* Beginner friedly.
+* Highly customisable you can customise every single value use to make this package.
+* 95% OCR fails to read this captcha image and throw Error.
+* Use class constructor method so you can generate as many frames as many you want by using same values.
+* No bundled dependenceris. You need to install them to use the package.
+* Support of backaground images is also possible.
+* Captcha adapt all the external options ver easily.
 
 ## How to use?
 
