@@ -53,6 +53,7 @@ All options are optional.
 | options.decoy.opacity | Set opacity for the decoy text | 0.8 | number |
 
 *Note: if you do not set background then create() method returns a png image.
+
 **Note: if you set options.text then this option will not be considered
 
 ## Examples:
