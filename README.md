@@ -1,7 +1,7 @@
 # captcha-canvas
 This is an npm package [captcha-canvas](https://npmjs.com/package/captcha-canvas) helps you to make custom captcha of all types. The package uses `canvas` and `canvas-constructor` to create captcha imagas. See installation section to know how to install. 
 
-![captcha-canvas](https://nodei.co/npm/captcha-canvas.png)
+![[captcha-canvas](https://nodei.co/npm/captcha-canvas.png)](https://npmjs.com/package/captcha-canvas)
 
 #### Captcha Image:
 
