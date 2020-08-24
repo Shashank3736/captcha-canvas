@@ -25,7 +25,7 @@ class CaptchaGenerator {
         this.trace.size = 3;
         this.trace.opacity = 1;
         this.decoy.color = "#646566";
-        this.decoy.font = this.font;
+        this.decoy.font = this.captcha.font;
         this.decoy.size = 20;
         this.decoy.opacity = 0.8;
     }
@@ -77,9 +77,9 @@ class CaptchaGenerator {
             .setGlobalAlpha(this.decoy.opacity)
             .setColor(this.decoy.color)
             for(let i = 0; i < decoyText.length; i++) {
-                canvas.printText(decoyText[i], getRandom(this.width), getRandom(height))
+                canvas.printText(decoyText[i], getRandom(this.width), getRandom(this.height))
             }
-        } 
+        }
         if(this.trace.opacity > 0) {
             canvas.setStroke(this.trace.color)
             .setGlobalAlpha(this.trace.opacity)
@@ -98,7 +98,8 @@ class CaptchaGenerator {
                 canvas.printText(this.captchaText[n], coordinates[n][0], coordinates[n][1])
             }
         }
+        return canvas.toBuffer();
     }
 }
 
-module.exports = CaptchaGenerator
+module.exports = CaptchaGenerator;

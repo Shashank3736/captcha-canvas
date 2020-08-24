@@ -1,7 +1,8 @@
-const Captcha = require('./');
+const Captcha = require("./src/main");
 const fs = require('fs');
 
 const captcha = new Captcha()
-
-fs.writeFileSync(`./assets/captcha/default.png`, captcha.create())
+new Promise(async (resolve, reject) => {
+    fs.writeFileSync(`./assets/captcha/default.png`, await captcha.generate())
+})
 //fs.writeFileSync('./assets/captcha/default.gif', captcha.createGif())
