@@ -2,7 +2,7 @@ const { Canvas, resolveImage } = require("canvas-constructor");
 const crypto = require('crypto');
 const merge = require("deepmerge");
 function getRandom(n) {
-    return Math.floor(Math.random()*(n - 40)) + 20
+    return Math.floor(Math.random()*(n - 60)) + 30
 }
 class CaptchaGenerator {
     constructor(options = {}) {
@@ -54,7 +54,7 @@ class CaptchaGenerator {
         const canvas = new Canvas(this.width, this.height)
         let coordinates = []
         //get coordinates for captcha characters and trace line
-        for (let i = 0; i < this.characters; i++) {
+        for (let i = 0; i < this.captcha.characters; i++) {
             const widhtGap = Math.floor(this.width/(this.captcha.characters));
             let coordinate = [];
             let randomWidth = widhtGap*(i + 0.5);
@@ -64,6 +64,7 @@ class CaptchaGenerator {
             coordinates.push(coordinate)
         }
         coordinates = coordinates.sort((a, b) => a[0] - b[0]);
+        console.log(coordinates)
         //first we will try to print background image if available
         if(this.background) {
             const background = await resolveImage(this.background);
@@ -94,8 +95,9 @@ class CaptchaGenerator {
         if(this.captcha.opacity > 0) {
             canvas.setTextFont(`${this.captcha.size}px ${this.captcha.font}`)
             .setGlobalAlpha(this.captcha.opacity)
+            .setColor(this.captcha.color)
             for(let n = 0; n < coordinates.length; n++) {
-                canvas.printText(this.captchaText[n], coordinates[n][0], coordinates[n][1])
+                canvas.printText(this.captcha.text[n], coordinates[n][0], coordinates[n][1])
             }
         }
         return canvas.toBuffer();
