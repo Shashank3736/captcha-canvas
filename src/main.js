@@ -11,7 +11,7 @@ class CaptchaGenerator {
         if(!options.decoy) options.decoy = {};
         this.options = options;
         this.height = options.height || 100;
-        this.width = options.width || 400;
+        this.width = options.width || 300;
         this.captcha = {};
         this.trace = {};
         this.decoy = {};
@@ -52,12 +52,14 @@ class CaptchaGenerator {
     }
     async generate(buffer=true) {
         const canvas = new Canvas(this.width, this.height)
+        .setTextBaseline("middle")
+        .setLineJoin("miter")
         let coordinates = []
         //get coordinates for captcha characters and trace line
         for (let i = 0; i < this.captcha.characters; i++) {
             const widhtGap = Math.floor(this.width/(this.captcha.characters));
             let coordinate = [];
-            let randomWidth = widhtGap*(i + 0.5);
+            let randomWidth = widhtGap*(i + 0.2);
             coordinate.push(randomWidth);
             let randomHeight = getRandom(this.height);
             coordinate.push(randomHeight);
@@ -84,13 +86,13 @@ class CaptchaGenerator {
         if(this.trace.opacity > 0) {
             canvas.setStroke(this.trace.color)
             .setGlobalAlpha(this.trace.opacity)
-            for(let i = 0; i + 1 < coordinates.length; i++) {
-                canvas.setStrokeWidth(this.trace.size)
-                .beginPath()
-                .moveTo(coordinates[i][0], coordinates[i][1])
-                .lineTo(coordinates[i+1][0], coordinates[i+1][1])
-                .stroke()
+            .beginPath().moveTo(coordinates[0][0], coordinates[0][1])
+            .setStrokeWidth(this.trace.size)
+            for(let i = 1; i < coordinates.length; i++) {
+                canvas
+                .lineTo(coordinates[i][0], coordinates[i][1])
             }
+            canvas.stroke()
         }
         if(this.captcha.opacity > 0) {
             canvas.setTextFont(`${this.captcha.size}px ${this.captcha.font}`)
