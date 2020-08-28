@@ -29,27 +29,53 @@ class CaptchaGenerator {
         this.decoy.size = 20;
         this.decoy.opacity = 0.8;
     }
+    /**
+     * set dimension for your captcha image
+     * {@param} (height: integer, width: integer)
+     */
     setDimension(height, width) {
         this.height = height;
         this.width = width;
         return this;
     }
+    /**
+     * Set background for captcha image.
+     * @param {buffer || url} image 
+     */
     setBackground(image) {
         this.background = image;
         return this;
     }
+    /**
+     * Change captcha text options
+     * @param {CaptchaTextOptions} options 
+     */
     setCaptcha(options) {
         this.captcha = merge(this.captcha, options);
         return this;
     }
+    /**
+     * Change trace creation options.
+     * @param {SetTraceOptions} options 
+     */
     setTrace(options) {
         this.trace = merge(this.trace, options);
         return this;
     }
+    /**
+     * Change decoy options
+     * @param {DecoyOptions} options 
+     */
     setDecoy(options) {
         this.decoy = merge(this.decoy, options);
         return this;
     }
+    /**
+     * Generate image.
+     * @param {Boolean?:default = true} buffer 
+     * @async
+     * @returns Image buffer.
+     */
     async generate(buffer=true) {
         const canvas = new Canvas(this.width, this.height)
         .setTextBaseline("middle")
