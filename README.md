@@ -5,7 +5,7 @@ This is an npm package [captcha-canvas](https://npmjs.com/package/captcha-canvas
 
 #### Captcha Image:
 
-![captcha](./assets/captcha/AFFEEB.png)
+![captcha](./assets/captcha/default.png)
 
 ### Features
 
@@ -19,45 +19,57 @@ This is an npm package [captcha-canvas](https://npmjs.com/package/captcha-canvas
 ## How to use?
 
 ```js
-const Captcha = require('captcha-canvas');  //require package here
+const { CaptchaGenerator } = require('captcha-canvas');  //require package here
 const fs = require('fs'); //require fs module for saving image in a file
 const options = {height: 200, width: 600};  //options for captcha image
-const captcha = new Captcha(options); //getting captcha constructor
-captcha.captchaText; //returns text of the captcha image.
-const buffer = captcha.create(); //returns buffer of the captcha image
+const captcha = new CaptchaGenerator(options); //getting captcha constructor
+captcha.captcha.text; //returns text of the captcha image.
+const buffer = captcha.generate(); //returns buffer of the captcha image
 
-fs.writeFileSync('./image.png', buffer); //will create image.png file of the captcha
+fs.writeFileSync('image.png', buffer); //will create image.png file of the captcha
 ```
 
 # Customisation 
-All options are optional.
+You can customise captcha image by using available methods. All the options/methods are optional you really no need to add them inorder to use this package.
 
-| Options   | Description | Default Value | Type |
-|-----------|:-----------:|:-------------:|:----:|
-| options | Set options for the captcha creation | {} | object |
-| options.height    | Set height of the captcha image | 200 | number |
-| options.width* | Set width of the captcha image | 600 | number |
-| options.background | Set background of captcha | null | buffer, link or path to image |
-| options.captcha.color | Set color of the captcha text | #32cf7e | color code |
-| options.captcha.font | Set font for the captcha text | Comic Sans | canvas font |
-| options.captcha.characters** | Length of captcha text | 6 | number |
-| options.captcha.text | Text for the captcha image | Random String | String |
-| options.captcha.size | Size for the captcha text | 40 | number |
-| options.captcha.opacity | Opacity for the text | 1 | number |
-| options.trace.color | Set color for the trace line | #32cf7e | color code |
-| options.trace.width | Set trace line width. | 3 | number |
-| options.trace.opacity | Opacity of the trace line. | 1 | number |
-| options.decoy.color | Set color for the background text. | #646566 | color code |
-| options.decoy.font | Set font for the decoy text. | Sans | font |
-| options.decoy.size | Set font size for the decoy text. | 28 | number |
-| options.decoy.opacity | Set opacity for the decoy text | 0.8 | number |
+```js
+const { CaptchaGenerator } = require('captcha-canvas');  //require package here
+const captcha = new CaptchaGenerator();
 
-*Note: if you do not set background then create() method returns a png image.
+captcha.setDimension(200, 600); //set heigth: 200 and width: 600 for the captcha image
+captcha.setBackground(url/path); //set background for captcha if no value provide then background will be null
+captcha.setCaptcha(captchaOptions); //set captcha text config. values
+captcha.setTrace(traceOptions); //set trace line config.
+captcha.setDecoy(decoyOptions); //set decoy options
+```
+**Captcha Options:**
 
-**Note: if you set options.text then this option will not be considered
+captcha.characters (set length of captcha text)
+captcha.text (set text for captcha)
+captcha.color (set html color code for captcha text)
+captcha.font (set font for captcha text)
+captcha.size (set size for captcha text)
+captcha.opacity (set opacity of captcha text)
 
+**Trace Line Options:**
+
+trace.color (set HTML color code for trace line)
+trace.size (set width of trace line)
+trace.opacity (set opacity for trace line)
+
+**Decoy Options:**
+
+decoy.color (set Html color for decoy)
+decoy.font (set font for decoy text)
+decoy.size (set size of decoy text font)
+decoy.opacity (set opacity for decoy text.)
 ## Examples:
 
-#### Default:
+See [examples](https://github.com/Shashank3736/captcha-canvas/wiki/Examples) sction in the package [wiki](https://github.com/Shashank3736/captcha-canvas/wiki)
 
-![Default](./assets/captcha/default.png)
+## Need Help:
+
+I am working on a simple guide for this npm package you can check it out [here](https://github.com/Shashank3736/captcha-canvas/wiki). 
+
+Open an [issue](https://github.com/Shashank3736/captcha-canvas/issues) if you need help regarding this module or want to report any bug.
+

@@ -52,6 +52,7 @@ class CaptchaGenerator {
      */
     setCaptcha(options) {
         this.captcha = merge(this.captcha, options);
+        if(options.text) this.captcha.characters = options.text.length
         return this;
     }
     /**
