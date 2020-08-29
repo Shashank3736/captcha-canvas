@@ -1,5 +1,7 @@
 # captcha-canvas
-A captcha generator by using node-canvas and canvas-constructor. It is capable to generate captcha like wick. 
+This is an npm package [captcha-canvas](https://npmjs.com/package/captcha-canvas) helps you to make custom captcha of all types. The package uses `canvas` and `canvas-constructor` to create captcha imagas. See installation section to know how to install. 
+
+[![captcha-canvas](https://nodei.co/npm/captcha-canvas.png)](https://npmjs.com/package/captcha-canvas)
 
 #### Captcha Image:
 
@@ -7,9 +9,12 @@ A captcha generator by using node-canvas and canvas-constructor. It is capable t
 
 ### Features
 
-* Highly customisable
-* Easy to use.
-* Beginner friedly.
+* Highly customisable you can customise every single value use to make this package.
+* 95% OCR fails to read this captcha image and throw Error.
+* Use class constructor method so you can generate as many frames as many you want by using same values.
+* No bundled dependenceris. You need to install them to use the package.
+* Support of background images is also possible.
+* Captcha adapt all the external options very easily.
 
 ## How to use?
 
@@ -25,22 +30,31 @@ fs.writeFileSync('./image.png', buffer); //will create image.png file of the cap
 ```
 
 # Customisation 
+All options are optional.
 
 | Options   | Description | Default Value | Type |
 |-----------|:-----------:|:-------------:|:----:|
-| height    | Set height of the captcha image | 200 | number |
-| width | Set width of the captcha image | 600 | number |
-| color | Set color of the captcha text and trace line | #32cf7e | color code |
-| font | Set font for the captcha text | Comic Sans | canvas font |
-| characters* | Length of captcha text | 6 | number |
-| text | Text for the captcha image | Random String | String |
-| noDecoy | Remove decoy background text by saying it to true. | false | Boolean |
-| decoyColor | Set color for the background text. | #646566 | color code |
-| noTrace | Remove trace line from the text by setting it to true | false | Boolean |
-| traceSize | Set trace line width. | 3 | number |
-| fontSize | Set font size for the captcha. | 40px | canvas font size |
+| options | Set options for the captcha creation | {} | object |
+| options.height    | Set height of the captcha image | 200 | number |
+| options.width* | Set width of the captcha image | 600 | number |
+| options.background | Set background of captcha | null | buffer, link or path to image |
+| options.captcha.color | Set color of the captcha text | #32cf7e | color code |
+| options.captcha.font | Set font for the captcha text | Comic Sans | canvas font |
+| options.captcha.characters** | Length of captcha text | 6 | number |
+| options.captcha.text | Text for the captcha image | Random String | String |
+| options.captcha.size | Size for the captcha text | 40 | number |
+| options.captcha.opacity | Opacity for the text | 1 | number |
+| options.trace.color | Set color for the trace line | #32cf7e | color code |
+| options.trace.width | Set trace line width. | 3 | number |
+| options.trace.opacity | Opacity of the trace line. | 1 | number |
+| options.decoy.color | Set color for the background text. | #646566 | color code |
+| options.decoy.font | Set font for the decoy text. | Sans | font |
+| options.decoy.size | Set font size for the decoy text. | 28 | number |
+| options.decoy.opacity | Set opacity for the decoy text | 0.8 | number |
 
- ###### *1 Note: if you set options.text then this option will not be considered
+*Note: if you do not set background then create() method returns a png image.
+
+**Note: if you set options.text then this option will not be considered
 
 ## Examples:
 
