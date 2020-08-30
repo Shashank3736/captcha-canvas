@@ -5,96 +5,102 @@ function getRandom(n) {
     return Math.floor(Math.random()*(n - 60)) + 30
 }
 class CaptchaGenerator {
+    /**
+     * Initatiates the creation of captcha image generation. 
+     * This class create the captcha image.
+     * @example const captcha = new CaptchaGenerator({height: 200, width: 600})
+     * @param {object} options 
+     */
     constructor(options = {}) {
         /**
          * Get height of captcha
-         * @property
+         * @type {Number}
          */
         this.height = options.height || 100;
         /**
          * Get width of captcha image
-         * @property
+         * @type {Number}
          */
         this.width = options.width || 300;
         /**
          * Captcha Text option for the image
-         * @property
+         * @type {Object}
          */
         this.captcha = {};
         /**
          * Trace line option for the image
-         * @property
+         * @type {Object}
          */
         this.trace = {};
         /**
          * Decoy characters option for image
-         * @property
+         * @type {Object}
          */
         this.decoy = {};
         /**
          * Length of captcha text
-         * @property
+         * @type {Number}
          */
         this.captcha.characters = 6;
         /**
          * Captcha text
-         * @property
+         * @type {String}
          */
         this.captcha.text = crypto.randomBytes(32).toString('hex').toUpperCase().replace(/[^a-z]/gi, '')
         .substr(0, this.characters);
         /**
          * Color of captcha text.
-         * @property
+         * @type {ColorCode}
          */
         this.captcha.color = "#32cf7e";
         /**
          * Font of captcha text
-         * @property
+         * @type {Font}
          */
         this.captcha.font = "Sans";
         /**
          * Size of captcha text
-         * @property
+         * @type {Number}
          */
         this.captcha.size = 40;
         /**
          * Opacity of captcha text 
-         * @property
+         * @type {Number}
          */
         this.captcha.opacity = 1;
         /**
          * Color of trace line
-         * @property
+         * @type {ColorCode}
          */
         this.trace.color = "#32cf7e";
         /**
          * Size of trace line (basically width)
-         * @property
+         * @type {Number}
          */
         this.trace.size = 3;
         /**
          * Opacity of trace line
-         * @property
+         * @type {Number}
          */
         this.trace.opacity = 1;
         /**
          * Color of decoy text
-         * @property
+         * @type {ColorCode}
          */
         this.decoy.color = "#646566";
         /**
          * Font of decoy text
-         * @property
+         * @type {Font}
          */
         this.decoy.font = this.captcha.font;
         /**
          * Size of decoy text
-         * @property
+         * @type {Number}
          */
         this.decoy.size = 20;
         /**
          * Opacity of decoy text
-         * @property
+         * @type {Number}
          */
         this.decoy.opacity = 0.8;
     }
@@ -104,6 +110,7 @@ class CaptchaGenerator {
      * @param width integer
      * @returns this
      * @example captcha.setDimension(200, 600)
+     * captcha.generate() //generate image
      */
     setDimension(height, width) {
         this.height = height;
