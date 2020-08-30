@@ -93,7 +93,7 @@ class CaptchaGenerator {
             coordinates.push(coordinate)
         }
         coordinates = coordinates.sort((a, b) => a[0] - b[0]);
-        console.log(coordinates)
+        
         //first we will try to print background image if available
         if(this.background) {
             const background = await resolveImage(this.background);
