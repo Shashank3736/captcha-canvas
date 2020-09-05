@@ -8,6 +8,7 @@ const fs = require("fs")
 new Promise(async (resolve, reject) => {
     const captcha = new CaptchaGenerator()
     fs.writeFileSync(`./examples/default.png`, await captcha.generate())
+    console.log(captcha.text)
 })
 
 //with custom dimension (200, 600)
@@ -17,6 +18,7 @@ new Promise(async (resolve, reject) => {
     const captcha = new CaptchaGenerator()
     .setDimension(200, 600)
     fs.writeFileSync(`./examples/dimension.png`, await captcha.generate())
+    console.log(captcha.text)
 })
 
 /**
@@ -33,6 +35,7 @@ new Promise(async (resolve, reject) => {
     .setCaptcha(options)
     .setDimension(150, 450)
     fs.writeFileSync(`./examples/captcha.png`, await captcha.generate())
+    console.log(captcha.text)
 })
 
 //using all config
@@ -44,4 +47,5 @@ new Promise(async (resolve, reject) => {
     .setDecoy({opacity: 0.5})
     .setTrace({color: "deeppink", size: 5})
     fs.writeFileSync(`./examples/all.png`, await captcha.generate())
+    console.log(captcha.text)
 })
