@@ -47,7 +47,7 @@ class CaptchaGenerator {
          * @type {String}
          */
         this.captcha.text = crypto.randomBytes(32).toString('hex').toUpperCase().replace(/[^a-z]/gi, '')
-        .substr(0, this.characters);
+        .substr(0, this.captcha.characters);
         /**
          * Color of captcha text.
          * @type {ColorCode}
