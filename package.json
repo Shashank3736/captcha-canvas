@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "jsdoc": "^3.6.5",
-    "jsdoc-skyceil": "^1.0.5"
+    "jsdoc-skyceil": "^1.0.5",
+    "minami": "^1.2.3"
   }
 }
