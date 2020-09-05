@@ -105,6 +105,12 @@ class CaptchaGenerator {
         this.decoy.opacity = 0.8;
     }
     /**
+     * Get the text of captcha.
+     */
+    get text() {
+        return this.captcha.text;
+    }
+    /**
      * set dimension for your captcha image
      * @param height integer
      * @param width integer
