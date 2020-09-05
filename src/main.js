@@ -220,6 +220,9 @@ class CaptchaGenerator {
         }
         return canvas.toBuffer();
     }
+    /**
+     * @TODO add jsdoc generator
+     */
 }
 
 module.exports = CaptchaGenerator;
