@@ -5,19 +5,21 @@ const fs = require("fs");
  * we will use the default value without any update
  */
 
-new Promise(async (resolve, reject) => {
+new Promise(async (_resolve, _reject) => {
     const captcha = new CaptchaGenerator();
-    fs.writeFileSync(`./examples/default.png`, await captcha.generate());
+    fs.writeFileSync("./examples/default.png", await captcha.generate());
+    //console text of captcha
     console.log(captcha.text);
 })
 
 //with custom dimension (200, 600)
 //200 is height here and 600 width
 
-new Promise(async (resolve, reject) => {
+new Promise(async (_resolve, _reject) => {
     const captcha = new CaptchaGenerator()
     .setDimension(200, 600)
-    fs.writeFileSync(`./examples/dimension.png`, await captcha.generate());
+    fs.writeFileSync("./examples/dimension.png", await captcha.generate());
+    //console text of captcha
     console.log(captcha.text);
 })
 
@@ -25,7 +27,7 @@ new Promise(async (resolve, reject) => {
  * with custom font
  * 
  */
-new Promise(async (resolve, reject) => {
+new Promise(async (_resolve, _reject) => {
     const options = {
         color: "deeppink",
         font: 'Candara',
@@ -34,18 +36,20 @@ new Promise(async (resolve, reject) => {
     const captcha = new CaptchaGenerator()
     .setCaptcha(options)
     .setDimension(150, 450)
-    fs.writeFileSync(`./examples/captcha.png`, await captcha.generate());
+    fs.writeFileSync("./examples/captcha.png", await captcha.generate());
+    //console text of captcha
     console.log(captcha.text);
 })
 
 //using all config
 
-new Promise(async (resolve, reject) => {
+new Promise(async (_resolve, _reject) => {
     const captcha = new CaptchaGenerator()
     .setDimension(150, 450)
     .setCaptcha({color: "deeppink", size: 60, text: "CUSTOM05"})
     .setDecoy({opacity: 0.5})
     .setTrace({color: "deeppink", size: 5});
-    fs.writeFileSync(`./examples/all.png`, await captcha.generate());
+    fs.writeFileSync("./examples/all.png", await captcha.generate());
+    //console text of captcha
     console.log(captcha.text);
 })
