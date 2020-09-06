@@ -2,35 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>CaptchaGenerator - Documentation</title>
+    <title>Class: CaptchaGenerator</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <script src="scripts/nav.js"></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link type="text/css" rel="stylesheet" href="styles/skyceil.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
 </head>
+
 <body>
 
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger" class="navicon-button x">
-  <div class="navicon"></div>
-</label>
-
-<label for="nav-trigger" class="overlay"></label>
-
-<nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="CaptchaGenerator.html">CaptchaGenerator</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="CaptchaGenerator.html#generate">generate</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="CaptchaGenerator.html#setBackground">setBackground</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="CaptchaGenerator.html#setCaptcha">setCaptcha</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="CaptchaGenerator.html#setDecoy">setDecoy</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="CaptchaGenerator.html#setDimension">setDimension</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="CaptchaGenerator.html#setTrace">setTrace</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#defaultCaptchaOptions">defaultCaptchaOptions</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#defaultDecoyOptions">defaultDecoyOptions</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#defaultTraceOptions">defaultTraceOptions</a></span></li>
+<nav class="navbar">
+    <div class="utilities">
+        <center>
+            <button class="theme" data-theme="light">🌙 Turn off the lights</button>
+        </center>
+    </div>
+    <hr>
+    <h4><a href="index.html">Home</a></h4><h5 class="no-bottom must-underline">Classes</h5><ul><li><span class="small-icon C">C</span><b><a href="CaptchaGenerator.html">CaptchaGenerator</a></b><ul class="has-class-methods"><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#generate">generate</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setBackground">setBackground</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setCaptcha">setCaptcha</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setDecoy">setDecoy</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setDimension">setDimension</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setTrace">setTrace</a></li><li><span class="small-icon M">M</span><a href="CaptchaGenerator.html#captcha">captcha</a></li><li><span class="small-icon M">M</span><a href="CaptchaGenerator.html#decoy">decoy</a></li><li><span class="small-icon M">M</span><a href="CaptchaGenerator.html#height">height</a></li><li><span class="small-icon M">M</span><a href="CaptchaGenerator.html#text">text</a></li><li><span class="small-icon M">M</span><a href="CaptchaGenerator.html#trace">trace</a></li><li><span class="small-icon M">M</span><a href="CaptchaGenerator.html#width">width</a></li></ul></li></ul><h4>Global</h4><ul><li><a href="global.html#defaultCaptchaOptions">defaultCaptchaOptions</a></li><li><a href="global.html#defaultDecoyOptions">defaultDecoyOptions</a></li><li><a href="global.html#defaultTraceOptions">defaultTraceOptions</a></li></ul>
 </nav>
 
 <div id="main">
-    
-    <h1 class="page-title">CaptchaGenerator</h1>
-    
+    <div class="burger">
+        <div class="burger-line-1"></div>
+        <div class="burger-line-2"></div>
+        <div class="burger-line-3"></div>
+    </div>
+
+    <h1 class="page-title">Class: CaptchaGenerator</h1>
 
     
 
@@ -38,12 +41,10 @@
 
 
 <section>
-
 <header>
+    <hr>
     
-        <h2>
-        CaptchaGenerator
-        </h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>CaptchaGenerator<span class="signature">(options)</span><span class="type-signature"></span></h2>
         
             <div class="class-description"><p>Captcha Generator</p></div>
         
@@ -54,13 +55,14 @@
     <div class="container-overview">
     
         
-<div class="section-method">
 
     
     <h2>Constructor</h2>
     
 
+    
     <h4 class="name" id="CaptchaGenerator"><span class="type-signature"></span>new CaptchaGenerator<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    
 
     
 
@@ -74,6 +76,139 @@
 
 
 
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="table-box">
+    <table class="params">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            <tr>
+                
+                    <td class="name"><code>options</code></td>
+                
+
+                <td class="type">
+                
+                    
+<span class="param-type">object</span>
+
+
+                
+                </td>
+
+                
+
+                
+
+                <td class="description last"><p>Options for constructor.</p>
+                    <h6>Properties</h6>
+                    
+
+<div class="table-box">
+    <table class="params">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            <tr>
+                
+                    <td class="name"><code>height</code></td>
+                
+
+                <td class="type">
+                
+                    
+<span class="param-type">integer</span>
+
+
+                
+                </td>
+
+                
+
+                
+
+                <td class="description last"><p>Height of captcha image.</p></td>
+            </tr>
+
+        
+
+            <tr>
+                
+                    <td class="name"><code>width</code></td>
+                
+
+                <td class="type">
+                
+                    
+<span class="param-type">integer</span>
+
+
+                
+                </td>
+
+                
+
+                
+
+                <td class="description last"><p>Width of captcha image.</p></td>
+            </tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+                </td>
+            </tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
 <dl class="details">
 
     
@@ -117,157 +252,23 @@
 
 
 
-    <h5>Parameters:</h5>
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>object</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <p>Options for constructor.</p>
-                
-                    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>height</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>integer</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <p>Height of captcha image.</p>
-                
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>width</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>integer</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <p>Width of captcha image.</p>
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
+    <pre class="prettyprint example linenums"><code>const captcha = new CaptchaGenerator({height: 200, width: 600});</code></pre>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-examples">
-<h5>Example</h5>
-
-    <pre class="prettyprint"><code>const captcha = new CaptchaGenerator({height: 200, width: 600});</code></pre>
-
-</div>
-
-</div>
+<hr>
     
     </div>
 
@@ -277,7 +278,9 @@
 
     
 
-     
+    
+
+    
 
     
 
@@ -286,7 +289,6 @@
 
         
             
-<div class="section-members">
 <h4 class="name" id="captcha"><span class="type-signature"></span>captcha<span class="type-signature"> :<a href="global.html#SetCaptchaOptions">SetCaptchaOptions</a></span></h4>
 
 
@@ -298,6 +300,18 @@
 
 
 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="global.html#SetCaptchaOptions">SetCaptchaOptions</a></span>
+
+
+        </li>
+    </ul>
+
+
+
 
 
 <dl class="details">
@@ -337,25 +351,12 @@
 
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type"><code><a href="global.html#SetCaptchaOptions">SetCaptchaOptions</a></code></span>
-
-
-        </li>
-    </ul>
 
 
 
-
-
-</div>
-
+<hr>
         
             
-<div class="section-members">
 <h4 class="name" id="decoy"><span class="type-signature"></span>decoy<span class="type-signature"> :<a href="global.html#SetDecoyOptions">SetDecoyOptions</a></span></h4>
 
 
@@ -367,6 +368,18 @@
 
 
 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="global.html#SetDecoyOptions">SetDecoyOptions</a></span>
+
+
+        </li>
+    </ul>
+
+
+
 
 
 <dl class="details">
@@ -406,25 +419,12 @@
 
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type"><code><a href="global.html#SetDecoyOptions">SetDecoyOptions</a></code></span>
-
-
-        </li>
-    </ul>
 
 
 
-
-
-</div>
-
+<hr>
         
             
-<div class="section-members">
 <h4 class="name" id="height"><span class="type-signature"></span>height<span class="type-signature"> :Number</span></h4>
 
 
@@ -436,6 +436,18 @@
 
 
 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Number</span>
+
+
+        </li>
+    </ul>
+
+
+
 
 
 <dl class="details">
@@ -475,25 +487,12 @@
 
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type"><code>Number</code></span>
-
-
-        </li>
-    </ul>
 
 
 
-
-
-</div>
-
+<hr>
         
             
-<div class="section-members">
 <h4 class="name" id="text"><span class="type-signature"></span>text<span class="type-signature"> :string</span></h4>
 
 
@@ -505,6 +504,18 @@
 
 
 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
 
 
 <dl class="details">
@@ -544,25 +555,12 @@
 
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type"><code>string</code></span>
-
-
-        </li>
-    </ul>
 
 
 
-
-
-</div>
-
+<hr>
         
             
-<div class="section-members">
 <h4 class="name" id="trace"><span class="type-signature"></span>trace<span class="type-signature"> :<a href="global.html#SetTraceOptions">SetTraceOptions</a></span></h4>
 
 
@@ -574,6 +572,18 @@
 
 
 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="global.html#SetTraceOptions">SetTraceOptions</a></span>
+
+
+        </li>
+    </ul>
+
+
+
 
 
 <dl class="details">
@@ -613,25 +623,12 @@
 
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type"><code><a href="global.html#SetTraceOptions">SetTraceOptions</a></code></span>
-
-
-        </li>
-    </ul>
 
 
 
-
-
-</div>
-
+<hr>
         
             
-<div class="section-members">
 <h4 class="name" id="width"><span class="type-signature"></span>width<span class="type-signature"> :Number</span></h4>
 
 
@@ -643,6 +640,18 @@
 
 
 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Number</span>
+
+
+        </li>
+    </ul>
+
+
+
 
 
 <dl class="details">
@@ -682,22 +691,10 @@
 
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type"><code>Number</code></span>
-
-
-        </li>
-    </ul>
 
 
 
-
-
-</div>
-
+<hr>
         
     
 
@@ -706,11 +703,12 @@
 
         
             
-<div class="section-method">
 
     
 
+    
     <h4 class="name" id="generate"><span class="type-signature">(async) </span>generate<span class="signature">()</span><span class="type-signature"> &rarr; {Buffer}</span></h4>
+    
 
     
 
@@ -724,6 +722,14 @@
 
 
 
+
+
+
+
+
+
+
+
 <dl class="details">
 
     
@@ -773,43 +779,35 @@
 
 
 
-
-
-
-
-
-
-<div class="section-returns">
 <h5>Returns:</h5>
 
         
 
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>Buffer</code></span>
 
+<ul>
+    <li>
+        Type: <span class="simple-code">
+<span class="param-type">Buffer</span>
 
-    </dd>
-</dl>
-
+</span>
+    </li>
+</ul>
 
     
-</div>
 
 
 
-</div>
+
+
+<hr>
         
             
-<div class="section-method">
 
     
 
+    
     <h4 class="name" id="setBackground"><span class="type-signature"></span>setBackground<span class="signature">(image)</span><span class="type-signature"></span></h4>
+    
 
     
 
@@ -823,6 +821,65 @@
 
 
 
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="table-box">
+    <table class="params">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            <tr>
+                
+                    <td class="name"><code>image</code></td>
+                
+
+                <td class="type">
+                
+                    
+<span class="param-type">buffer</span>
+
+
+                
+                </td>
+
+                
+
+                
+
+                <td class="description last"><p>Image of background</p></td>
+            </tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
 <dl class="details">
 
     
@@ -866,87 +923,31 @@
 
 
 
-    <h5>Parameters:</h5>
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>image</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>buffer</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <p>Image of background</p>
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
+    <pre class="prettyprint example linenums"><code>captcha.setBackground("./path/to/image.png")</code></pre>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-examples">
-<h5>Example</h5>
-
-    <pre class="prettyprint"><code>captcha.setBackground("./path/to/image.png")</code></pre>
-
-</div>
-
-</div>
+<hr>
         
             
-<div class="section-method">
 
     
 
+    
     <h4 class="name" id="setCaptcha"><span class="type-signature"></span>setCaptcha<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    
 
     
 
@@ -960,6 +961,65 @@
 
 
 
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="table-box">
+    <table class="params">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            <tr>
+                
+                    <td class="name"><code>options</code></td>
+                
+
+                <td class="type">
+                
+                    
+<span class="param-type"><a href="global.html#SetCaptchaOptions">SetCaptchaOptions</a></span>
+
+
+                
+                </td>
+
+                
+
+                
+
+                <td class="description last"><p>Captcha appearance options.</p></td>
+            </tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
 <dl class="details">
 
     
@@ -1003,56 +1063,6 @@
 
 
 
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code><a href="global.html#SetCaptchaOptions">SetCaptchaOptions</a></code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <p>Captcha appearance options.</p>
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -1064,19 +1074,15 @@
 
 
 
-
-
-
-
-
-</div>
+<hr>
         
             
-<div class="section-method">
 
     
 
+    
     <h4 class="name" id="setDecoy"><span class="type-signature"></span>setDecoy<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    
 
     
 
@@ -1090,6 +1096,65 @@
 
 
 
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="table-box">
+    <table class="params">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            <tr>
+                
+                    <td class="name"><code>options</code></td>
+                
+
+                <td class="type">
+                
+                    
+<span class="param-type"><a href="global.html#SetDecoyOptions">SetDecoyOptions</a></span>
+
+
+                
+                </td>
+
+                
+
+                
+
+                <td class="description last"><p>Decoy characters customisation options</p></td>
+            </tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
 <dl class="details">
 
     
@@ -1133,56 +1198,6 @@
 
 
 
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code><a href="global.html#SetDecoyOptions">SetDecoyOptions</a></code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <p>Decoy characters customisation options</p>
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -1194,19 +1209,15 @@
 
 
 
-
-
-
-
-
-</div>
+<hr>
         
             
-<div class="section-method">
 
     
 
+    
     <h4 class="name" id="setDimension"><span class="type-signature"></span>setDimension<span class="signature">(height, width)</span><span class="type-signature"></span></h4>
+    
 
     
 
@@ -1220,6 +1231,88 @@
 
 
 
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="table-box">
+    <table class="params">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            <tr>
+                
+                    <td class="name"><code>height</code></td>
+                
+
+                <td class="type">
+                
+                    
+<span class="param-type">integer</span>
+
+
+                
+                </td>
+
+                
+
+                
+
+                <td class="description last"><p>Height of captcha image.</p></td>
+            </tr>
+
+        
+
+            <tr>
+                
+                    <td class="name"><code>width</code></td>
+                
+
+                <td class="type">
+                
+                    
+<span class="param-type">integer</span>
+
+
+                
+                </td>
+
+                
+
+                
+
+                <td class="description last"><p>Width of captcha image.</p></td>
+            </tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
 <dl class="details">
 
     
@@ -1263,113 +1356,31 @@
 
 
 
-    <h5>Parameters:</h5>
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
     
+    <pre class="prettyprint example linenums"><code>const captcha = new CaptchaGenerator();captcha.setDimension(200, 600)captcha.generate() //generate image</code></pre>
 
-<table class="params">
-    <thead>
-    <tr>
+
+
+<hr>
         
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
             
-                <td class="name"><code>height</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>integer</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <p>Height of captcha image.</p>
-                
-            </td>
-        </tr>
 
     
 
-        <tr>
-            
-                <td class="name"><code>width</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>integer</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <p>Width of captcha image.</p>
-                
-            </td>
-        </tr>
-
     
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-examples">
-<h5>Example</h5>
-
-    <pre class="prettyprint"><code>const captcha = new CaptchaGenerator();captcha.setDimension(200, 600)captcha.generate() //generate image</code></pre>
-
-</div>
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
     <h4 class="name" id="setTrace"><span class="type-signature"></span>setTrace<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    
 
     
 
@@ -1383,6 +1394,65 @@
 
 
 
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="table-box">
+    <table class="params">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            <tr>
+                
+                    <td class="name"><code>options</code></td>
+                
+
+                <td class="type">
+                
+                    
+<span class="param-type"><a href="global.html#SetTraceOptions">SetTraceOptions</a></span>
+
+
+                
+                </td>
+
+                
+
+                
+
+                <td class="description last"><p>Trace Line appearance options.</p></td>
+            </tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
 <dl class="details">
 
     
@@ -1426,56 +1496,6 @@
 
 
 
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code><a href="global.html#SetTraceOptions">SetTraceOptions</a></code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <p>Trace Line appearance options.</p>
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -1487,12 +1507,7 @@
 
 
 
-
-
-
-
-
-</div>
+<hr>
         
     
 
@@ -1506,15 +1521,17 @@
 
 
 
+
 </div>
 
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> using the Minami theme.
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> using <a href="https://github.com/zyrouge/jsdoc-skyceil">Skyceil Theme</a>
 </footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/linenumber.js"></script>
+
 </body>
 </html>
