@@ -5,7 +5,7 @@ This is an npm package [captcha-canvas](https://npmjs.com/package/captcha-canvas
 
 #### Captcha Image:
 
-![captcha](./assets/captcha/default.png)
+![captcha](https://github.com/Shashank3736/captcha-canvas/raw/master/assets/captcha/default.png)
 
 ### Features
 

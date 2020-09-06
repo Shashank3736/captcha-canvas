@@ -1,37 +1,74 @@
 const { Canvas, resolveImage } = require("canvas-constructor");
 const crypto = require('crypto');
 const merge = require("deepmerge");
+const { 
+    defaultCaptchaOptions, 
+    defaultTraceOptions, 
+    SetTraceOptions, 
+    SetDecoyOptions, 
+    defaultDecoyOptions,
+    SetCaptchaOptions,
+} = require("./constants");
 function getRandom(n) {
     return Math.floor(Math.random()*(n - 60)) + 30
 }
+/**
+ * Captcha Generator
+ */
 class CaptchaGenerator {
+    /**
+     * Initatiates the creation of captcha image generation.
+     * @example const captcha = new CaptchaGenerator({height: 200, width: 600});
+     * @param {object} options Options for constructor.
+     * @param {integer} options.height Height of captcha image.
+     * @param {integer} options.width Width of captcha image.
+     */
     constructor(options = {}) {
-        if(!options.captcha) options.captcha = {};
-        if(!options.trace) options.trace = {};
-        if(!options.decoy) options.decoy = {};
-        this.options = options;
+        /**
+         * Height of captcha image
+         * @type {Number}
+         */
         this.height = options.height || 100;
+        /**
+         * Get width of captcha image
+         * @type {Number}
+         */
         this.width = options.width || 300;
-        this.captcha = {};
-        this.trace = {};
-        this.decoy = {};
-        this.captcha.characters = 6;
-        this.captcha.text = crypto.randomBytes(32).toString('hex').toUpperCase().replace(/[^a-z]/gi, '').substr(0, this.characters);
-        this.captcha.color = "#32cf7e";
-        this.captcha.font = "Sans";
-        this.captcha.size = 40;
-        this.captcha.opacity = 1;
-        this.trace.color = "#32cf7e";
-        this.trace.size = 3;
-        this.trace.opacity = 1;
-        this.decoy.color = "#646566";
-        this.decoy.font = this.captcha.font;
-        this.decoy.size = 20;
-        this.decoy.opacity = 0.8;
+        /**
+         * Captcha Text option for the image
+         * @type {SetCaptchaOptions}
+         */
+        this.captcha = defaultCaptchaOptions;
+        /**
+         * Trace line option for the image
+         * @type {SetTraceOptions}
+         */
+        this.trace = defaultTraceOptions;
+        /**
+         * Decoy characters option for image
+         * @type {SetDecoyOptions}
+         */
+        this.decoy = defaultDecoyOptions;
+
+        this.captcha.text = crypto.randomBytes(32).toString("hex").toUpperCase().replace(/[^a-z]/gi, "")
+        .substr(0, this.captcha.characters);
     }
     /**
+     * Get the text of captcha.
+     * @type {string}
+     */
+    get text() {
+        return this.captcha.text;
+    }
+    
+    /**
      * set dimension for your captcha image
-     * {@param} (height: integer, width: integer)
+     * @param {integer} height Height of captcha image.
+     * @param {integer} width Width of captcha image.
+     * @example 
+     * const captcha = new CaptchaGenerator();
+     * captcha.setDimension(200, 600)
+     * captcha.generate() //generate image
      */
     setDimension(height, width) {
         this.height = height;
@@ -40,7 +77,9 @@ class CaptchaGenerator {
     }
     /**
      * Set background for captcha image.
-     * @param {buffer || url} image 
+     * @param {buffer} image Image of background 
+     * @example
+     * captcha.setBackground("./path/to/image.png")
      */
     setBackground(image) {
         this.background = image;
@@ -48,7 +87,7 @@ class CaptchaGenerator {
     }
     /**
      * Change captcha text options
-     * @param {CaptchaTextOptions} options 
+     * @param {SetCaptchaOptions} options Captcha appearance options.
      */
     setCaptcha(options) {
         this.captcha = merge(this.captcha, options);
@@ -57,7 +96,7 @@ class CaptchaGenerator {
     }
     /**
      * Change trace creation options.
-     * @param {SetTraceOptions} options 
+     * @param {SetTraceOptions} options Trace Line appearance options.
      */
     setTrace(options) {
         this.trace = merge(this.trace, options);
@@ -65,19 +104,18 @@ class CaptchaGenerator {
     }
     /**
      * Change decoy options
-     * @param {DecoyOptions} options 
+     * @param {SetDecoyOptions} options Decoy characters customisation options
      */
     setDecoy(options) {
         this.decoy = merge(this.decoy, options);
         return this;
     }
     /**
-     * Generate image.
-     * @param {Boolean?:default = true} buffer 
+     * Method which returns image buffer
      * @async
-     * @returns Image buffer.
+     * @returns {Buffer} 
      */
-    async generate(buffer=true) {
+    async generate() {
         const canvas = new Canvas(this.width, this.height)
         .setTextBaseline("middle")
         .setLineJoin("miter")
@@ -93,7 +131,7 @@ class CaptchaGenerator {
             coordinates.push(coordinate)
         }
         coordinates = coordinates.sort((a, b) => a[0] - b[0]);
-        console.log(coordinates)
+        
         //first we will try to print background image if available
         if(this.background) {
             const background = await resolveImage(this.background);

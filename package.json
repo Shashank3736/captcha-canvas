@@ -1,12 +1,13 @@
 {
   "name": "captcha-canvas",
-  "version": "2.0.0",
+  "version": "2.0.3",
   "description": "A captcha generator by using node-canvas and canvas-constructor.",
   "main": "index.js",
   "scripts": {
+    "docsgen": "jsdoc --configure .jsdoc.json --verbose",
+    "example": "node examples/example.js",
     "start": "node index.js",
-    "test": "node test.js",
-    "example": "node examples/example.js"
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,7 @@
     "wick"
   ],
   "author": "Shashank3736",
-  "license": "MIT",
+  "license": "Apache-2.0 License",
   "bugs": {
     "url": "https://github.com/Shashank3736/captcha-canvas/issues"
   },
@@ -29,5 +30,10 @@
     "canvas": "^2.6.1",
     "canvas-constructor": "^4.1.0",
     "deepmerge": "^4.2.2"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.6.5",
+    "jsdoc-skyceil": "^1.0.5",
+    "minami": "^1.2.3"
   }
 }
