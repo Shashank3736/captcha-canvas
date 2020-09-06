@@ -2,6 +2,7 @@
 This is an npm package [captcha-canvas](https://npmjs.com/package/captcha-canvas) helps you to make custom captcha of all types. The package uses `canvas` and `canvas-constructor` to create captcha imagas. See installation section to know how to install. 
 
 [![captcha-canvas](https://nodei.co/npm/captcha-canvas.png)](https://npmjs.com/package/captcha-canvas)
+[![DeepScan grade](https://deepscan.io/api/teams/10824/projects/13708/branches/237923/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=10824&pid=13708&bid=237923)
 
 #### Captcha Image:
 
@@ -44,25 +45,25 @@ captcha.setDecoy(decoyOptions); //set decoy options
 ```
 **Captcha Options:**
 
-captcha.characters (set length of captcha text)
-captcha.text (set text for captcha)
-captcha.color (set html color code for captcha text)
-captcha.font (set font for captcha text)
-captcha.size (set size for captcha text)
-captcha.opacity (set opacity of captcha text)
+- captcha.characters (set length of captcha text)
+- captcha.text (set text for captcha)
+- captcha.color (set html color code for captcha text)
+- captcha.font (set font for captcha text)
+- captcha.size (set size for captcha text)
+- captcha.opacity (set opacity of captcha text)
 
 **Trace Line Options:**
 
-trace.color (set HTML color code for trace line)
-trace.size (set width of trace line)
-trace.opacity (set opacity for trace line)
+- trace.color (set HTML color code for trace line)
+- trace.size (set width of trace line)
+- trace.opacity (set opacity for trace line)
 
 **Decoy Options:**
 
-decoy.color (set Html color for decoy)
-decoy.font (set font for decoy text)
-decoy.size (set size of decoy text font)
-decoy.opacity (set opacity for decoy text.)
+- decoy.color (set Html color for decoy)
+- decoy.font (set font for decoy text)
+- decoy.size (set size of decoy text font)
+- decoy.opacity (set opacity for decoy text.)
 ## Examples:
 
 See [examples](https://github.com/Shashank3736/captcha-canvas/wiki/Examples) sction in the package [wiki](https://github.com/Shashank3736/captcha-canvas/wiki)
