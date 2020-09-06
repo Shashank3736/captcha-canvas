@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Home - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="CaptchaGenerator.html">CaptchaGenerator</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="CaptchaGenerator.html#generate">generate</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="CaptchaGenerator.html#setBackground">setBackground</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="CaptchaGenerator.html#setCaptcha">setCaptcha</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="CaptchaGenerator.html#setDecoy">setDecoy</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="CaptchaGenerator.html#setDimension">setDimension</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="CaptchaGenerator.html#setTrace">setTrace</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#defaultCaptchaOptions">defaultCaptchaOptions</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#defaultDecoyOptions">defaultDecoyOptions</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#defaultTraceOptions">defaultTraceOptions</a></span></li>
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+    <section class="readme">
+        <article><h1>captcha-canvas</h1>
+<p>This is an npm package <a href="https://npmjs.com/package/captcha-canvas">captcha-canvas</a> helps you to make custom captcha of all types. The package uses <code>canvas</code> and <code>canvas-constructor</code> to create captcha imagas. See installation section to know how to install.</p>
+<p><a href="https://npmjs.com/package/captcha-canvas"><img src="https://nodei.co/npm/captcha-canvas.png" alt="captcha-canvas"></a></p>
+<h4>Captcha Image:</h4>
+<p><img src="https://github.com/Shashank3736/captcha-canvas/raw/master/assets/captcha/default.png" alt="captcha"></p>
+<h3>Features</h3>
+<ul>
+<li>Highly customisable you can customise every single value use to make this package.</li>
+<li>95% OCR fails to read this captcha image and throw Error.</li>
+<li>Use class constructor method so you can generate as many frames as many you want by using same values.</li>
+<li>No bundled dependenceris. You need to install them to use the package.</li>
+<li>Support of background images is also possible.</li>
+<li>Captcha adapt all the external options very easily.</li>
+</ul>
+<h2>How to use?</h2>
+<pre class="prettyprint source lang-js"><code>const { CaptchaGenerator } = require('captcha-canvas');  //require package here
+const fs = require('fs'); //require fs module for saving image in a file
+const options = {height: 200, width: 600};  //options for captcha image
+const captcha = new CaptchaGenerator(options); //getting captcha constructor
+captcha.captcha.text; //returns text of the captcha image.
+const buffer = captcha.generate(); //returns buffer of the captcha image
+
+fs.writeFileSync('image.png', buffer); //will create image.png file of the captcha
+</code></pre>
+<h1>Customisation</h1>
+<p>You can customise captcha image by using available methods. All the options/methods are optional you really no need to add them inorder to use this package.</p>
+<pre class="prettyprint source lang-js"><code>const { CaptchaGenerator } = require('captcha-canvas');  //require package here
+const captcha = new CaptchaGenerator();
+
+captcha.setDimension(200, 600); //set heigth: 200 and width: 600 for the captcha image
+captcha.setBackground(url/path); //set background for captcha if no value provide then background will be null
+captcha.setCaptcha(captchaOptions); //set captcha text config. values
+captcha.setTrace(traceOptions); //set trace line config.
+captcha.setDecoy(decoyOptions); //set decoy options
+</code></pre>
+<p><strong>Captcha Options:</strong></p>
+<p>captcha.characters (set length of captcha text)
+captcha.text (set text for captcha)
+captcha.color (set html color code for captcha text)
+captcha.font (set font for captcha text)
+captcha.size (set size for captcha text)
+captcha.opacity (set opacity of captcha text)</p>
+<p><strong>Trace Line Options:</strong></p>
+<p>trace.color (set HTML color code for trace line)
+trace.size (set width of trace line)
+trace.opacity (set opacity for trace line)</p>
+<p><strong>Decoy Options:</strong></p>
+<p>decoy.color (set Html color for decoy)
+decoy.font (set font for decoy text)
+decoy.size (set size of decoy text font)
+decoy.opacity (set opacity for decoy text.)</p>
+<h2>Examples:</h2>
+<p>See <a href="https://github.com/Shashank3736/captcha-canvas/wiki/Examples">examples</a> sction in the package <a href="https://github.com/Shashank3736/captcha-canvas/wiki">wiki</a></p>
+<h2>Need Help:</h2>
+<p>I am working on a simple guide for this npm package you can check it out <a href="https://github.com/Shashank3736/captcha-canvas/wiki">here</a>.</p>
+<p>Open an <a href="https://github.com/Shashank3736/captcha-canvas/issues">issue</a> if you need help regarding this module or want to report any bug.</p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
