@@ -49,7 +49,7 @@ h1 {
   margin: 1em 0 .5em;
 }
 
-h1.page-title {margin-bottom: 10px;font-size: 34px;font-weight: 300;border-bottom: solid 2px #ddd;padding: .5em 0 .5em;margin-top: 0;}
+h1.page-title {margin-bottom: 10px;font-size: 34px;font-weight: 300;border-bottom: solid 2px #ddd;padding: .5em 0;margin-top: 0;}
 
 h2 {
   font-size: 32px;
@@ -85,7 +85,7 @@ h5, .container-overview .subsection-title {
 h6 {
   font-size: 100%;
   letter-spacing: -0.01em;
-  margin: 6px 0 3px 0;
+  margin: 6px 0 3px;
   font-style: italic;
 }
 
@@ -121,7 +121,7 @@ blockquote {
   float: right;
   min-width: 360px;
   width: calc(100% - 250px);
-  padding: 0 30px 20px 30px;
+  padding: 0 30px 20px;
 }
 
 header {
@@ -456,7 +456,7 @@ footer {
 }
 
 .params td, .params th, .props td, .props th {
-   margin: 0px;
+   margin: 0;
    text-align: left;
    vertical-align: top;
    padding: 10px;
