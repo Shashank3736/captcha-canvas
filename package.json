@@ -1,6 +1,6 @@
 {
   "name": "captcha-canvas",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "A captcha generator by using node-canvas and canvas-constructor.",
   "main": "index.js",
   "scripts": {

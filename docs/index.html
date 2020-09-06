@@ -75,47 +75,35 @@
 <li>Captcha adapt all the external options very easily.</li>
 </ul>
 <h2>How to use?</h2>
+<p>Here is a quick example on how to use the bot. But a well written <a href="https://captcha-canvas.js.org">documentation</a> is available to understand all the mothods and customisation available for your ptoject.</p>
 <pre class="prettyprint linenums source lang-js"><code>const { CaptchaGenerator } = require('captcha-canvas');  //require package here
 const fs = require('fs'); //require fs module for saving image in a file
 const options = {height: 200, width: 600};  //options for captcha image
 const captcha = new CaptchaGenerator(options); //getting captcha constructor
-captcha.captcha.text; //returns text of the captcha image.
-const buffer = captcha.generate(); //returns buffer of the captcha image
+captcha.text; //returns text of the captcha image.
+const buffer = await captcha.generate(); //returns buffer of the captcha image
 
 fs.writeFileSync('image.png', buffer); //will create image.png file of the captcha
 </code></pre>
-<h1>Customisation</h1>
-<p>You can customise captcha image by using available methods. All the options/methods are optional you really no need to add them inorder to use this package.</p>
-<pre class="prettyprint linenums source lang-js"><code>const { CaptchaGenerator } = require('captcha-canvas');  //require package here
-const captcha = new CaptchaGenerator();
-
-captcha.setDimension(200, 600); //set heigth: 200 and width: 600 for the captcha image
-captcha.setBackground(url/path); //set background for captcha if no value provide then background will be null
-captcha.setCaptcha(captchaOptions); //set captcha text config. values
-captcha.setTrace(traceOptions); //set trace line config.
-captcha.setDecoy(decoyOptions); //set decoy options
-</code></pre>
-<p><strong>Captcha Options:</strong></p>
-<p>captcha.characters (set length of captcha text)
-captcha.text (set text for captcha)
-captcha.color (set html color code for captcha text)
-captcha.font (set font for captcha text)
-captcha.size (set size for captcha text)
-captcha.opacity (set opacity of captcha text)</p>
-<p><strong>Trace Line Options:</strong></p>
-<p>trace.color (set HTML color code for trace line)
-trace.size (set width of trace line)
-trace.opacity (set opacity for trace line)</p>
-<p><strong>Decoy Options:</strong></p>
-<p>decoy.color (set Html color for decoy)
-decoy.font (set font for decoy text)
-decoy.size (set size of decoy text font)
-decoy.opacity (set opacity for decoy text.)</p>
-<h2>Examples:</h2>
-<p>See <a href="https://github.com/Shashank3736/captcha-canvas/wiki/Examples">examples</a> sction in the package <a href="https://github.com/Shashank3736/captcha-canvas/wiki">wiki</a></p>
 <h2>Need Help:</h2>
 <p>I am working on a simple guide for this npm package you can check it out <a href="https://github.com/Shashank3736/captcha-canvas/wiki">here</a>.</p>
-<p>Open an <a href="https://github.com/Shashank3736/captcha-canvas/issues">issue</a> if you need help regarding this module or want to report any bug.</p></article>
+<p>Open an <a href="https://github.com/Shashank3736/captcha-canvas/issues">issue</a> if you need help regarding this module or want to report any bug.</p>
+<h2>Wanna support developer?</h2>
+<ul>
+<li>
+<p>Star the <a href="https://github.com/Shashank3736/captcha-canvas">github repo</a> of the project. More stars motivate me to work on this project.</p>
+</li>
+<li>
+<p>Open an <a href="https://github.com/Shashank3736/captcha-canvas/issues">issue</a> to recommend some new features or report bug regarding this module.</p>
+</li>
+<li>
+<p>For now, you don't have anyway to fund this project but maybe in future I update this.</p>
+</li>
+</ul>
+<h2>Supported versions</h2>
+<p>We always recommend you to use the most latest version for more methods and better performance.</p>
+<p>If you are at v1.x.y and I launched a new version 2.0.0 do not update it. Because it is major change which may (basically always) break your present code or the output is not as expected.</p>
+<p>If you are at same major change version but a new patch/minor changed version is available install without any fear. Usually minor change comes with some new methods, and patch release comes with bug fixes/updated readme.</p></article>
     </section>
 
 

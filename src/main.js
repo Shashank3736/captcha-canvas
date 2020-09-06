@@ -66,9 +66,13 @@ class CaptchaGenerator {
      * @param {integer} height Height of captcha image.
      * @param {integer} width Width of captcha image.
      * @example 
+     * const { CaptchaGenerator } = require("captcha-canvas");
+     * const fs = require("fs")
      * const captcha = new CaptchaGenerator();
-     * captcha.setDimension(200, 600)
-     * captcha.generate() //generate image
+     * captcha.setDimension(200, 600);
+     * const buffer = await captcha.generate() //generate image
+     * 
+     * fs.writeFileSync("image.png", buffer)
      */
     setDimension(height, width) {
         this.height = height;
@@ -77,9 +81,15 @@ class CaptchaGenerator {
     }
     /**
      * Set background for captcha image.
-     * @param {buffer} image Image of background 
+     * @param {buffer} image Buffer/url/path of image.
      * @example
-     * captcha.setBackground("./path/to/image.png")
+     * const { CaptchaGenerator } = require("captcha-canvas");
+     * const fs = require("fs")
+     * const captcha = new CaptchaGenerator();
+     * captcha.setBackground("./path/toFile");
+     * const buffer = await captcha.generate() //generate image
+     * 
+     * fs.writeFileSync("image.png", buffer)
      */
     setBackground(image) {
         this.background = image;
@@ -88,6 +98,15 @@ class CaptchaGenerator {
     /**
      * Change captcha text options
      * @param {SetCaptchaOptions} options Captcha appearance options.
+     * @example
+     * const { CaptchaGenerator } = require("captcha-canvas");
+     * const fs = require("fs")
+     * const captcha = new CaptchaGenerator();
+     * const options = {font: "Comic Sans", size: 60}
+     * captcha.setCaptcha(options)
+     * const buffer = await captcha.generate() //generate image
+     * 
+     * fs.writeFileSync("image.png", buffer)
      */
     setCaptcha(options) {
         this.captcha = merge(this.captcha, options);
@@ -97,6 +116,15 @@ class CaptchaGenerator {
     /**
      * Change trace creation options.
      * @param {SetTraceOptions} options Trace Line appearance options.
+     * @example
+     * const { CaptchaGenerator } = require("captcha-canvas");
+     * const fs = require("fs")
+     * const captcha = new CaptchaGenerator();
+     * const options = {size: 5, color: "deeppink"}
+     * captcha.setTrace(options)
+     * const buffer = await captcha.generate() //generate image
+     * 
+     * fs.writeFileSync("image.png", buffer)
      */
     setTrace(options) {
         this.trace = merge(this.trace, options);
@@ -113,7 +141,14 @@ class CaptchaGenerator {
     /**
      * Method which returns image buffer
      * @async
-     * @returns {Buffer} 
+     * @returns {Promise<Buffer>} 
+     * @example
+     * const { CaptchaGenerator } = require("captcha-canvas");
+     * const fs = require("fs")
+     * const captcha = new CaptchaGenerator();
+     * const buffer = await captcha.generate() //generate image
+     * 
+     * fs.writeFileSync("image.png", buffer)
      */
     async generate() {
         const canvas = new Canvas(this.width, this.height)

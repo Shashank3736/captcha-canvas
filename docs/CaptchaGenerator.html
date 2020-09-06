@@ -707,7 +707,7 @@
     
 
     
-    <h4 class="name" id="generate"><span class="type-signature">(async) </span>generate<span class="signature">()</span><span class="type-signature"> &rarr; {Buffer}</span></h4>
+    <h4 class="name" id="generate"><span class="type-signature">(async) </span>generate<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Buffer>}</span></h4>
     
 
     
@@ -787,7 +787,7 @@
 <ul>
     <li>
         Type: <span class="simple-code">
-<span class="param-type">Buffer</span>
+<span class="param-type">Promise.&lt;Buffer></span>
 
 </span>
     </li>
@@ -796,6 +796,11 @@
     
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint example linenums"><code>const { CaptchaGenerator } = require("captcha-canvas");const fs = require("fs")const captcha = new CaptchaGenerator();const buffer = await captcha.generate() //generate imagefs.writeFileSync("image.png", buffer)</code></pre>
 
 
 
@@ -867,7 +872,7 @@
 
                 
 
-                <td class="description last"><p>Image of background</p></td>
+                <td class="description last"><p>Buffer/url/path of image.</p></td>
             </tr>
 
         
@@ -935,7 +940,7 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint example linenums"><code>captcha.setBackground("./path/to/image.png")</code></pre>
+    <pre class="prettyprint example linenums"><code>const { CaptchaGenerator } = require("captcha-canvas");const fs = require("fs")const captcha = new CaptchaGenerator();captcha.setBackground("./path/toFile");const buffer = await captcha.generate() //generate imagefs.writeFileSync("image.png", buffer)</code></pre>
 
 
 
@@ -1071,6 +1076,11 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint example linenums"><code>const { CaptchaGenerator } = require("captcha-canvas");const fs = require("fs")const captcha = new CaptchaGenerator();const options = {font: "Comic Sans", size: 60}captcha.setCaptcha(options)const buffer = await captcha.generate() //generate imagefs.writeFileSync("image.png", buffer)</code></pre>
 
 
 
@@ -1368,7 +1378,7 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint example linenums"><code>const captcha = new CaptchaGenerator();captcha.setDimension(200, 600)captcha.generate() //generate image</code></pre>
+    <pre class="prettyprint example linenums"><code>const { CaptchaGenerator } = require("captcha-canvas");const fs = require("fs")const captcha = new CaptchaGenerator();captcha.setDimension(200, 600);const buffer = await captcha.generate() //generate imagefs.writeFileSync("image.png", buffer)</code></pre>
 
 
 
@@ -1504,6 +1514,11 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint example linenums"><code>const { CaptchaGenerator } = require("captcha-canvas");const fs = require("fs")const captcha = new CaptchaGenerator();const options = {size: 5, color: "deeppink"}captcha.setTrace(options)const buffer = await captcha.generate() //generate imagefs.writeFileSync("image.png", buffer)</code></pre>
 
 
 
