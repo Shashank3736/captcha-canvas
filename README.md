@@ -29,6 +29,7 @@ const buffer = await captcha.generate(); //returns buffer of the captcha image
 fs.writeFileSync('image.png', buffer); //will create image.png file of the captcha
 ```
 
+You can use many methods like [setCaptcha](https://captcha-canvas.js.org/CaptchaGenerator.html#setCaptcha) and [setTrace](https://captcha-canvas.js.org/CaptchaGenerator.html#setTrace) to customize there appearance and values.
 ## Need Help:
 
 I am working on a simple guide for this npm package you can check it out [here](https://github.com/Shashank3736/captcha-canvas/wiki). 
