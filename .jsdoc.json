@@ -1,30 +1,36 @@
+  
 {
+    "configHelpUrl": "http://usejsdoc.org/about-configuring-jsdoc.html",
+    "script": "jsdoc --configure ./.jsdoc.json --verbose",
     "tags": {
         "allowUnknownTags": true,
-        "dictionaries": ["jsdoc"]
+        "dictionaries": [
+            "jsdoc",
+            "closure"
+        ]
     },
     "source": {
         "include": ["README.md", "src"],
+        "exclude": [],
         "includePattern": ".js$",
-        "excludePattern": "(node_modules/|docs|tests/)"
+        "excludePattern": "(node_modules/|docs)"
     },
     "plugins": [
         "plugins/markdown"
     ],
+    "markdown": {
+        "excludeTags": [
+            "author"
+        ]
+    },
     "templates": {
         "cleverLinks": false,
-        "monospaceLinks": true,
-        "useLongnameInNav": false,
-        "showInheritedInNav": true,
-        "default": {
-            "outputSourceFiles": false,
-            "includeDate": false
-        }
+        "monospaceLinks": true
     },
     "opts": {
         "destination": "./docs/",
         "encoding": "utf8",
-        "private": true,
+        "private": false,
         "recurse": true,
         "template": "./node_modules/jsdoc-skyceil"
     }
