@@ -23,7 +23,7 @@
         </center>
     </div>
     <hr>
-    <h4><a href="index.html">Home</a></h4><h5 class="no-bottom must-underline">Classes</h5><ul><li><span class="small-icon C">C</span><b><a href="CaptchaGenerator.html">CaptchaGenerator</a></b><ul class="has-class-methods"><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#generate">generate</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setCaptcha">setCaptcha</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setDecoy">setDecoy</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setDimension">setDimension</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setTrace">setTrace</a></li><li><span class="small-icon M">M</span><a href="CaptchaGenerator.html#text">text</a></li></ul></li></ul><h4>Global</h4><ul><li><a href="global.html#defaultCaptchaOptions">defaultCaptchaOptions</a></li><li><a href="global.html#defaultDecoyOptions">defaultDecoyOptions</a></li><li><a href="global.html#defaultTraceOptions">defaultTraceOptions</a></li></ul>
+    <h4><a href="index.html">Home</a></h4><h5 class="no-bottom must-underline">Classes</h5><ul><li><span class="small-icon C">C</span><b><a href="CaptchaGenerator.html">CaptchaGenerator</a></b><ul class="has-class-methods"><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#generate">generate</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setBackground">setBackground</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setCaptcha">setCaptcha</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setDecoy">setDecoy</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setDimension">setDimension</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setTrace">setTrace</a></li><li><span class="small-icon M">M</span><a href="CaptchaGenerator.html#text">text</a></li></ul></li></ul><h4>Global</h4><ul><li><a href="global.html#defaultCaptchaOptions">defaultCaptchaOptions</a></li><li><a href="global.html#defaultDecoyOptions">defaultDecoyOptions</a></li><li><a href="global.html#defaultTraceOptions">defaultTraceOptions</a></li></ul>
 </nav>
 
 <div id="main">
@@ -429,7 +429,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line159">line 159</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line158">line 158</a>
     </li></ul></dd>
     
 
@@ -476,6 +476,151 @@
     <h5>Example</h5>
     
     <pre class="prettyprint example linenums"><code>const { CaptchaGenerator } = require("captcha-canvas");const fs = require("fs")const captcha = new CaptchaGenerator();const buffer = await captcha.generate() //generate imagefs.writeFileSync("image.png", buffer)</code></pre>
+
+
+
+<hr>
+        
+            
+
+    
+
+    
+    <h4 class="name" id="setBackground"><span class="type-signature"></span>setBackground<span class="signature">(image)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Set background for captcha image.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="table-box">
+    <table class="params">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            <tr>
+                
+                    <td class="name"><code>image</code></td>
+                
+
+                <td class="type">
+                
+                    
+<span class="param-type">buffer</span>
+
+
+                
+                </td>
+
+                
+
+                
+
+                <td class="description last"><p>Buffer/url/path of image.</p></td>
+            </tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line99">line 99</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint example linenums"><code>const { CaptchaGenerator } = require("captcha-canvas");const fs = require("fs")const captcha = new CaptchaGenerator();captcha.setBackground("./path/toFile");const buffer = await captcha.generate() //generate imagefs.writeFileSync("image.png", buffer)</code></pre>
 
 
 
@@ -589,7 +734,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line117">line 117</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line116">line 116</a>
     </li></ul></dd>
     
 
@@ -734,7 +879,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line143">line 143</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line142">line 142</a>
     </li></ul></dd>
     
 
@@ -1042,7 +1187,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line135">line 135</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line134">line 134</a>
     </li></ul></dd>
     
 
@@ -1097,7 +1242,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Mon Sep 07 2020 19:29:19 GMT+0530 (India Standard Time) using <a href="https://github.com/zyrouge/jsdoc-skyceil">Skyceil Theme</a>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Mon Sep 07 2020 19:49:32 GMT+0530 (India Standard Time) using <a href="https://github.com/zyrouge/jsdoc-skyceil">Skyceil Theme</a>
 </footer>
 
 <script>prettyPrint();</script>

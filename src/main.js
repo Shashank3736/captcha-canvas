@@ -95,7 +95,6 @@ class CaptchaGenerator {
      * const buffer = await captcha.generate() //generate image
      * 
      * fs.writeFileSync("image.png", buffer)
-     * @private
      */
     setBackground(image) {
         this.background = image;
