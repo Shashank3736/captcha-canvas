@@ -27,26 +27,31 @@ class CaptchaGenerator {
         /**
          * Height of captcha image
          * @type {Number}
+         * @private
          */
         this.height = options.height || 100;
         /**
          * Get width of captcha image
          * @type {Number}
+         * @private
          */
         this.width = options.width || 300;
         /**
          * Captcha Text option for the image
          * @type {SetCaptchaOptions}
+         * @private
          */
         this.captcha = defaultCaptchaOptions;
         /**
          * Trace line option for the image
          * @type {SetTraceOptions}
+         * @private
          */
         this.trace = defaultTraceOptions;
         /**
          * Decoy characters option for image
          * @type {SetDecoyOptions}
+         * @private
          */
         this.decoy = defaultDecoyOptions;
 
@@ -90,6 +95,7 @@ class CaptchaGenerator {
      * const buffer = await captcha.generate() //generate image
      * 
      * fs.writeFileSync("image.png", buffer)
+     * @private
      */
     setBackground(image) {
         this.background = image;
