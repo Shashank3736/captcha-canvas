@@ -17,7 +17,7 @@ This is an npm package [captcha-canvas](https://npmjs.com/package/captcha-canvas
 * Captcha adapt all the external options very easily.
 
 ## How to use?
-Here is a quick example on how to use the bot. But a well written [documentation](https://captcha-canvas.js.org) is available to understand all the mothods and customisation available for your ptoject.
+Here is a quick example on how to use the module. But a well written [documentation](https://captcha-canvas.js.org) is available to understand all the mothods and customisation available for your project.
 ```js
 const { CaptchaGenerator } = require('captcha-canvas');  //require package here
 const fs = require('fs'); //require fs module for saving image in a file
