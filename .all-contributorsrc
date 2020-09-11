@@ -13,6 +13,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "IchiiDev",
+      "name": "IchiiDev",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/45918948?v=4",
+      "profile": "https://ichiidev.xyz",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
