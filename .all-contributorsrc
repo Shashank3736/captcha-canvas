@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "TheDeadCraftPT",
+      "name": "TheDeadCraftPT",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/46866023?v=4",
+      "profile": "https://github.com/TheDeadCraftPT",
+      "contributions": [
+        "bug"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "captcha-canvas",
+  "projectOwner": "Shashank3736",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
