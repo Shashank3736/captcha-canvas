@@ -1,4 +1,3 @@
-const { Canvas, resolveImage } = require("canvas-constructor");
 const crypto = require('crypto');
 const merge = require("deepmerge");
 const { 
@@ -9,6 +8,7 @@ const {
     defaultDecoyOptions,
     SetCaptchaOptions,
 } = require("./constants");
+const { createCanvas, loadImage } = require("canvas");
 function getRandom(n) {
     return Math.floor(Math.random()*(n - 60)) + 30
 }
@@ -54,7 +54,11 @@ class CaptchaGenerator {
          * @private
          */
         this.decoy = defaultDecoyOptions;
-
+        /**
+         * Captch text randomly created here.
+         * @type {string}
+         * @private
+         */
         this.captcha.text = crypto.randomBytes(32).toString("hex").toUpperCase().replace(/[^a-z]/gi, "")
         .substr(0, this.captcha.characters);
     }
@@ -156,11 +160,15 @@ class CaptchaGenerator {
      * fs.writeFileSync("image.png", buffer)
      */
     async generate() {
-        const canvas = new Canvas(this.width, this.height)
-        .setTextBaseline("middle")
-        .setLineJoin("miter")
-        let coordinates = []
-        //get coordinates for captcha characters and trace line
+        /*Create canvas element from createCanvas function*/
+        const canvas = createCanvas(this.width, this.height);
+        const ctx = canvas.getContext("2d");
+        /*Set line join and text base line here.*/
+        ctx.lineJoin = "miter";
+        ctx.textBaseline = "middle";
+        /*Get coordinates values for captcha text and lines*/
+        let coordinates = [];
+        /*get coordinates for captcha characters and trace line*/
         for (let i = 0; i < this.captcha.characters; i++) {
             const widhtGap = Math.floor(this.width/(this.captcha.characters));
             let coordinate = [];
@@ -168,45 +176,47 @@ class CaptchaGenerator {
             coordinate.push(randomWidth);
             let randomHeight = getRandom(this.height);
             coordinate.push(randomHeight);
-            coordinates.push(coordinate)
+            coordinates.push(coordinate);
         }
         coordinates = coordinates.sort((a, b) => a[0] - b[0]);
-        
-        //first we will try to print background image if available
+        /*Adding background in captcha*/
         if(this.background) {
-            const background = await resolveImage(this.background);
-            canvas.printImage(background, 0, 0, this.width, this.height);
+            const background = await loadImage(this.background);
+            ctx.drawImage(background, 0, 0, this.width, this.height);
         }
-        //now check for decoy status
-        if(this.decoy.opacity > 0) {
+        /*Add decoy text in captcha*/
+        if(this.decoy.opacity) {
             const decoyTextCount = Math.floor(this.height*this.width/10000);
             const decoyText = crypto.randomBytes(decoyTextCount).toString('hex').split('');
-            canvas.setTextFont(`${this.decoy.size}px ${this.decoy.font}`)
-            .setGlobalAlpha(this.decoy.opacity)
-            .setColor(this.decoy.color)
+            ctx.font = `${this.decoy.size}px ${this.decoy.font}`;
+            ctx.globalAlpha = this.decoy.opacity;
+            ctx.fillStyle = this.decoy.color;
             for(let i = 0; i < decoyText.length; i++) {
-                canvas.printText(decoyText[i], getRandom(this.width), getRandom(this.height))
+                ctx.fillText(decoyText[i], getRandom(this.width), getRandom(this.height))
             }
         }
-        if(this.trace.opacity > 0) {
-            canvas.setStroke(this.trace.color)
-            .setGlobalAlpha(this.trace.opacity)
-            .beginPath().moveTo(coordinates[0][0], coordinates[0][1])
-            .setStrokeWidth(this.trace.size)
+        /*Add trace line*/
+        if(this.trace.opacity) {
+            ctx.strokeStyle = this.trace.color;
+            ctx.globalAlpha = this.trace.opacity;
+            ctx.beginPath();
+            ctx.moveTo(coordinates[0][0], coordinates[0][1]);
+            ctx.lineWidth = this.trace.size;
             for(let i = 1; i < coordinates.length; i++) {
-                canvas
-                .lineTo(coordinates[i][0], coordinates[i][1])
+                ctx.lineTo(coordinates[i][0], coordinates[i][1]);
             }
-            canvas.stroke()
+            ctx.stroke();
         }
-        if(this.captcha.opacity > 0) {
-            canvas.setTextFont(`${this.captcha.size}px ${this.captcha.font}`)
-            .setGlobalAlpha(this.captcha.opacity)
-            .setColor(this.captcha.color)
+        /*Add captcha text*/
+        if(this.captcha.opacity) {
+            ctx.font = `${this.captcha.size}px ${this.captcha.font}`;
+            ctx.globalAlpha = this.captcha.opacity;
+            ctx.fillStyle = this.captcha.color;
             for(let n = 0; n < coordinates.length; n++) {
-                canvas.printText(this.captcha.text[n], coordinates[n][0], coordinates[n][1])
+                ctx.fillText(this.captcha.text[n], coordinates[n][0], coordinates[n][1]);
             }
         }
+        /*Return buffer*/
         return canvas.toBuffer();
     }
 }
