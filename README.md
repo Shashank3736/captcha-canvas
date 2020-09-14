@@ -7,6 +7,7 @@ This is an npm package [captcha-canvas](https://npmjs.com/package/captcha-canvas
 > Install canvas before captcha-canvas installation. As canvas is the peer dependencies.
 
 [![captcha-canvas](https://nodei.co/npm/captcha-canvas.png)](https://npmjs.com/package/captcha-canvas)
+[![DeepScan grade](https://deepscan.io/api/teams/10824/projects/13708/branches/237923/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=10824&pid=13708&bid=237923)
 
 #### Captcha Image:
 
@@ -41,16 +42,39 @@ I am working on a simple guide for this npm package you can check it out [here](
 
 Open an [issue](https://github.com/Shashank3736/captcha-canvas/issues) if you need help regarding this module or want to report any bug.
 
+<<<<<<< HEAD
 ## Wanna support developer?
+=======
+- captcha.characters (set length of captcha text)
+- captcha.text (set text for captcha)
+- captcha.color (set html color code for captcha text)
+- captcha.font (set font for captcha text)
+- captcha.size (set size for captcha text)
+- captcha.opacity (set opacity of captcha text)
+>>>>>>> a6b5e08... Update README.md
 
 * Star the [github repo](https://github.com/Shashank3736/captcha-canvas) of the project. More stars motivate me to work on this project.
 
+<<<<<<< HEAD
 * Open an [issue](https://github.com/Shashank3736/captcha-canvas/issues) to recommend some new features or report bug regarding this module.
+=======
+- trace.color (set HTML color code for trace line)
+- trace.size (set width of trace line)
+- trace.opacity (set opacity for trace line)
+>>>>>>> a6b5e08... Update README.md
 
 * For now, you don't have anyway to fund this project but maybe in future I update this.
 
+<<<<<<< HEAD
 ## Supported versions
 We always recommend you to use the most latest version for more methods and better performance. 
+=======
+- decoy.color (set Html color for decoy)
+- decoy.font (set font for decoy text)
+- decoy.size (set size of decoy text font)
+- decoy.opacity (set opacity for decoy text.)
+## Examples:
+>>>>>>> a6b5e08... Update README.md
 
 If you are at v1.x.y and I launched a new version 2.0.0 do not update it. Because it is major change which may (basically always) break your present code or the output is not as expected.
 
