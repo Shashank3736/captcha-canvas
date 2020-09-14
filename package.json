@@ -27,9 +27,7 @@
   },
   "homepage": "https://github.com/Shashank3736/captcha-canvas#readme",
   "dependencies": {
-    "deepmerge": "^4.2.2"
-  },
-  "peerDependencies": {
+    "deepmerge": "^4.2.2",
     "canvas": "*"
   },
   "devDependencies": {
