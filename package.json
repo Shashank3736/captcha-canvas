@@ -7,7 +7,8 @@
     "docsgen": "jsdoc --configure .jsdoc.json --verbose",
     "example": "node examples/example.js",
     "start": "node index.js",
-    "test": "node test.js"
+    "test": "node test.js",
+    "typetest": ""
   },
   "repository": {
     "type": "git",
@@ -32,7 +33,8 @@
   },
   "devDependencies": {
     "jsdoc": "^3.6.5",
-    "jsdoc-skyceil": "^1.0.5"
+    "jsdoc-skyceil": "^1.0.5",
+    "typescript": "^4.0.2"
   },
   "directories": {
     "doc": "docs",

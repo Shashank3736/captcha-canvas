@@ -8,7 +8,7 @@ declare module "captcha-canvas" {
         public trace: SetTraceOptions;
         public decoy: SetDecoyOptions;
 
-        public setBackgroud(image?: string | url);
+        public setBackgroud(image?: string);
         public setDecoy(SetDecoyOptions);
         public setTrace(SetTraceOptions);
         public setCaptcha(SetCaptchaOptions);
