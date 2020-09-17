@@ -19,14 +19,14 @@ Like if we want to use different dimension. We can use [setDimension](https://ca
 ```js
 const { CaptchaGenerator } = require("captcha-canvas");
 const captcha = new CaptchaGenerator()
-.setDimension({height: 150, width: 450}) 
+.setDimension(150, 450) 
 ```
 
 If we want to change captcha text or its appearance, then we can use [setCaptcha](https://captcha-canvas.js.org/CaptchaGenerator.html#setCaptcha) method.
 ```js
 const { CaptchaGenerator } = require("captcha-canvas");
 const captcha = new CaptchaGenerator()
-.setDimension({height: 150, width: 450}) 
+.setDimension(150, 450) 
 .setCaptcha({text: "CUSTOM05", size: 60, color: "deeppink"})
 ```
 
@@ -34,7 +34,7 @@ If we want to change appearance of background text (i.e decoy). We can do that e
 ```js
 const { CaptchaGenerator } = require("captcha-canvas");
 const captcha = new CaptchaGenerator()
-.setDimension({height: 150, width: 450}) 
+.setDimension(150, 450) 
 .setCaptcha({text: "CUSTOM05", size: 60, color: "deeppink"})
 .setDecoy({opacity: 0.5})
 ```
@@ -46,7 +46,7 @@ Once you customised everything according to your need then just you can get buff
 ```js
 const { CaptchaGenerator } = require("captcha-canvas");
 const captcha = new CaptchaGenerator()
-.setDimension({height: 150, width: 450}) 
+.setDimension(150, 450) 
 .setCaptcha({text: "CUSTOM05", size: 60, color: "deeppink"})
 .setDecoy({opacity: 0.5})
 .setTrace({color: "deeppink"});
