@@ -60,73 +60,46 @@
 
     <hr>
     <section>
-        <article><h1>captcha-canvas</h1>
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<p><a href="#contributors-"><img src="https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square" alt="All Contributors"></a></p>
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-<p>This is an npm package <a href="https://npmjs.com/package/captcha-canvas">captcha-canvas</a> helps you to make custom captcha of all types. The package uses <code>canvas</code> to create captcha imagas. See installation section to know how to install.</p>
-<blockquote>
-<p>Install canvas before captcha-canvas installation. As canvas is the peer dependencies.</p>
-</blockquote>
-<p><a href="https://npmjs.com/package/captcha-canvas"><img src="https://nodei.co/npm/captcha-canvas.png" alt="captcha-canvas"></a></p>
-<h4>Captcha Image:</h4>
-<p><img src="https://github.com/Shashank3736/captcha-canvas/raw/master/assets/captcha/default.png" alt="captcha"></p>
-<h3>Features</h3>
-<ul>
-<li>Highly customisable you can customise every single value use to make this package.</li>
-<li>95% OCR fails to read this captcha image and throw Error.</li>
-<li>Use class constructor method so you can generate as many frames as many you want by using same values.</li>
-<li>No bundled dependenceris. You need to install them to use the package.</li>
-<li>Support of background images is also possible.</li>
-<li>Captcha adapt all the external options very easily.</li>
-</ul>
-<h2>How to use?</h2>
-<p>Here is a quick example on how to use the module. But a well written <a href="https://captcha-canvas.js.org">documentation</a> is available to understand all the mothods and customisation available for your project.</p>
-<pre class="prettyprint linenums source lang-js"><code>const { CaptchaGenerator } = require('captcha-canvas');  //require package here
-const fs = require('fs'); //require fs module for saving image in a file
-const options = {height: 200, width: 600};  //options for captcha image
-const captcha = new CaptchaGenerator(options); //getting captcha constructor
-captcha.text; //returns text of the captcha image.
-const buffer = await captcha.generate(); //returns buffer of the captcha image
-
-fs.writeFileSync('image.png', buffer); //will create image.png file of the captcha
+        <article><h1>Getting Started</h1>
+<p>To start using this <a href="https://npmjs.com/package/captcha-canvas">npm module</a>. We first need to install it from npm by using command <code>npm install captcha-canvas</code>.</p>
+<p>Now require this package in your file where you want to create captcha.</p>
+<pre class="prettyprint linenums source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
 </code></pre>
-<p>You can use many methods like <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setCaptcha">setCaptcha</a> and <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setTrace">setTrace</a> to customize there appearance and values.</p>
-<h2>Need Help:</h2>
-<p>I am working on a simple guide for this npm package you can check it out <a href="https://github.com/Shashank3736/captcha-canvas/wiki">here</a>.</p>
-<p>Open an <a href="https://github.com/Shashank3736/captcha-canvas/issues">issue</a> if you need help regarding this module or want to report any bug.</p>
-<h2>Wanna support developer?</h2>
-<ul>
-<li>
-<p>Star the <a href="https://github.com/Shashank3736/captcha-canvas">github repo</a> of the project. More stars motivate me to work on this project.</p>
-</li>
-<li>
-<p>Open an <a href="https://github.com/Shashank3736/captcha-canvas/issues">issue</a> to recommend some new features or report bug regarding this module.</p>
-</li>
-<li>
-<p>For now, you don't have anyway to fund this project but maybe in future I update this.</p>
-</li>
-</ul>
-<h2>Supported versions</h2>
-<p>We always recommend you to use the most latest version for more methods and better performance.</p>
-<p>If you are at v1.x.y and I launched a new version 2.0.0 do not update it. Because it is major change which may (basically always) break your present code or the output is not as expected.</p>
-<p>If you are at same major change version but a new patch/minor changed version is available install without any fear. Usually minor change comes with some new methods, and patch release comes with bug fixes/updated readme.</p>
-<h2>Contributors ✨</h2>
-<p>Thanks goes to these wonderful people (<a href="https://allcontributors.org/docs/en/emoji-key">emoji key</a>):</p>
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tr>
-    <td align="center"><a href="https://github.com/Shashank3736"><img src="https://avatars2.githubusercontent.com/u/58896906?v=4" width="100px;" alt=""/><br /><sub><b>Shashank</b></sub></a><br /><a href="#projectManagement-Shashank3736" title="Project Management">📆</a></td>
-    <td align="center"><a href="https://github.com/TheDeadCraftPT"><img src="https://avatars2.githubusercontent.com/u/46866023?v=4" width="100px;" alt=""/><br /><sub><b>TheDeadCraftPT</b></sub></a><br /><a href="https://github.com/Shashank3736/captcha-canvas/issues?q=author%3ATheDeadCraftPT" title="Bug reports">🐛</a></td>
-    <td align="center"><a href="https://ichiidev.xyz"><img src="https://avatars1.githubusercontent.com/u/45918948?v=4" width="100px;" alt=""/><br /><sub><b>IchiiDev</b></sub></a><br /><a href="https://github.com/Shashank3736/captcha-canvas/issues?q=author%3AIchiiDev" title="Bug reports">🐛</a></td>
-  </tr>
-</table>
-<!-- markdownlint-enable -->
-<!-- prettier-ignore-end -->
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-<p>This project follows the <a href="https://github.com/all-contributors/all-contributors">all-contributors</a> specification. Contributions of any kind welcome!</p></article>
+<p>We can see here we get <code>CaptchaGenerator</code> class from the module. Now initiate the constructor to start using it.</p>
+<pre class="prettyprint linenums source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
+const captcha = new CaptchaGenerator();
+</code></pre>
+<p>Now we can use all the methods documented <a href="https://captcha-canvas.js.org/CaptchaGenerator.html">here</a> to customize captcha according to our need.</p>
+<p>Like if we want to use different dimension. We can use <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setDimension">setDimension</a> method.</p>
+<pre class="prettyprint linenums source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
+const captcha = new CaptchaGenerator()
+.setDimension({height: 150, width: 450}) 
+</code></pre>
+<p>If we want to change captcha text or its appearance, then we can use <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setCaptcha">setCaptcha</a> method.</p>
+<pre class="prettyprint linenums source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
+const captcha = new CaptchaGenerator()
+.setDimension({height: 150, width: 450}) 
+.setCaptcha({text: &quot;CUSTOM05&quot;, size: 60, color: &quot;deeppink&quot;})
+</code></pre>
+<p>If we want to change appearance of background text (i.e decoy). We can do that easily by using <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setDecoy">setDecoy</a> method.</p>
+<pre class="prettyprint linenums source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
+const captcha = new CaptchaGenerator()
+.setDimension({height: 150, width: 450}) 
+.setCaptcha({text: &quot;CUSTOM05&quot;, size: 60, color: &quot;deeppink&quot;})
+.setDecoy({opacity: 0.5})
+</code></pre>
+<p>You can also customise trace line and add background by using <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setTrace">setTrace</a> and <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setBackground">setBackground</a> method.</p>
+<p>Once you customised everything according to your need then just you can get buffer from <code>generate</code> method. And use that buffer to display image in your project.</p>
+<pre class="prettyprint linenums source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
+const captcha = new CaptchaGenerator()
+.setDimension({height: 150, width: 450}) 
+.setCaptcha({text: &quot;CUSTOM05&quot;, size: 60, color: &quot;deeppink&quot;})
+.setDecoy({opacity: 0.5})
+.setTrace({color: &quot;deeppink&quot;});
+const buffer = await captcha.generate();
+</code></pre>
+<h4>Final Output</h4>
+<p><img src="https://raw.githubusercontent.com/Shashank3736/captcha-canvas/master/examples/all.png" alt="captcha"></p></article>
     </section>
 
 
@@ -140,7 +113,7 @@ fs.writeFileSync('image.png', buffer); //will create image.png file of the captc
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Sun Sep 13 2020 21:36:25 GMT+0530 (India Standard Time) using <a href="https://github.com/zyrouge/jsdoc-skyceil">Skyceil Theme</a>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Thu Sep 17 2020 18:49:14 GMT+0530 (India Standard Time) using <a href="https://github.com/zyrouge/jsdoc-skyceil">Skyceil Theme</a>
 </footer>
 
 <script>prettyPrint();</script>

@@ -10,7 +10,7 @@
         ]
     },
     "source": {
-        "include": ["README.md", "src"],
+        "include": ["docs/readme.md", "src"],
         "exclude": [],
         "includePattern": ".js$",
         "excludePattern": "(node_modules/|docs)"
