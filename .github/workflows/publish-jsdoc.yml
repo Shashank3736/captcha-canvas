@@ -1,7 +1,7 @@
 name: Generate docs
 on: [push]
 jobs:
-  Start docs generation:
+  Start:
     
     runs-on: ubuntu-latest
     
