@@ -11,6 +11,7 @@ This is an npm package [captcha-canvas](https://npmjs.com/package/captcha-canvas
 #### Captcha Image:
 
 ![captcha](https://github.com/Shashank3736/captcha-canvas/raw/master/assets/captcha/default.png)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FShashank3736%2Fcaptcha-canvas.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FShashank3736%2Fcaptcha-canvas?ref=badge_shield)
 
 ### Features
 
@@ -76,3 +77,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FShashank3736%2Fcaptcha-canvas.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FShashank3736%2Fcaptcha-canvas?ref=badge_large)
