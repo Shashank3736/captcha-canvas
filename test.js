@@ -5,4 +5,4 @@ const fs = require('fs');
     .generateSync()
     
     fs.writeFileSync("assets/captcha/default.png", captcha)
-})()
+})();
