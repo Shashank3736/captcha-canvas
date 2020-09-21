@@ -23,7 +23,7 @@
         </center>
     </div>
     <hr>
-    <h4><a href="index.html">Home</a></h4><h5 class="no-bottom must-underline">Classes</h5><ul><li><span class="small-icon C">C</span><b><a href="CaptchaGenerator.html">CaptchaGenerator</a></b><ul class="has-class-methods"><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#generate">generate</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setBackground">setBackground</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setCaptcha">setCaptcha</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setDecoy">setDecoy</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setDimension">setDimension</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setTrace">setTrace</a></li><li><span class="small-icon M">M</span><a href="CaptchaGenerator.html#text">text</a></li></ul></li></ul><h4>Global</h4><ul><li><a href="global.html#defaultCaptchaOptions">defaultCaptchaOptions</a></li><li><a href="global.html#defaultDecoyOptions">defaultDecoyOptions</a></li><li><a href="global.html#defaultTraceOptions">defaultTraceOptions</a></li></ul>
+    <h4><a href="index.html">Home</a></h4><h5 class="no-bottom must-underline">Classes</h5><ul><li><span class="small-icon C">C</span><b><a href="CaptchaGenerator.html">CaptchaGenerator</a></b><ul class="has-class-methods"><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#generate">generate</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#generateSync">generateSync</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setBackground">setBackground</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setCaptcha">setCaptcha</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setDecoy">setDecoy</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setDimension">setDimension</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setTrace">setTrace</a></li><li><span class="small-icon M">M</span><a href="CaptchaGenerator.html#text">text</a></li></ul></li></ul><h4>Global</h4><ul><li><a href="global.html#defaultCaptchaOptions">defaultCaptchaOptions</a></li><li><a href="global.html#defaultDecoyOptions">defaultDecoyOptions</a></li><li><a href="global.html#defaultTraceOptions">defaultTraceOptions</a></li></ul>
 </nav>
 
 <div id="main">
@@ -214,6 +214,9 @@
     
 
     
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
+    
 
     
 
@@ -238,7 +241,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line26">line 26</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line27">line 27</a>
     </li></ul></dd>
     
 
@@ -324,6 +327,9 @@
     
 
     
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.3</li></ul></dd>
+    
 
     
 
@@ -348,7 +354,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line69">line 69</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line71">line 71</a>
     </li></ul></dd>
     
 
@@ -405,6 +411,9 @@
     
 
     
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
+    
 
     
 
@@ -429,7 +438,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line162">line 162</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line170">line 170</a>
     </li></ul></dd>
     
 
@@ -481,6 +490,240 @@ const captcha = new CaptchaGenerator();
 const buffer = await captcha.generate() //generate image
 
 fs.writeFileSync("image.png", buffer)</code></pre>
+
+
+
+<hr>
+        
+            
+
+    
+
+    
+    <h4 class="name" id="generateSync"><span class="type-signature"></span>generateSync<span class="signature">(options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Non asynchronous method to generate captcha image.</p>
+<blockquote>
+<p>Note: It do not use <code>setBackground</code> method value for background image. If you want to set background
+and also use generateSync method then use background option in genrateSync method.</p>
+</blockquote>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="table-box">
+    <table class="params">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            <tr>
+                
+                    <td class="name"><code>options</code></td>
+                
+
+                <td class="type">
+                
+                    
+<span class="param-type">object</span>
+
+
+                
+                </td>
+
+                
+                    <td class="attributes">
+                    
+                        &lt;optional><br>
+                    
+
+                    
+
+                    
+                    </td>
+                
+
+                
+
+                <td class="description last"><p>Options to add extra values</p>
+                    <h6>Properties</h6>
+                    
+
+<div class="table-box">
+    <table class="params">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            <tr>
+                
+                    <td class="name"><code>background</code></td>
+                
+
+                <td class="type">
+                
+                    
+<span class="param-type">Image</span>
+
+
+                
+                </td>
+
+                
+                    <td class="attributes">
+                    
+                        &lt;optional><br>
+                    
+
+                    
+
+                    
+                    </td>
+                
+
+                
+
+                <td class="description last"><p>Add background image.</p></td>
+            </tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+                </td>
+            </tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.2.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line247">line 247</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint example linenums"><code>const { CaptchaGenerator, resolveImage } = require("captcha-canvas");
+const fs = require("fs");
+const img = await resolveImage("./path/to/file");
+
+const captcha = new CaptchaGenerator()
+.generateSync({background: img});
+
+fs.writeFileSync("image.png", captcha);</code></pre>
 
 
 
@@ -570,6 +813,9 @@ fs.writeFileSync("image.png", buffer)</code></pre>
     
 
     
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
+    
 
     
 
@@ -594,7 +840,7 @@ fs.writeFileSync("image.png", buffer)</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line103">line 103</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line107">line 107</a>
     </li></ul></dd>
     
 
@@ -721,6 +967,9 @@ fs.writeFileSync("image.png", buffer)</code></pre>
     
 
     
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
+    
 
     
 
@@ -745,7 +994,7 @@ fs.writeFileSync("image.png", buffer)</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line120">line 120</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line125">line 125</a>
     </li></ul></dd>
     
 
@@ -873,6 +1122,9 @@ fs.writeFileSync("image.png", buffer)</code></pre>
     
 
     
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
+    
 
     
 
@@ -897,7 +1149,7 @@ fs.writeFileSync("image.png", buffer)</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line146">line 146</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line153">line 153</a>
     </li></ul></dd>
     
 
@@ -1036,6 +1288,9 @@ fs.writeFileSync("image.png", buffer)</code></pre>
     
 
     
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
+    
 
     
 
@@ -1060,7 +1315,7 @@ fs.writeFileSync("image.png", buffer)</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line86">line 86</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line89">line 89</a>
     </li></ul></dd>
     
 
@@ -1187,6 +1442,9 @@ fs.writeFileSync("image.png", buffer)</code></pre>
     
 
     
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
+    
 
     
 
@@ -1211,7 +1469,7 @@ fs.writeFileSync("image.png", buffer)</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line138">line 138</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line144">line 144</a>
     </li></ul></dd>
     
 
@@ -1273,7 +1531,7 @@ fs.writeFileSync("image.png", buffer)</code></pre>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Sun Sep 20 2020 09:16:23 GMT+0000 (Coordinated Universal Time) using <a href="https://github.com/zyrouge/jsdoc-skyceil">Skyceil Theme</a>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Mon Sep 21 2020 14:13:48 GMT+0000 (Coordinated Universal Time) using <a href="https://github.com/zyrouge/jsdoc-skyceil">Skyceil Theme</a>
 </footer>
 
 <script>prettyPrint();</script>
