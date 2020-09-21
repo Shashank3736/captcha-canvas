@@ -55,3 +55,6 @@ const buffer = await captcha.generate();
 
 #### Final Output
 ![captcha](https://raw.githubusercontent.com/Shashank3736/captcha-canvas/master/examples/all.png)
+
+## Support
+To get help related to this module open an issue in the [github repository](https://github.com/Shashank3736/captcha-canvas). 
