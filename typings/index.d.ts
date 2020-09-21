@@ -1,3 +1,5 @@
+import { Image } from "canvas";
+
 declare module "captcha-canvas" {
     export const version: string;
     export class CaptchaGenerator {
@@ -13,7 +15,8 @@ declare module "captcha-canvas" {
         public setTrace(SetTraceOptions);
         public setCaptcha(SetCaptchaOptions);
         public setDimension(height?: number, width?: number);
-        public generate(): Promise<Buffer>
+        public generate(): Promise<Buffer>;
+        public generateSync(options?: {background?: Image}): Buffer;
     }
     interface SetCaptchaOptions {
         characters?: number;
