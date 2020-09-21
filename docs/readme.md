@@ -41,7 +41,7 @@ const captcha = new CaptchaGenerator()
 
 You can also customise trace line and add background by using [setTrace](https://captcha-canvas.js.org/CaptchaGenerator.html#setTrace) and [setBackground](https://captcha-canvas.js.org/CaptchaGenerator.html#setBackground) method.
 
-Once you customised everything according to your need then just you can get buffer from `generate` method. And use that buffer to display image in your project.
+Once you customised everything according to your need then just you can get buffer from `generateSync` method. And use that buffer to display image in your project.
 
 ```js
 const { CaptchaGenerator } = require("captcha-canvas");
@@ -50,7 +50,7 @@ const captcha = new CaptchaGenerator()
 .setCaptcha({text: "CUSTOM05", size: 60, color: "deeppink"})
 .setDecoy({opacity: 0.5})
 .setTrace({color: "deeppink"});
-const buffer = await captcha.generate();
+const buffer = captcha.generateSync();
 ```
 
 #### Final Output
