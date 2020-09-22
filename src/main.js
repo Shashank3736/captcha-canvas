@@ -60,8 +60,7 @@ class CaptchaGenerator {
          * @type {string}
          * @private
          */
-        this.captcha.text = crypto.randomBytes(32).toString("hex").toUpperCase().replace(/[^a-z]/gi, "")
-        .substr(0, this.captcha.characters);
+        this.captcha.text = crypto.randomBytes(32).toString("hex").toUpperCase().replace(/[^a-z]/gi, "");
     }
     /**
      * Get the text of captcha.
@@ -69,7 +68,7 @@ class CaptchaGenerator {
      * @since 2.0.3
      */
     get text() {
-        return this.captcha.text;
+        return this.captcha.text.substr(0, this.captcha.characters);;
     }
     
     /**
