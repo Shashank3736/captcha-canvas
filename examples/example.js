@@ -11,10 +11,12 @@ const fs = require("fs");
     captcha.setCaptcha({
         color: "deeppink",
         font: 'Candara',
-        size: "60"
+        size: "60",
+        characters: 8
     })
     .setDimension(150, 450);
     fs.writeFileSync("./examples/captcha.png", captcha.generateSync());
+    console.log(captcha.text);
     /*All methods at once*/
     captcha
     .setCaptcha({color: "deeppink", size: 60, text: "CUSTOM05"})
