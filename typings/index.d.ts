@@ -1,6 +1,25 @@
 declare module "captcha-canvas" {
     import { Image } from "canvas";
     export const version: string;
+    interface SetCaptchaOptions {
+        characters?: number;
+        text?: string;
+        color?: string;
+        font?: string;
+        size?: number;
+        opacity?: number;
+    }
+    interface SetTraceOptions {
+        size?: number;
+        color?: string;
+        opacity?: number;
+    }
+    interface SetDecoyOptions {
+        color?: string;
+        opacity?: number;
+        font?: string;
+        size?: number;
+    }
 
     /**
      * Initatiates the creation of captcha image generation.
@@ -53,24 +72,5 @@ declare module "captcha-canvas" {
          * @description It do not use setBackground method value for background image. If you want to set background and also use generateSync method then use background option in genrateSync method.
          */
         public generateSync(options?: {background?: Image}): Buffer;
-    }
-    interface SetCaptchaOptions {
-        characters?: number;
-        text?: string;
-        color?: string;
-        font?: string;
-        size?: number;
-        opacity?: number;
-    }
-    interface SetTraceOptions {
-        size?: number;
-        color?: string;
-        opacity?: number;
-    }
-    interface SetDecoyOptions {
-        color?: string;
-        opacity?: number;
-        font?: string;
-        size?: number;
     }
 }
