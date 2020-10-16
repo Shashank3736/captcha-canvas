@@ -19,4 +19,4 @@ console.log(captcha.text);
 console.log(captcha.generateSync());
 
 // For some reason, you'll want to generate asynchronously
-captcha.generate().then(buffer => console.log(buffer));
+captcha.generate().then((buffer) => console.log(buffer));
