@@ -31,6 +31,16 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "skymunn",
+      "name": "Ikramullah",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/32958839?v=4",
+      "profile": "https://t.me/Munn4tic/",
+      "contributions": [
+        "doc",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
