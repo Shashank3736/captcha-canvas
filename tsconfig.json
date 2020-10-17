@@ -14,9 +14,9 @@
             "esnext.asynciterable",
             "esnext.intl",
             "esnext.symbol"
-         ],
+        ],
         "sourceMap": false,
         "skipDefaultLibCheck": true
     },
-    "include": ["index.js", "src/"]
+    "exclude": [".github/", "aseets/", "docs/", "examples/", "node_modules/"]
 }
