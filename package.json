@@ -29,7 +29,7 @@
   "homepage": "https://github.com/Shashank3736/captcha-canvas#readme",
   "dependencies": {
     "deepmerge": "^4.2.2",
-    "canvas": "*"
+    "canvas": "^2.7.0"
   },
   "devDependencies": {
     "@types/node": "^14.11.8",
