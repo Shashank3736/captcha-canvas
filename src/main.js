@@ -9,9 +9,18 @@ const {
     SetCaptchaOptions,
 } = require("./constants");
 const { createCanvas, loadImage, Image } = require("canvas");
-const { runInThisContext } = require('vm');
-function getRandom(n) {
-    return Math.floor(Math.random()*(n - 60)) + 30
+// canvas padding
+const PD = 30;
+/**
+ * random number in range
+ * @param {Number} start range start num
+ * @param {Number} end range end num
+ * @returns random number between start and end
+ */
+function getRandom(start, end) {
+    start = start || 0;
+    end = end || 0;
+    return Math.round(Math.random() * Math.abs(end - start)) + Math.min(start, end);
 }
 /**
  * Captcha Generator
@@ -189,7 +198,7 @@ class CaptchaGenerator {
             let coordinate = [];
             let randomWidth = widthGap*(i + 0.2);
             coordinate.push(randomWidth);
-            let randomHeight = getRandom(this.height);
+            let randomHeight = getRandom(PD, this.height - PD);
             coordinate.push(randomHeight);
             coordinates.push(coordinate);
         }
@@ -207,7 +216,7 @@ class CaptchaGenerator {
             ctx.globalAlpha = this.decoy.opacity;
             ctx.fillStyle = this.decoy.color;
             for(let i = 0; i < decoyText.length; i++) {
-                ctx.fillText(decoyText[i], getRandom(this.width), getRandom(this.height))
+                ctx.fillText(decoyText[i], getRandom(PD, this.width - PD), getRandom(PD, this.height - PD))
             }
         }
         /*Add trace line*/
@@ -228,7 +237,16 @@ class CaptchaGenerator {
             ctx.globalAlpha = this.captcha.opacity;
             ctx.fillStyle = this.captcha.color;
             for(let n = 0; n < coordinates.length; n++) {
-                ctx.fillText(this.captcha.text[n], coordinates[n][0], coordinates[n][1]);
+                ctx.save()
+                ctx.translate(coordinates[n][0], coordinates[n][1]);
+                if (this.captcha.skew)
+                    ctx.transform(1, Math.random(), getRandom(20)/100, 1, 0, 0);
+                if (this.captcha.rotate > 0)
+                    ctx.rotate(getRandom(-this.captcha.rotate, this.captcha.rotate) * Math.PI / 180);
+                if (this.captcha.colors.length >= 2)
+                    ctx.fillStyle = this.captcha.colors[getRandom(this.captcha.colors.length - 1)];
+                ctx.fillText(this.captcha.text[n], 0, 0);
+                ctx.restore();
             }
         }
         /*Return buffer*/
@@ -266,7 +284,7 @@ class CaptchaGenerator {
             let coordinate = [];
             let randomWidth = widthGap*(i + 0.2);
             coordinate.push(randomWidth);
-            let randomHeight = getRandom(this.height);
+            let randomHeight = getRandom(PD, this.height - PD);
             coordinate.push(randomHeight);
             coordinates.push(coordinate);
         }
@@ -283,7 +301,7 @@ class CaptchaGenerator {
             ctx.globalAlpha = this.decoy.opacity;
             ctx.fillStyle = this.decoy.color;
             for(let i = 0; i < decoyText.length; i++) {
-                ctx.fillText(decoyText[i], getRandom(this.width), getRandom(this.height))
+                ctx.fillText(decoyText[i], getRandom(PD, this.width - PD), getRandom(PD, this.height - PD));
             }
         }
         /*Add trace line*/
@@ -304,7 +322,16 @@ class CaptchaGenerator {
             ctx.globalAlpha = this.captcha.opacity;
             ctx.fillStyle = this.captcha.color;
             for(let n = 0; n < coordinates.length; n++) {
-                ctx.fillText(this.captcha.text[n], coordinates[n][0], coordinates[n][1]);
+                ctx.save()
+                ctx.translate(coordinates[n][0], coordinates[n][1]);
+                if (this.captcha.skew)
+                    ctx.transform(1, Math.random(), getRandom(20)/100, 1, 0, 0);
+                if (this.captcha.rotate > 0)
+                    ctx.rotate(getRandom(-this.captcha.rotate, this.captcha.rotate) * Math.PI / 180);
+                if (this.captcha.colors.length >= 2)
+                    ctx.fillStyle = this.captcha.colors[getRandom(this.captcha.colors.length - 1)];
+                ctx.fillText(this.captcha.text[n], 0, 0);
+                ctx.restore();
             }
         }
         /*Return buffer*/

@@ -5,6 +5,8 @@ declare module "captcha-canvas" {
         characters?: number;
         text?: string;
         color?: string;
+        skew?: boolean;
+        colors?: string[];
         font?: string;
         size?: number;
         opacity?: number;
