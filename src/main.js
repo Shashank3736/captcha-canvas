@@ -1,5 +1,5 @@
 const { randomBytes } = require('crypto');
-const merge = require("deepmerge");
+const { merge } = require("./util");
 const { 
     defaultCaptchaOptions, 
     defaultTraceOptions, 
