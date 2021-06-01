@@ -1,7 +1,7 @@
-const { loadImage } = require("canvas");
+const { loadImage } = require('canvas');
 
 module.exports = {
-    CaptchaGenerator: require("./src/main"),
-    version: require("./package.json").version,
-    resolveImage: loadImage
-}
+	CaptchaGenerator: require('./src/main'),
+	version: require('./package.json').version,
+	resolveImage: loadImage,
+};

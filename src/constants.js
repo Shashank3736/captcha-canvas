@@ -1,15 +1,15 @@
 /**
  * Customise dimension of captcha image.
- * 
+ *
  * @typedef SetDimensionOption
  * @property {integer} [height=100] Height of captcha image.
  * @property {integer} [width=300] Width of captcha image.
  */
-exports.SetDimensionOption = {}
+exports.SetDimensionOption = {};
 
 /**
  * Captcha text options to customise text appearance and value.
- * 
+ *
  * @typedef SetCaptchaOptions
  * @property {integer} [characters=6] Length of captcha text.
  * @property {string} [text="Random UpperCase string"] Text of captcha
@@ -21,7 +21,7 @@ exports.SetDimensionOption = {}
  * @property {number} [size=40] Size of captcha text.
  * @property {float} [opacity=1] Opcaity of captcha text.
  */
-exports.SetCaptchaOptions = {}
+exports.SetCaptchaOptions = {};
 
 /**
  * @typedef SetTraceOptions
@@ -29,7 +29,7 @@ exports.SetCaptchaOptions = {}
  * @property {number} [size=3] Width of trace line.
  * @property {float} [opacity=1] Opacoty of trace line.
  */
-exports.SetTraceOptions = {}
+exports.SetTraceOptions = {};
 
 /**
  * @typedef SetDecoyOptions
@@ -38,40 +38,40 @@ exports.SetTraceOptions = {}
  * @property {number} [size=20] Size of decoy characters.
  * @property {float} [opacity=0.8] Opacity of decoy characters.
  */
-exports.SetDecoyOptions = {}
+exports.SetDecoyOptions = {};
 
 /**
  * Default captcha customisation options.
  * @type {SetCaptchaOptions}
  */
 exports.defaultCaptchaOptions = {
-    characters: 6,
-    size: 40,
-    font: "Sans",
-    skew: true,
-    colors: [],
-    rotate: 5,
-    color: "#32cf7e",
-    opacity: 0.8
-}
+	characters: 6,
+	size: 40,
+	font: 'Sans',
+	skew: true,
+	colors: [],
+	rotate: 5,
+	color: '#32cf7e',
+	opacity: 0.8,
+};
 
 /**
  * Default trace line options.
  * @type {SetTraceOptions}
  */
 exports.defaultTraceOptions = {
-    size: 3,
-    color: "#32cf7e",
-    opacity: 1
-}
+	size: 3,
+	color: '#32cf7e',
+	opacity: 1,
+};
 
 /**
  * Default Decoy Options
  * @type {SetDecoyOptions}
  */
 exports.defaultDecoyOptions = {
-    color: "#646566",
-    font: "Sans",
-    size: 20,
-    opacity: 0.8
-}
+	color: '#646566',
+	font: 'Sans',
+	size: 20,
+	opacity: 0.8,
+};
