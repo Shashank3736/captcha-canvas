@@ -5,22 +5,23 @@ declare module "captcha-canvas" {
         characters?: number;
         text?: string;
         color?: string;
+        font?: string;
         skew?: boolean;
         colors?: string[];
-        font?: string;
+        rotate?: number;
         size?: number;
         opacity?: number;
     }
     interface SetTraceOptions {
-        size?: number;
         color?: string;
+        size?: number;
         opacity?: number;
     }
     interface SetDecoyOptions {
         color?: string;
-        opacity?: number;
         font?: string;
         size?: number;
+        opacity?: number;
     }
 
     /**
