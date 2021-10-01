@@ -12,7 +12,7 @@ const {
 	SetCaptchaOptions,
 } = require('./constants');
 // eslint-disable-next-line no-unused-vars
-const { createCanvas, loadImage, Image } = require('canvas');
+const { loadImage, Image, Canvas } = require('skia-canvas');
 // canvas padding
 const PD = 30;
 /**
@@ -188,8 +188,8 @@ class CaptchaGenerator {
      * @since 2.0.0
      */
 	async generate() {
-		/* Create canvas element from createCanvas function*/
-		const canvas = createCanvas(this.width, this.height);
+		/* Create canvas element from Canvas constructor*/
+		const canvas = new Canvas(this.width, this.height);
 		const ctx = canvas.getContext('2d');
 		/* Set line join and text base line here.*/
 		ctx.lineJoin = 'miter';
@@ -251,7 +251,7 @@ class CaptchaGenerator {
 			}
 		}
 		/* Return buffer*/
-		return canvas.toBuffer();
+		return canvas.toBuffer('png');
 	}
 	/**
      * Non asynchronous method to generate captcha image.
@@ -271,8 +271,8 @@ class CaptchaGenerator {
      * @since 2.2.0
      */
 	generateSync(options = {}) {
-		/* Create canvas element from createCanvas function*/
-		const canvas = createCanvas(this.width, this.height);
+		/* Create canvas element from Canvas constructor*/
+		const canvas = new Canvas(this.width, this.height);
 		const ctx = canvas.getContext('2d');
 		/* Set line join and text base line here.*/
 		ctx.lineJoin = 'miter';
@@ -333,7 +333,8 @@ class CaptchaGenerator {
 			}
 		}
 		/* Return buffer*/
-		return canvas.toBuffer();
+		canvas.async = false;
+		return canvas.png;
 	}
 }
 

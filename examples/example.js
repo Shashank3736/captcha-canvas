@@ -22,7 +22,7 @@ const fs = require('fs');
 		.setCaptcha({ color: 'deeppink', size: 60, text: 'CUSTOM05' })
 		.setDecoy({ opacity: 0.5 })
 		.setTrace({ color: 'deeppink', size: 5 });
-	fs.writeFileSync('./examples/all.png', captcha.generateSync());
+	fs.writeFileSync('./examples/all.png', await captcha.generate());
 	// console text of captcha
 	console.log(captcha.text);
 })();

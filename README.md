@@ -1,10 +1,12 @@
+> npm install captcha-canvas@next
+
 # captcha-canvas
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-This is an npm package [captcha-canvas](https://npmjs.com/package/captcha-canvas) helps you to make custom captcha of all types. The package uses `canvas` to create captcha imagas. See installation section to know how to install. 
+This is an npm package [captcha-canvas](https://npmjs.com/package/captcha-canvas) helps you to make custom captcha of all types. The package uses `skia-canvas` to create captcha imagas. See installation section to know how to install. 
 
-> Install canvas before captcha-canvas installation. As canvas is the peer dependencies.
+> Install skia-canvas before captcha-canvas installation. As skia-canvas is the peer dependencies.
 
 [![captcha-canvas](https://nodei.co/npm/captcha-canvas.png)](https://npmjs.com/package/captcha-canvas)
 

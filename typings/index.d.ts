@@ -1,5 +1,5 @@
 declare module "captcha-canvas" {
-    import { Image } from "canvas";
+    import { Image } from "skia-canvas";
     export const version: string;
     interface SetCaptchaOptions {
         characters?: number;
