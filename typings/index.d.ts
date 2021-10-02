@@ -23,7 +23,15 @@ declare module "captcha-canvas" {
         size?: number;
         opacity?: number;
     }
-
+    interface captchaValueSync {
+        image: Buffer,
+        text: string
+    }
+    
+    interface captchaValue {
+        image: Promise<Buffer>,
+        text: string
+    }
     /**
      * Initatiates the creation of captcha image generation.
      */
@@ -43,8 +51,8 @@ declare module "captcha-canvas" {
 
         public png: Buffer;
         public drawImage(image: Image): Captcha;
-        public addDecoy(decoyOption: SetDecoyOptions = {}): Captcha;
-        public drawCaptcha(captchaOption: SetCaptchaOptions = {}): Captcha;
+        public addDecoy(decoyOption: SetDecoyOptions | {}): Captcha;
+        public drawCaptcha(captchaOption: SetCaptchaOptions | {}): Captcha;
     }
     export class CaptchaGenerator extends Captcha {
         constructor(options?: {height?: number, width?: number})
@@ -84,4 +92,11 @@ declare module "captcha-canvas" {
          */
         public generateSync(background?: Image): Buffer;
     }
+    /**
+     * Get Image parameter.
+     * @param {string | Buffer} src  
+     */
+    export function resolveImage(src: string | Buffer): Promise<Image>;
+    export function createCaptcha(width: number, height: number, text?: string): captchaValue;
+    export function createCaptchaSync(width: number, height: number, text?: string): captchaValueSync;
 }

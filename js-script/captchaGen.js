@@ -5,8 +5,7 @@ const skia_canvas_1 = require("skia-canvas");
 const captcha_1 = require("./captcha");
 const util_1 = require("./util");
 /**
- * Captcha Generator
- * @extends {captcha_1.Captcha}
+ * Captcha Generator.
  */
 class CaptchaGenerator extends captcha_1.Captcha {
     /**
@@ -19,6 +18,13 @@ class CaptchaGenerator extends captcha_1.Captcha {
      */
     constructor(options = {}) {
         super(options.width || 300, options.height || 100);
+    }
+    /**
+     * Get Captcha text.
+     * @returns {string} Get captcha text.
+     */
+    get text() {
+        return this._captcha.text || "";
     }
     /**
      * Change captcha text options

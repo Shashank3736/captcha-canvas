@@ -7,8 +7,7 @@ interface ConstructorOption {
     height?: number;
 }
 /**
- * Captcha Generator
- * @extends {Captcha}
+ * Captcha Generator.
  */
 export class CaptchaGenerator extends Captcha {
     private background?: Buffer | string;
@@ -22,6 +21,13 @@ export class CaptchaGenerator extends Captcha {
      */
     constructor(options: ConstructorOption = {}) {
         super(options.width || 300, options.height || 100);
+    }
+    /**
+     * Get Captcha text.
+     * @returns {string} Get captcha text.
+     */
+    get text(): string {
+        return this._captcha.text || "";
     }
     /**
      * Change captcha text options
