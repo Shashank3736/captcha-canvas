@@ -27,7 +27,7 @@
         <button class="theme" data-theme="light"><i class="fas fa-moon"></i></button>
     </div>
     <hr>
-    <h4><a href="index.html">Home</a></h4><h5 class="no-bottom must-underline">Classes</h5><ul><li><span class="small-icon C">C</span><b><a href="CaptchaGenerator.html">CaptchaGenerator</a></b><ul class="has-class-methods"><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#generate">generate</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#generateSync">generateSync</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setBackground">setBackground</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setCaptcha">setCaptcha</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setDecoy">setDecoy</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setDimension">setDimension</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setTrace">setTrace</a></li><li><span class="small-icon M">M</span><a href="CaptchaGenerator.html#text">text</a></li></ul></li></ul><h4>Global</h4><ul><li><a href="global.html#defaultCaptchaOptions">defaultCaptchaOptions</a></li><li><a href="global.html#defaultDecoyOptions">defaultDecoyOptions</a></li><li><a href="global.html#defaultTraceOptions">defaultTraceOptions</a></li><li><a href="global.html#getRandom">getRandom</a></li></ul>
+    <h4><a href="index.html">Home</a></h4><h5 class="no-bottom must-underline">Classes</h5><ul><li><span class="small-icon C">C</span><b><a href="Captcha.html">Captcha</a></b><ul class="has-class-methods"><li><span class="small-icon F">F</span><a href="Captcha.html#addDecoy">addDecoy</a></li><li><span class="small-icon F">F</span><a href="Captcha.html#drawCaptcha">drawCaptcha</a></li><li><span class="small-icon F">F</span><a href="Captcha.html#drawImage">drawImage</a></li><li><span class="small-icon F">F</span><a href="Captcha.html#drawTrace">drawTrace</a></li><li><span class="small-icon M">M</span><a href="Captcha.html#png">png</a></li><li><span class="small-icon M">M</span><a href="Captcha.html#text">text</a></li></ul></li><li><span class="small-icon C">C</span><b><a href="CaptchaGenerator.html">CaptchaGenerator</a></b><ul class="has-class-methods"><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#generate">generate</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#generateSync">generateSync</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setBackground">setBackground</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setCaptcha">setCaptcha</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setDecoy">setDecoy</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setDimension">setDimension</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setTrace">setTrace</a></li></ul></li></ul><h4><a href="global.html">Global</a></h4>
 </nav>
 
 <div id="main">
@@ -46,18 +46,15 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Customise dimension of captcha image.
- *
- * @typedef SetDimensionOption
- * @property {integer} [height=100] Height of captcha image.
- * @property {integer} [width=300] Width of captcha image.
- */
-exports.SetDimensionOption = {};
-
+            <pre class="prettyprint source linenums"><code>"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.defaultDimension = exports.defaultDecoyOptions = exports.defaultTraceOptions = exports.defaultCaptchaOption = void 0;
+;
+;
+;
+;
 /**
  * Captcha text options to customise text appearance and value.
- *
  * @typedef SetCaptchaOptions
  * @property {integer} [characters=6] Length of captcha text.
  * @property {string} [text="Random UpperCase string"] Text of captcha
@@ -69,60 +66,52 @@ exports.SetDimensionOption = {};
  * @property {number} [size=40] Size of captcha text.
  * @property {float} [opacity=1] Opcaity of captcha text.
  */
-exports.SetCaptchaOptions = {};
-
+exports.defaultCaptchaOption = {
+    characters: 6,
+    size: 40,
+    font: 'Sans',
+    skew: true,
+    colors: [],
+    rotate: 5,
+    color: '#32cf7e',
+    opacity: 0.8,
+};
 /**
  * @typedef SetTraceOptions
  * @property {hexCode} [color="#32cf7e"] Color of trace line.
  * @property {number} [size=3] Width of trace line.
  * @property {float} [opacity=1] Opacoty of trace line.
  */
-exports.SetTraceOptions = {};
-
+exports.defaultTraceOptions = {
+    size: 3,
+    color: '#32cf7e',
+    opacity: 1,
+};
 /**
  * @typedef SetDecoyOptions
  * @property {hexCode} [color="#646566"] Color of decoy characters.
  * @property {font} [font="Sans"] Font of decoy characters.
  * @property {number} [size=20] Size of decoy characters.
  * @property {float} [opacity=0.8] Opacity of decoy characters.
- */
-exports.SetDecoyOptions = {};
-
-/**
- * Default captcha customisation options.
- * @type {SetCaptchaOptions}
- */
-exports.defaultCaptchaOptions = {
-	characters: 6,
-	size: 40,
-	font: 'Sans',
-	skew: true,
-	colors: [],
-	rotate: 5,
-	color: '#32cf7e',
-	opacity: 0.8,
-};
-
-/**
- * Default trace line options.
- * @type {SetTraceOptions}
- */
-exports.defaultTraceOptions = {
-	size: 3,
-	color: '#32cf7e',
-	opacity: 1,
-};
-
-/**
- * Default Decoy Options
- * @type {SetDecoyOptions}
+ * @property {number} [total] Total count of decoy characters.
  */
 exports.defaultDecoyOptions = {
-	color: '#646566',
-	font: 'Sans',
-	size: 20,
-	opacity: 0.8,
-};</code></pre>
+    color: '#646566',
+    font: 'Sans',
+    size: 20,
+    opacity: 0.8,
+};
+/**
+ * Customise dimension of captcha image.
+ * @typedef SetDimensionOption
+ * @property {integer} [height=100] Height of captcha image.
+ * @property {integer} [width=300] Width of captcha image.
+ */
+exports.defaultDimension = {
+    height: 100,
+    width: 300
+};
+</code></pre>
         </article>
     </section>
 
@@ -135,7 +124,7 @@ exports.defaultDecoyOptions = {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Oct 01 2021 12:50:34 GMT+0530 (India Standard Time) using <a href="https://github.com/devsnowflake/jsdoc-skyceil">Skyceil Theme</a>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sat Oct 02 2021 15:42:24 GMT+0530 (India Standard Time) using <a href="https://github.com/devsnowflake/jsdoc-skyceil">Skyceil Theme</a>
 </footer>
 
 <script>prettyPrint();</script>

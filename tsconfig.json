@@ -16,7 +16,9 @@
             "esnext.symbol"
         ],
         "sourceMap": false,
-        "skipDefaultLibCheck": true
+        "skipDefaultLibCheck": true,
+        "outDir": "./js-script"
     },
-    "exclude": [".github/", "aseets/", "docs/", "examples/", "node_modules/"]
+    "exclude": [".github/", "assets/", "docs/", "examples/", "node_modules/"],
+    "include": ["ts-script/"]
 }

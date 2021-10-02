@@ -1,5 +1,5 @@
 declare module "captcha-canvas" {
-    import { Image } from "skia-canvas";
+    import { Canvas, CanvasRenderingContext2D, Image, loadImage } from "skia-canvas";
     export const version: string;
     interface SetCaptchaOptions {
         characters?: number;
@@ -27,19 +27,27 @@ declare module "captcha-canvas" {
     /**
      * Initatiates the creation of captcha image generation.
      */
-    export class CaptchaGenerator {
-        constructor(options?: {height?: number, width?: number})
-        public height: number;
-        public width: number;
-        public captcha: SetCaptchaOptions;
-        public trace: SetTraceOptions;
-        public decoy: SetDecoyOptions;
+    export class Captcha {
+        constructor(width?: number, height?: number);
+        protected _height: number;
+        protected _width: number;
+        protected _captcha: SetCaptchaOptions;
+        protected _trace: SetTraceOptions;
+        protected _decoy: SetDecoyOptions;
+        protected _canvas: Canvas;
+        protected _ctx: CanvasRenderingContext2D;
+        protected _coordinates: number[][];
+        public async: Boolean;
 
-        /**
-         * Get the text of captcha.
-         */
         public text: string;
 
+        public png: Buffer;
+        public drawImage(image: Image): Captcha;
+        public addDecoy(decoyOption: SetDecoyOptions = {}): Captcha;
+        public drawCaptcha(captchaOption: SetCaptchaOptions = {}): Captcha;
+    }
+    export class CaptchaGenerator extends Captcha {
+        constructor(options?: {height?: number, width?: number})
         /**
          * Set background for captcha image.
          * @param image Buffer/url/path of image.
@@ -74,6 +82,6 @@ declare module "captcha-canvas" {
          * Non asynchronous method to generate captcha image.
          * @description It do not use setBackground method value for background image. If you want to set background and also use generateSync method then use background option in genrateSync method.
          */
-        public generateSync(options?: {background?: Image}): Buffer;
+        public generateSync(background?: Image): Buffer;
     }
 }

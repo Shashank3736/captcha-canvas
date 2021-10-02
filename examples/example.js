@@ -1,5 +1,5 @@
-const CaptchaGenerator = require('../src/main');
 const fs = require('fs');
+const { CaptchaGenerator } = require('../js-script');
 
 (async () => {
 	const captcha = new CaptchaGenerator();

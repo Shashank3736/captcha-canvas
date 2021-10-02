@@ -85,7 +85,16 @@ class CaptchaGenerator {
 	get text() {
 		return this.captcha.text;
 	}
-
+	/**
+	 * Get the png of the captcha.
+	 * @returns png Image of the captcha
+	 * @type {Buffer}
+	 * @Since 3.0.0
+	 */
+	get png() {
+		if(!this._canvas) this.generateSync();
+		return this._canvas.png;
+	}
 	/**
      * set dimension for your captcha image
      * @param {integer} height Height of captcha image.
@@ -251,7 +260,9 @@ class CaptchaGenerator {
 			}
 		}
 		/* Return buffer*/
-		return canvas.toBuffer('png');
+		this._canvas = canvas;
+		this._ctx = ctx;
+		return this;
 	}
 	/**
      * Non asynchronous method to generate captcha image.
@@ -334,7 +345,9 @@ class CaptchaGenerator {
 		}
 		/* Return buffer*/
 		canvas.async = false;
-		return canvas.png;
+		this._canvas = canvas;
+		this._ctx = ctx;
+		return this;
 	}
 }
 
