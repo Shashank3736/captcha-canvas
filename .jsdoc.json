@@ -32,6 +32,7 @@
         "encoding": "utf8",
         "private": false,
         "recurse": true,
-        "template": "./node_modules/jsdoc-skyceil"
+        "template": "./node_modules/better-docs",
+        "readme": "./docs/readme.md"
     }
 }

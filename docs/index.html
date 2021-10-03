@@ -1,45 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title>Home</title>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Home</title>
 
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
-    <script src="scripts/nav.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.4.6/fuse.min.js"></script>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-    <link type="text/css" rel="stylesheet" href="styles/skyceil.css">
-    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
-    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  
 </head>
 
-<body>
 
-<nav class="navbar">
-    <div class="utilities">
-        <div id="search">
-            <input type="text" id="search-box" placeholder="Search for stuffs..."><br>
-            <div id="search-results" style="display: none;"></div>
-        </div>
-        <button class="theme" data-theme="light"><i class="fas fa-moon"></i></button>
-    </div>
-    <hr>
-    <h4><a href="index.html">Home</a></h4><h5 class="no-bottom must-underline">Classes</h5><ul><li><span class="small-icon C">C</span><b><a href="Captcha.html">Captcha</a></b><ul class="has-class-methods"><li><span class="small-icon F">F</span><a href="Captcha.html#addDecoy">addDecoy</a></li><li><span class="small-icon F">F</span><a href="Captcha.html#drawCaptcha">drawCaptcha</a></li><li><span class="small-icon F">F</span><a href="Captcha.html#drawImage">drawImage</a></li><li><span class="small-icon F">F</span><a href="Captcha.html#drawTrace">drawTrace</a></li><li><span class="small-icon M">M</span><a href="Captcha.html#png">png</a></li><li><span class="small-icon M">M</span><a href="Captcha.html#text">text</a></li></ul></li><li><span class="small-icon C">C</span><b><a href="CaptchaGenerator.html">CaptchaGenerator</a></b><ul class="has-class-methods"><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#generate">generate</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#generateSync">generateSync</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setBackground">setBackground</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setCaptcha">setCaptcha</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setDecoy">setDecoy</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setDimension">setDimension</a></li><li><span class="small-icon F">F</span><a href="CaptchaGenerator.html#setTrace">setTrace</a></li><li><span class="small-icon M">M</span><a href="CaptchaGenerator.html#text">text</a></li></ul></li></ul><h4>Global</h4><ul><li><a href="global.html#createCaptcha">createCaptcha</a></li><li><a href="global.html#createCaptchaSync">createCaptchaSync</a></li></ul>
-</nav>
 
-<div id="main">
-    <div class="burger">
-        <div class="burger-line-1"></div>
-        <div class="burger-line-2"></div>
-        <div class="burger-line-3"></div>
-    </div>
-
-    <h1 class="page-title">Home</h1>
-
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
     
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="Captcha.html">Captcha</a></li><li><a href="CaptchaGenerator.html">CaptchaGenerator</a></li></ul><h3>Global</h3><ul><li><a href="global.html#createCaptcha">createCaptcha</a></li><li><a href="global.html#createCaptchaSync">createCaptchaSync</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p></p>
+                    <h1>Home</h1>
+                </header>
+                
 
 
 
@@ -62,48 +99,76 @@
 
 
 
-    <hr>
     <section>
-        <article><h1>Getting Started</h1>
+        <article><blockquote>
+<p>Note for v2 doumentation <a href="v2/index.html">click here</a>.</p>
+</blockquote>
+<h1>Getting Started with captcha-canvas v3</h1>
 <p>To start using this <a href="https://npmjs.com/package/captcha-canvas">npm module</a>. We first need to install it from npm by using command <code>npm install captcha-canvas</code>.</p>
-<p>Now require this package in your file where you want to create captcha.</p>
-<pre class="prettyprint linenums source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
+<h3>Captcha</h3>
+<p><strong>Document:</strong> <em><a href="Captcha.html">Click Here</a></em></p>
+<pre class="prettyprint source lang-js"><code>const { Captcha } = require('captcha-canvas');
+const { writeFileSync } = require('fs');
+const captcha = new Captcha(); //create a captcha canvas of 100x300.
+captcha.async = false //Sync
+captcha.addDecoy(); //Add decoy text on captcha canvas.
+captcha.drawTrace(); //draw trace lines on captcha canvas.
+captcha.drawCaptcha(); //draw captcha text on captcha canvas.
+
+console.log(captcha.text); //log captcha text. 
+writeFileSync('captcha.png', captcha.png); //create 'captcha.png' file in your directory.
 </code></pre>
-<p>We can see here we get <code>CaptchaGenerator</code> class from the module. Now initiate the constructor to start using it.</p>
-<pre class="prettyprint linenums source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
-const captcha = new CaptchaGenerator();
-</code></pre>
-<p>Now we can use all the methods documented <a href="https://captcha-canvas.js.org/CaptchaGenerator.html">here</a> to customize captcha according to our need.</p>
-<p>Like if we want to use different dimension. We can use <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setDimension">setDimension</a> method.</p>
-<pre class="prettyprint linenums source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
-const captcha = new CaptchaGenerator()
-.setDimension(150, 450) 
-</code></pre>
-<p>If we want to change captcha text or its appearance, then we can use <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setCaptcha">setCaptcha</a> method.</p>
-<pre class="prettyprint linenums source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
-const captcha = new CaptchaGenerator()
-.setDimension(150, 450) 
-.setCaptcha({text: &quot;CUSTOM05&quot;, size: 60, color: &quot;deeppink&quot;})
-</code></pre>
-<p>If we want to change appearance of background text (i.e decoy). We can do that easily by using <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setDecoy">setDecoy</a> method.</p>
-<pre class="prettyprint linenums source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
-const captcha = new CaptchaGenerator()
-.setDimension(150, 450) 
-.setCaptcha({text: &quot;CUSTOM05&quot;, size: 60, color: &quot;deeppink&quot;})
-.setDecoy({opacity: 0.5})
-</code></pre>
-<p>You can also customise trace line and add background by using <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setTrace">setTrace</a> and <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setBackground">setBackground</a> method.</p>
-<p>Once you customised everything according to your need then just you can get buffer from <code>generateSync</code> method. And use that buffer to display image in your project.</p>
-<pre class="prettyprint linenums source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
+<p><strong>Result:</strong></p>
+<img src="captcha/captcha.png" alt="captcha.png">
+<h3>CaptchaGenerator</h3>
+<p><strong>Document</strong>: <em><a href="CaptchaGenerator.html">Click here</a></em></p>
+<pre class="prettyprint source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
+const { writeFileSync } = require('fs');
+
 const captcha = new CaptchaGenerator()
 .setDimension(150, 450) 
 .setCaptcha({text: &quot;CUSTOM05&quot;, size: 60, color: &quot;deeppink&quot;})
 .setDecoy({opacity: 0.5})
 .setTrace({color: &quot;deeppink&quot;});
-const buffer = captcha.generateSync();
+const buffer = captcha.generateSync(); //everything is optional simply using `new CaptchaGenerator()` will also work.
+
+captcha.text //returns &quot;CUSTOM05&quot;
+
+writeFileSync('captchaGenerator.png', buffer);
 </code></pre>
-<h4>Final Output</h4>
-<p><img src="https://raw.githubusercontent.com/Shashank3736/captcha-canvas/master/examples/all.png" alt="captcha"></p>
+<p><strong>Result:</strong></p>
+<img src="captcha/captchaGenerator.png">
+<h3>createCaptcha</h3>
+<p><strong>Documentation:</strong> <em><a href="global.html#createCaptcha">Click here</a></em></p>
+<pre class="prettyprint source lang-js"><code>const { createCaptcha } = require('captcha-canvas');
+const { writeFile } = require('fs');
+
+const { image, text } = createCaptcha(300, 100);
+
+(async () => {
+	writeFile('docs/captcha/createCaptcha.png', await image, (err) => {
+        if(err) {
+            console.error(err);
+        } else {
+            console.log(text);
+        }
+    });
+})();
+</code></pre>
+<p><strong>Result:</strong></p>
+<img src="captcha/createCaptcha.png">
+<h3>createCaptchaSync</h3>
+<p><strong>Documentation:</strong> <em><a href="global.html#createCaptchaSync">Click here</a></em></p>
+<pre class="prettyprint source lang-js"><code>const { createCaptchaSync } = require('captcha-canvas');
+const { writeFileSync } = require('fs');
+
+const { image, text } = createCaptchaSync(300, 100);
+
+writeFileSync('createCaptchaSync.png', image);
+console.log(text);
+</code></pre>
+<p><strong>Result:</strong></p>
+<img src="captcha/createCaptchaSync.png">
 <h2>Support</h2>
 <p>To get help related to this module open an issue in the <a href="https://github.com/Shashank3736/captcha-canvas">github repository</a>.</p></article>
     </section>
@@ -113,17 +178,25 @@ const buffer = captcha.generateSync();
 
 
 
-
-</div>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sat Oct 02 2021 19:44:13 GMT+0530 (India Standard Time) using <a href="https://github.com/devsnowflake/jsdoc-skyceil">Skyceil Theme</a>
-</footer>
-
-<script>prettyPrint();</script>
-<script src="scripts/linenumber.js"></script>
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
 
 </body>
 </html>

@@ -26,3 +26,4 @@ const { CaptchaGenerator } = require('../js-script');
 	// console text of captcha
 	console.log(captcha.text);
 })();
+

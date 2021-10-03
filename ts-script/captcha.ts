@@ -63,7 +63,7 @@ export class Captcha {
     }
     /**
      * Add decoy on your captcha image.
-     * @param {SetDecoyOption} [decoyOption] Decoy option you want to customise
+     * @param {SetDecoyOptions} [decoyOption] Decoy option you want to customise
      * @returns {Captcha}
      */
     addDecoy(decoyOption: SetDecoyOption = {}): Captcha {
@@ -83,7 +83,7 @@ export class Captcha {
      * Draw trace line over your captcha.
      * 
      * Note: If you want to use custom text or change size of captcha text then drawCaptcha before drawTrace.
-     * @param {SetTraceOption} [traceOption] 
+     * @param {SetTraceOptions} [traceOption] 
      * @returns {Captcha}
      */
     drawTrace(traceOption: SetTraceOption = {}): Captcha {
@@ -106,7 +106,7 @@ export class Captcha {
     }
     /**
      * Draw captcha text on captcha image.
-     * @param {SetCaptchaOption} [captchaOption] 
+     * @param {SetCaptchaOptions} [captchaOption] 
      * @returns {Captcha}
      */
     drawCaptcha(captchaOption: SetCaptchaOption = {}): Captcha {

@@ -30,6 +30,8 @@
   "devDependencies": {
     "@types/node": "^14.11.8",
     "@types/skia-canvas": "^0.9.2",
+    "better-docs": "^2.3.2",
+    "clean-jsdoc-theme": "^3.2.8",
     "eslint": "^7.27.0",
     "jsdoc": "^3.6.5",
     "jsdoc-skyceil": "^1.0.5",
