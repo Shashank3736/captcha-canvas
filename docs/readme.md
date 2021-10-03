@@ -1,4 +1,4 @@
-> Note for v2 doumentation <a href="v2/index.html">click here</a>.
+> Note: for v2 doumentation <a href="v2/index.html">click here</a>.
 
 # Getting Started with captcha-canvas v3
 
