@@ -3,6 +3,7 @@
   "version": "3.0.0",
   "description": "A captcha generator by using skia-canvas module.",
   "main": "./js-script/index.js",
+  "files": ["js-script/*"],
   "scripts": {
     "docsgen": "jsdoc --configure .jsdoc.json --verbose",
     "example": "node examples/example.js",
@@ -39,7 +40,6 @@
     "doc": "docs",
     "example": "examples"
   },
-  "types": "./typings/index.d.ts",
   "dependencies": {
     "skia-canvas": "^0.9.25"
   }

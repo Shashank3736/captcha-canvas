@@ -1,24 +1,12 @@
 {
     "compilerOptions": {
-        "strict": true,
-        "moduleResolution": "node",
-        "declaration": false,
-        "removeComments": false,
-        "alwaysStrict": true,
-        "pretty": false,
+        "target": "es5",
         "module": "commonjs",
-        "target": "es2019",
-        "lib": [
-            "esnext",
-            "esnext.array",
-            "esnext.asynciterable",
-            "esnext.intl",
-            "esnext.symbol"
-        ],
-        "sourceMap": false,
-        "skipDefaultLibCheck": true,
-        "outDir": "./js-script"
+        "declaration": true,
+        "outDir": "./js-script",
+        "strict": true,
+        "strictNullChecks": false,
+        "resolveJsonModule": true
     },
-    "exclude": [".github/", "assets/", "docs/", "examples/", "node_modules/"],
-    "include": ["ts-script/"]
+    "include": [ "ts-script" ]
 }
