@@ -1,15 +1,13 @@
 {
   "name": "captcha-canvas",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "A captcha generator by using skia-canvas module.",
   "main": "./js-script/index.js",
   "files": ["js-script/*"],
   "scripts": {
     "docsgen": "jsdoc --configure .jsdoc.json --verbose",
     "example": "node examples/example.js",
-    "start": "node .",
-    "test": "tsc test.ts && node test.js",
-    "publish": "npm publish"
+    "start": "node ."
   },
   "repository": {
     "type": "git",
