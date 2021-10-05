@@ -58,7 +58,7 @@ export class Captcha {
      * @returns {Captcha}
      */
     drawImage(image: Image): Captcha {
-        this._ctx.drawImage(image);
+        this._ctx.drawImage(image, 0, 0);
         return this;
     }
     /**

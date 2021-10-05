@@ -72,7 +72,7 @@ var Captcha = /** @class */ (function () {
      * @returns {Captcha}
      */
     Captcha.prototype.drawImage = function (image) {
-        this._ctx.drawImage(image);
+        this._ctx.drawImage(image, 0, 0);
         return this;
     };
     /**

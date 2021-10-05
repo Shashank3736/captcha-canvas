@@ -1,6 +1,6 @@
 docs/
 examples/
-test.js
+test.ts
 .all-contributorsrc
 assets/
 .github/
