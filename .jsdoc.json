@@ -1,4 +1,3 @@
-  
 {
     "configHelpUrl": "http://usejsdoc.org/about-configuring-jsdoc.html",
     "script": "jsdoc --configure ./.jsdoc.json --verbose",
@@ -32,6 +31,7 @@
         "encoding": "utf8",
         "private": false,
         "recurse": true,
-        "template": "./node_modules/jsdoc-skyceil"
+        "template": "./node_modules/better-docs",
+        "readme": "./docs/readme.md"
     }
 }
