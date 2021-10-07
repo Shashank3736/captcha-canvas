@@ -10,7 +10,7 @@ export declare class CaptchaGenerator {
     private captcha;
     private trace;
     private decoy;
-    private background;
+    private background?;
     /**
      * Initatiates the creation of captcha image generation.
      * @example const captcha = new CaptchaGenerator({height: 200, width: 600});

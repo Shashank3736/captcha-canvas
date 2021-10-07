@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createCaptchaSync = exports.createCaptcha = void 0;
-var _1 = require(".");
-var captchaValue = {};
+const _1 = require(".");
+const captchaValue = {};
 /**
  * Create custom captcha from scratch.
  * @async
@@ -12,8 +12,8 @@ var captchaValue = {};
  * @returns
  */
 function createCaptcha(width, height, text) {
-    var captcha = new _1.Captcha(width, height);
-    var decoyCount = Math.floor(width * height / 2500);
+    const captcha = new _1.Captcha(width, height);
+    const decoyCount = Math.floor(width * height / 2500);
     captcha.addDecoy({
         total: decoyCount,
         opacity: 1
@@ -39,8 +39,8 @@ exports.createCaptcha = createCaptcha;
  * @returns
  */
 function createCaptchaSync(width, height, text) {
-    var captcha = new _1.Captcha(width, height);
-    var decoyCount = Math.floor(width * height / 2500);
+    const captcha = new _1.Captcha(width, height);
+    const decoyCount = Math.floor(width * height / 2500);
     captcha.async = false;
     captcha.addDecoy({
         total: decoyCount,
