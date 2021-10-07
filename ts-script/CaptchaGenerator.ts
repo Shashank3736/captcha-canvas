@@ -11,7 +11,7 @@ export class CaptchaGenerator {
     private captcha: SetCaptchaOption;
     private trace: SetTraceOption;
     private decoy: SetDecoyOption;
-    private background: string | Buffer;
+    private background?: string | Buffer;
     /**
      * Initatiates the creation of captcha image generation.
      * @example const captcha = new CaptchaGenerator({height: 200, width: 600});
