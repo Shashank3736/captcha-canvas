@@ -25,7 +25,6 @@ export class Captcha {
         this._height = height;
         this._width = width;
         this._captcha = defaultCaptchaOption;
-        this._captcha.text = randomText(this._captcha.characters || 6);
         this._trace = defaultTraceOptions;
         this._decoy = defaultDecoyOptions;
         const canvas = new Canvas(width, height);
@@ -111,8 +110,12 @@ export class Captcha {
      */
     drawCaptcha(captchaOption: SetCaptchaOption = {}): Captcha {
         const option = { ...this._captcha, ...captchaOption };
-        if(option.text?.length !== option.characters) option.characters = option.text?.length;
-        if(!this._coordinates[0]) this._coordinates = getRandomCoordinate(this._height, this._width, this._captcha.characters || 6);
+        if(captchaOption.text) option.characters = captchaOption.text.length;
+        if(!captchaOption.text && captchaOption.characters) option.text = randomText(option.characters);
+        if(!option.text) option.text = randomText(option.characters);
+        this._captcha = option;
+
+        if(!this._coordinates[0]) this._coordinates = getRandomCoordinate(this._height, this._width, option.characters || 6);
         const coordinates: number[][] = this._coordinates;
         
         this._ctx.font = `${option.size}px ${option.font}`;

@@ -31,7 +31,6 @@ var Captcha = /** @class */ (function () {
         this._height = height;
         this._width = width;
         this._captcha = constants_1.defaultCaptchaOption;
-        this._captcha.text = (0, util_1.randomText)(this._captcha.characters || 6);
         this._trace = constants_1.defaultTraceOptions;
         this._decoy = constants_1.defaultDecoyOptions;
         var canvas = new skia_canvas_1.Canvas(width, height);
@@ -124,13 +123,18 @@ var Captcha = /** @class */ (function () {
      * @returns {Captcha}
      */
     Captcha.prototype.drawCaptcha = function (captchaOption) {
-        var _a, _b, _c;
+        var _a;
         if (captchaOption === void 0) { captchaOption = {}; }
         var option = __assign(__assign({}, this._captcha), captchaOption);
-        if (((_a = option.text) === null || _a === void 0 ? void 0 : _a.length) !== option.characters)
-            option.characters = (_b = option.text) === null || _b === void 0 ? void 0 : _b.length;
+        if (captchaOption.text)
+            option.characters = captchaOption.text.length;
+        if (!captchaOption.text && captchaOption.characters)
+            option.text = (0, util_1.randomText)(option.characters);
+        if (!option.text)
+            option.text = (0, util_1.randomText)(option.characters);
+        this._captcha = option;
         if (!this._coordinates[0])
-            this._coordinates = (0, util_1.getRandomCoordinate)(this._height, this._width, this._captcha.characters || 6);
+            this._coordinates = (0, util_1.getRandomCoordinate)(this._height, this._width, option.characters || 6);
         var coordinates = this._coordinates;
         this._ctx.font = option.size + "px " + option.font;
         this._ctx.globalAlpha = option.opacity;
@@ -144,7 +148,7 @@ var Captcha = /** @class */ (function () {
             if (option.rotate > 0) {
                 this._ctx.rotate((0, util_1.getRandom)(-option.rotate, option.rotate) * Math.PI / 180);
             }
-            if (((_c = option.colors) === null || _c === void 0 ? void 0 : _c.length) > 2) {
+            if (((_a = option.colors) === null || _a === void 0 ? void 0 : _a.length) > 2) {
                 this._ctx.fillStyle = option.colors[(0, util_1.getRandom)(option.colors.length - 1)];
             }
             this._ctx.fillText(option.text[n], 0, 0);

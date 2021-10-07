@@ -1,6 +1,8 @@
 import { writeFileSync } from "fs";
-import { CaptchaGenerator, createCaptcha, createCaptchaSync } from "./js-script";
+import { CaptchaGenerator } from "./js-script";
 
-const captcha = createCaptchaSync(300, 100);
+const captcha = new CaptchaGenerator();
+console.log(__filename + captcha.text);
+writeFileSync('assets/CaptchaGenerator/' + captcha.text + 'captcha.png', captcha.generateSync());
 
-writeFileSync('assets/captcha/' + captcha.text + 'captcha.png', captcha.image);
+console.log(captcha.text);
