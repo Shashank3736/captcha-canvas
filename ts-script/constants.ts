@@ -1,3 +1,5 @@
+import { Image } from "skia-canvas";
+
 export interface SetDimensionOption {
     height: number;
     width: number;
@@ -28,6 +30,13 @@ export interface SetTraceOption {
     size?: number;
     opacity?: number;
 };
+
+export interface CreateCaptchaOptions {
+    captcha?: SetCaptchaOption;
+    trace?: SetTraceOption;
+    decoy?: SetDecoyOption;
+    background?: Image;
+}
 /**
  * Captcha text options to customise text appearance and value.
  * @typedef SetCaptchaOptions
@@ -86,3 +95,12 @@ export const defaultDimension: SetDimensionOption = {
     height: 100,
     width: 300
 };
+/**
+ * Create captcha options in functions.
+ * @typedef CreateCaptchaOptions
+ * @property {SetCaptchaOptions} [captcha] Captcha text options to customise text appearance and value.
+ * @property {SetDecoyOptions} [decoy]
+ * @property {SetTraceOptions} [trace]
+ * @property {Image} [background]
+ */
+export const CreateCaptchaOptions = {};

@@ -1,6 +1,5 @@
-import { Image } from "skia-canvas";
 import { Captcha } from ".";
-import { SetCaptchaOption, SetDecoyOption, SetTraceOption } from "./constants";
+import { CreateCaptchaOptions } from "./constants";
 
 interface captchaValueSync {
     image: Buffer,
@@ -12,18 +11,12 @@ interface captchaValue {
     text: string
 }
 
-interface CreateCaptchaOptions {
-    captcha?: SetCaptchaOption;
-    trace?: SetTraceOption;
-    decoy?: SetDecoyOption;
-    background?: Image;
-}
 /**
  * Create custom captcha from scratch.
  * @async
  * @param {number} width Width of captcha image.
  * @param {number} height Height of captcha image.
- * @param {string} [text] Captcha text.
+ * @param {CreateCaptchaOptions} [option] Captcha text.
  * @returns 
  */
 export function createCaptcha(width: number, height: number, option: CreateCaptchaOptions = {}): captchaValue {
@@ -49,7 +42,7 @@ export function createCaptcha(width: number, height: number, option: CreateCaptc
  * Create captcha in sync mode.
  * @param {number} width captcha image width.
  * @param {number} height captcha image height.
- * @param {CreateCaptchaOptions} [option] Captcha text. 
+ * @param {CreateCaptchaOptions} [option] Captcha text.
  * @returns 
  */
 export function createCaptchaSync(width: number, height: number, option: CreateCaptchaOptions = {}): captchaValueSync {
