@@ -125,7 +125,7 @@ class Captcha {
     }
     /**
      * Get png image of captcha.
-     * @returns {Buffer} Get png image of captcha created.
+     * @returns {Buffer | Promise&lt;Buffer>} Get png image of captcha created.
      */
     get png() {
         this._canvas.async = this.async;
@@ -137,7 +137,7 @@ class Captcha {
      * @returns {Captcha}
      */
     drawImage(image) {
-        this._ctx.drawImage(image, 0, 0);
+        this._ctx.drawImage(image, 0, 0, this._width, this._height);
         return this;
     }
     /**
@@ -192,9 +192,9 @@ class Captcha {
         if (captchaOption.text)
             option.characters = captchaOption.text.length;
         if (!captchaOption.text &amp;&amp; captchaOption.characters)
-            option.text = (0, util_1.randomText)(option.characters);
+            option.text = (0, util_1.randomText)(option.characters || 6);
         if (!option.text)
-            option.text = (0, util_1.randomText)(option.characters);
+            option.text = (0, util_1.randomText)(option.characters || 6);
         this._captcha = option;
         if (!this._coordinates[0])
             this._coordinates = (0, util_1.getRandomCoordinate)(this._height, this._width, option.characters || 6);
@@ -208,10 +208,10 @@ class Captcha {
             if (option.skew) {
                 this._ctx.transform(1, Math.random(), (0, util_1.getRandom)(20) / 100, 1, 0, 0);
             }
-            if (option.rotate > 0) {
+            if (option.rotate &amp;&amp; option.rotate > 0) {
                 this._ctx.rotate((0, util_1.getRandom)(-option.rotate, option.rotate) * Math.PI / 180);
             }
-            if (((_a = option.colors) === null || _a === void 0 ? void 0 : _a.length) > 2) {
+            if (option.colors &amp;&amp; ((_a = option.colors) === null || _a === void 0 ? void 0 : _a.length) > 2) {
                 this._ctx.fillStyle = option.colors[(0, util_1.getRandom)(option.colors.length - 1)];
             }
             this._ctx.fillText(option.text[n], 0, 0);
@@ -219,6 +219,9 @@ class Captcha {
         }
         ;
         return this;
+    }
+    toBuffer() {
+        this._canvas.toBuffer('png');
     }
 }
 exports.Captcha = Captcha;
