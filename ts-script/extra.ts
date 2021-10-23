@@ -57,7 +57,6 @@ export function createCaptchaSync(width: number, height: number, option: CreateC
 
     
     captcha.drawCaptcha(option.captcha);
-    const text = captcha.text;
 
     captcha.drawTrace(option.trace);
 
