@@ -23,7 +23,7 @@ class CaptchaGenerator {
         this.captcha = constants_1.defaultCaptchaOption;
         this.trace = constants_1.defaultTraceOptions;
         this.decoy = constants_1.defaultDecoyOptions;
-        this.captcha.text = (0, util_1.randomText)(this.captcha.characters);
+        this.captcha.text = (0, util_1.randomText)(this.captcha.characters || 6);
     }
     /**
      * Get the text of captcha.

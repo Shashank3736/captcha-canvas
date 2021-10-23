@@ -28,7 +28,7 @@ export declare class CaptchaGenerator {
      * @type {string}
      * @since 2.0.3
      */
-    get text(): string;
+    get text(): string | undefined;
     /**
      * set dimension for your captcha image
      * @param {integer} height Height of captcha image.

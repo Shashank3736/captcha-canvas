@@ -28,9 +28,9 @@ export declare class Captcha {
     get text(): string;
     /**
      * Get png image of captcha.
-     * @returns {Buffer} Get png image of captcha created.
+     * @returns {Buffer | Promise<Buffer>} Get png image of captcha created.
      */
-    get png(): Buffer;
+    get png(): Buffer | Promise<Buffer>;
     /**
      * Draw image on your captcha.
      * @param {Image} image Choose image you want to add.
@@ -57,4 +57,5 @@ export declare class Captcha {
      * @returns {Captcha}
      */
     drawCaptcha(captchaOption?: SetCaptchaOption): Captcha;
+    toBuffer(): void;
 }

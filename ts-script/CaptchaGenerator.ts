@@ -26,14 +26,14 @@ export class CaptchaGenerator {
         this.captcha = defaultCaptchaOption;
         this.trace = defaultTraceOptions;
         this.decoy = defaultDecoyOptions;
-        this.captcha.text = randomText(this.captcha.characters);
+        this.captcha.text = randomText(this.captcha.characters || 6);
     }
     /**
      * Get the text of captcha.
      * @type {string}
      * @since 2.0.3
      */
-    get text(): string {
+    get text(): string | undefined {
         return this.captcha.text;
     }
     /**

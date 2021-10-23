@@ -45,9 +45,9 @@ export class Captcha {
     }
     /**
      * Get png image of captcha.
-     * @returns {Buffer} Get png image of captcha created.
+     * @returns {Buffer | Promise<Buffer>} Get png image of captcha created.
      */
-    get png(): Buffer {
+    get png(): Buffer | Promise<Buffer> {
         this._canvas.async = this.async;
         return this._canvas.png;
     }
@@ -57,7 +57,7 @@ export class Captcha {
      * @returns {Captcha}
      */
     drawImage(image: Image): Captcha {
-        this._ctx.drawImage(image, 0, 0);
+        this._ctx.drawImage(image, 0, 0, this._width, this._height);
         return this;
     }
     /**
@@ -111,8 +111,8 @@ export class Captcha {
     drawCaptcha(captchaOption: SetCaptchaOption = {}): Captcha {
         const option = { ...this._captcha, ...captchaOption };
         if(captchaOption.text) option.characters = captchaOption.text.length;
-        if(!captchaOption.text && captchaOption.characters) option.text = randomText(option.characters);
-        if(!option.text) option.text = randomText(option.characters);
+        if(!captchaOption.text && captchaOption.characters) option.text = randomText(option.characters || 6);
+        if(!option.text) option.text = randomText(option.characters || 6);
         this._captcha = option;
 
         if(!this._coordinates[0]) this._coordinates = getRandomCoordinate(this._height, this._width, option.characters || 6);
@@ -126,12 +126,16 @@ export class Captcha {
 			this._ctx.save();
 			this._ctx.translate(coordinates[n][0], coordinates[n][1]);
 			if (option.skew) {this._ctx.transform(1, Math.random(), getRandom(20) / 100, 1, 0, 0);}
-			if (option.rotate > 0) {this._ctx.rotate(getRandom(-option.rotate, option.rotate) * Math.PI / 180);}
-			if (option.colors?.length > 2) {this._ctx.fillStyle = option.colors[getRandom(option.colors.length - 1)];}
+			if (option.rotate && option.rotate > 0) {this._ctx.rotate(getRandom(-option.rotate, option.rotate) * Math.PI / 180);}
+			if (option.colors && option.colors?.length > 2) {this._ctx.fillStyle = option.colors[getRandom(option.colors.length - 1)];}
 			this._ctx.fillText(option.text[n], 0, 0);
 			this._ctx.restore();
         };
 
         return this;
+    }
+
+    toBuffer() {
+        this._canvas.toBuffer('png');
     }
 }
