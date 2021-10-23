@@ -7,7 +7,7 @@
     "js-script/*"
   ],
   "scripts": {
-    "docsgen": "jsdoc --configure .jsdoc.json --verbose",
+    "docsgen": "jsdoc node_modules/.bin/jsdoc --configure .jsdoc.json --verbose",
     "example": "node examples/example.js",
     "start": "node ."
   },
