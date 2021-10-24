@@ -9,7 +9,8 @@
   "scripts": {
     "docsgen": "jsdoc node_modules/.bin/jsdoc --configure .jsdoc.json --verbose",
     "example": "node examples/example.js",
-    "start": "node ."
+    "start": "node .",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
