@@ -47,7 +47,7 @@ export class Captcha {
   }
   /**
    * Draw image on your captcha.
-   * @param {Image} image Choose image you want to add.
+   * @param {HTMLImageElement} image Choose image you want to add.
    * @returns {Captcha}
    */
   drawImage(image: HTMLImageElement): Captcha {
@@ -187,7 +187,7 @@ export class CaptchaGenerator {
   }
   /**
    * Set background for captcha image.
-   * @param {buffer} image Buffer/url/path of image.
+   * @param {HTMLImageElement} image Buffer/url/path of image.
    * @example
    * const { CaptchaGenerator } = require("captcha-canvas");
    * const fs = require("fs")
@@ -251,8 +251,7 @@ export class CaptchaGenerator {
   }
   /**
    * Method which returns image buffer
-   * @async
-   * @returns {Promise<Buffer>}
+   * @returns {Promise<Buffer> | Buffer}
    * @example
    * const { CaptchaGenerator } = require("captcha-canvas");
    * const fs = require("fs")
@@ -263,7 +262,7 @@ export class CaptchaGenerator {
    * @since 2.0.0
    */
 
-  async toBuffer() {
+  toBuffer(): Promise<Buffer> | Buffer {
     const captcha = new Captcha(this.type, this.width, this.height);
     if(this.background) captcha.drawImage(this.background);
     if(this.decoy.opacity) captcha.addDecoy(this.decoy);

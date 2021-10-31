@@ -1,2 +1,2 @@
 export declare const version: string;
-export * from "./captcha";
+export { CaptchaGenerator, Captcha } from "./captcha";
