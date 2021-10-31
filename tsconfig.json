@@ -20,5 +20,5 @@
         "outDir": "./js-script"
     },
     "exclude": [".github/", "assets/", "docs/", "examples/", "node_modules/"],
-    "include": ["ts-script/"]
+    "include": ["src/"]
 }
