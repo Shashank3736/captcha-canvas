@@ -21,10 +21,11 @@ export class Captcha {
      * @param {number} [height] Height of captcha image.
      * @constructor
      */
-    constructor(width: number = defaultDimension.width, height: number = defaultDimension.height) {
+    constructor(width: number = defaultDimension.width, height: number = defaultDimension.height, characters: number = defaultCaptchaOption.characters) {
         this._height = height;
         this._width = width;
         this._captcha = defaultCaptchaOption;
+        this._captcha.characters = characters;
         this._trace = defaultTraceOptions;
         this._decoy = defaultDecoyOptions;
         const canvas = new Canvas(width, height);
