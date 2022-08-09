@@ -48,6 +48,29 @@ export interface CreateCaptchaOptions {
     decoy?: SetDecoyOption;
     background?: Image;
 }
+
+/**
+ * Captcha text options to customise text appearance and value.
+ * @typedef DrawCaptchaOption
+ * @property {string} [text="Random UpperCase string"] Text of captcha
+ * @property {hexCode} [color="#32cf7e"] Color of captcha text.
+ * @property {font} [font="Sans"] Font of captcha text.
+ * @property {boolean} [skew=true] Skew captcha text.
+ * @property {array} [colors=[]] Array of hexCode will override color property.
+ * @property {number} [rotate=5] Range of angle to rotate text.
+ * @property {number} [size=40] Size of captcha text.
+ * @property {float} [opacity=1] Opcaity of captcha text.
+ */
+ export const defaultDrawCaptchaOption: DrawCaptchaOption = {
+    characters: 6,
+	size: 40,
+	font: 'Sans',
+	skew: true,
+	colors: [],
+	rotate: 5,
+	color: '#32cf7e',
+	opacity: 0.8,
+};
 /**
  * Captcha text options to customise text appearance and value.
  * @typedef SetCaptchaOptions
