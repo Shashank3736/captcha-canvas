@@ -28,7 +28,7 @@
   "bugs": {
     "url": "https://github.com/Shashank3736/captcha-canvas/issues"
   },
-  "homepage": "https://github.com/Shashank3736/captcha-canvas#readme",
+  "homepage": "https://captcha-canvas.js.org/",
   "devDependencies": {
     "@types/node": "^14.11.8",
     "@types/skia-canvas": "^0.9.2",
