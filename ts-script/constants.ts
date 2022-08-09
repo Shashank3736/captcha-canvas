@@ -62,7 +62,6 @@ export interface CreateCaptchaOptions {
  * @property {float} [opacity=1] Opcaity of captcha text.
  */
  export const defaultDrawCaptchaOption: DrawCaptchaOption = {
-    characters: 6,
 	size: 40,
 	font: 'Sans',
 	skew: true,
