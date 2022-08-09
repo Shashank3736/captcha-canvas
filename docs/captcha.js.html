@@ -101,10 +101,11 @@ class Captcha {
      * @param {number} [height] Height of captcha image.
      * @constructor
      */
-    constructor(width = constants_1.defaultDimension.width, height = constants_1.defaultDimension.height) {
+    constructor(width = constants_1.defaultDimension.width, height = constants_1.defaultDimension.height, characters = constants_1.defaultCaptchaOption.characters) {
         this._height = height;
         this._width = width;
         this._captcha = constants_1.defaultCaptchaOption;
+        this._captcha.characters = characters;
         this._trace = constants_1.defaultTraceOptions;
         this._decoy = constants_1.defaultDecoyOptions;
         const canvas = new skia_canvas_1.Canvas(width, height);
@@ -153,8 +154,8 @@ class Captcha {
         this._ctx.font = `${option.size}px ${option.font}`;
         this._ctx.globalAlpha = option.opacity;
         this._ctx.fillStyle = option.color;
-        for (let i = 0; i &lt; decoyText.length; i++) {
-            this._ctx.fillText(decoyText[i], (0, util_1.getRandom)(30, this._width - 30), (0, util_1.getRandom)(30, this._height - 30));
+        for (const element of decoyText) {
+            this._ctx.fillText(element, (0, util_1.getRandom)(30, this._width - 30), (0, util_1.getRandom)(30, this._height - 30));
         }
         return this;
     }
@@ -190,9 +191,7 @@ class Captcha {
         var _a;
         const option = { ...this._captcha, ...captchaOption };
         if (captchaOption.text)
-            option.characters = captchaOption.text.length;
-        if (!captchaOption.text &amp;&amp; captchaOption.characters)
-            option.text = (0, util_1.randomText)(option.characters || 6);
+            option.text = captchaOption.text.slice(0, option.characters);
         if (!option.text)
             option.text = (0, util_1.randomText)(option.characters || 6);
         this._captcha = option;

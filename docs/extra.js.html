@@ -130,7 +130,6 @@ function createCaptchaSync(width, height, option = {}) {
         option.decoy.total = decoyCount;
     captcha.addDecoy(option.decoy);
     captcha.drawCaptcha(option.captcha);
-    const text = captcha.text;
     captcha.drawTrace(option.trace);
     captcha.addDecoy({ opacity: 1 });
     return { image: captcha.png, text: captcha.text };
