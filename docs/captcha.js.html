@@ -99,6 +99,7 @@ class Captcha {
      * Start captcha image creation.
      * @param {number} [width] Width of captcha image.
      * @param {number} [height] Height of captcha image.
+     * @param {number} [characters] Size of captcha text.
      * @constructor
      */
     constructor(width = constants_1.defaultDimension.width, height = constants_1.defaultDimension.height, characters = constants_1.defaultCaptchaOption.characters) {
@@ -184,7 +185,7 @@ class Captcha {
     }
     /**
      * Draw captcha text on captcha image.
-     * @param {SetCaptchaOptions} [captchaOption]
+     * @param {DrawCaptchaOption} [captchaOption]
      * @returns {Captcha}
      */
     drawCaptcha(captchaOption = {}) {
