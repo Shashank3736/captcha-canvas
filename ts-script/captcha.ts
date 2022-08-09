@@ -1,5 +1,12 @@
 import { Canvas, CanvasRenderingContext2D, Image } from "skia-canvas";
-import { defaultCaptchaOption, defaultDecoyOptions, defaultDimension, defaultTraceOptions, SetCaptchaOption, SetDecoyOption, SetTraceOption } from "./constants";
+import { defaultCaptchaOption, 
+    defaultDecoyOptions, 
+    defaultDimension, 
+    defaultTraceOptions, 
+    SetCaptchaOption, 
+    SetDecoyOption, 
+    SetTraceOption, 
+    DrawCaptchaOption } from "./constants";
 import { getRandom, getRandomCoordinate, randomText } from "./util";
 
 /**
@@ -74,8 +81,8 @@ export class Captcha {
         this._ctx.font = `${option.size}px ${option.font}`;
         this._ctx.globalAlpha = option.opacity;
         this._ctx.fillStyle = option.color;
-		for(let i = 0; i < decoyText.length; i++) {
-			this._ctx.fillText(decoyText[i], getRandom(30, this._width - 30), getRandom(30, this._height - 30));
+		for(const element of decoyText) {
+			this._ctx.fillText(element, getRandom(30, this._width - 30), getRandom(30, this._height - 30));
 		}
         return this;
     }
@@ -109,10 +116,9 @@ export class Captcha {
      * @param {SetCaptchaOptions} [captchaOption] 
      * @returns {Captcha}
      */
-    drawCaptcha(captchaOption: SetCaptchaOption = {}): Captcha {
+    drawCaptcha(captchaOption: DrawCaptchaOption = {}): Captcha {
         const option = { ...this._captcha, ...captchaOption };
-        if(captchaOption.text) option.characters = captchaOption.text.length;
-        if(!captchaOption.text && captchaOption.characters) option.text = randomText(option.characters || 6);
+        if(captchaOption.text) option.text = captchaOption.text.slice(0, option.characters);
         if(!option.text) option.text = randomText(option.characters || 6);
         this._captcha = option;
 
