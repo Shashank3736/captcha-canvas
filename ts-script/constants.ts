@@ -17,6 +17,17 @@ export interface SetCaptchaOption {
     opacity?: number;
 };
 
+export interface DrawCaptchaOption {
+    text?: string;
+    color?: string;
+    font?: string;
+    skew?: boolean;
+    colors?: string[] | [];
+    rotate?: number;
+    size?: number;
+    opacity?: number;
+};
+
 export interface SetDecoyOption {
     color?: string;
     font?: string;
