@@ -159,7 +159,7 @@ export class CaptchaGenerator {
      * @since 2.2.0
      */
     generateSync(option: { background?: Image } = {}): Buffer {
-        const captchaCanvas = new Captcha(this.width, this.height);
+        const captchaCanvas = new Captcha(this.width, this.height, this.captcha.characters);
         captchaCanvas.async = false;
 
         if(option.background) captchaCanvas.drawImage(option.background);
