@@ -30,20 +30,19 @@ export function createCaptcha(width: number, height: number, option: CreateCaptc
 
     
     captcha.drawCaptcha(option.captcha);
-    const text = captcha.text;
 
     captcha.drawTrace(option.trace);
 
     captcha.addDecoy({ opacity: 1 });
 
     return { image: captcha.png, text: captcha.text };
-};
+}
 /**
  * Create captcha in sync mode.
  * @param {number} width captcha image width.
  * @param {number} height captcha image height.
  * @param {CreateCaptchaOptions} [option] Captcha text.
- * @returns 
+ * @returns
  */
 export function createCaptchaSync(width: number, height: number, option: CreateCaptchaOptions = {}): captchaValueSync {
     const captcha = new Captcha(width, height);
@@ -63,4 +62,4 @@ export function createCaptchaSync(width: number, height: number, option: CreateC
     captcha.addDecoy({ opacity: 1 });
 
     return { image: captcha.png, text: captcha.text };
-};
+}
