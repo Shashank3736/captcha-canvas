@@ -21,7 +21,7 @@ export class Captcha {
     protected _canvas: Canvas;
     protected _ctx: CanvasRenderingContext2D;
     protected _coordinates: number[][];
-    public async: Boolean;
+    public async: boolean;
     /**
      * Start captcha image creation.
      * @param {number} [width] Width of captcha image.
@@ -44,6 +44,7 @@ export class Captcha {
         this._ctx = ctx;
         this.async = true;
         this._coordinates = [];
+        this._canvas.gpu = false; 
     }
     /**
      * Get Captcha text.
@@ -57,8 +58,11 @@ export class Captcha {
      * @returns {Buffer | Promise<Buffer>} Get png image of captcha created.
      */
     get png(): Buffer | Promise<Buffer> {
-        this._canvas.async = this.async;
-        return this._canvas.png;
+        if(this.async) {
+            return this._canvas.toBuffer('png')
+        } else {
+            return this._canvas.toBufferSync('png')
+        }
     }
     /**
      * Draw image on your captcha.
@@ -138,12 +142,8 @@ export class Captcha {
 			if (option.colors && option.colors?.length > 2) {this._ctx.fillStyle = option.colors[getRandom(option.colors.length - 1)];}
 			this._ctx.fillText(option.text[n], 0, 0);
 			this._ctx.restore();
-        };
+        }
 
         return this;
-    }
-
-    toBuffer() {
-        this._canvas.toBuffer('png');
     }
 }
