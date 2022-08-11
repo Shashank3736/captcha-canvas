@@ -3,7 +3,7 @@ import { Image } from "skia-canvas";
 export interface SetDimensionOption {
     height: number;
     width: number;
-};
+}
 
 export interface SetCaptchaOption {
     characters?: number;
@@ -15,7 +15,7 @@ export interface SetCaptchaOption {
     rotate?: number;
     size?: number;
     opacity?: number;
-};
+}
 
 export interface DrawCaptchaOption {
     text?: string;
@@ -26,7 +26,7 @@ export interface DrawCaptchaOption {
     rotate?: number;
     size?: number;
     opacity?: number;
-};
+}
 
 export interface SetDecoyOption {
     color?: string;
@@ -34,13 +34,13 @@ export interface SetDecoyOption {
     size?: number;
     opacity?: number;
     total?: number;
-};
+}
 
 export interface SetTraceOption {
     color?: string;
     size?: number;
     opacity?: number;
-};
+}
 
 export interface CreateCaptchaOptions {
     captcha?: SetCaptchaOption;
