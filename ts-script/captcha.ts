@@ -61,7 +61,7 @@ export class Captcha {
     get png(): Buffer | Promise<Buffer> {
         if(this.async) {
             return this._canvas.toBuffer('png');
-        } 
+        }
         else {
             return this._canvas.toBufferSync('png');
         }
@@ -130,7 +130,7 @@ export class Captcha {
         if(option.text.length != option.characters) {
             if(captchaOption.text) {
                 throw new Error("Size of text and no. of characters is not matching.");
-            } 
+            }
             else {
                 option.text = randomText(option.characters);
             }
