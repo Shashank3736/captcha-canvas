@@ -13,7 +13,7 @@ This is an npm package [captcha-canvas](https://npmjs.com/package/captcha-canvas
 
 #### Captcha Image:
 
-![captcha](https://github.com/Shashank3736/captcha-canvas/raw/master/assets/captcha/default.png)
+![captcha](examples/example.png)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FShashank3736%2Fcaptcha-canvas.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FShashank3736%2Fcaptcha-canvas?ref=badge_shield)
 
 ### Features
