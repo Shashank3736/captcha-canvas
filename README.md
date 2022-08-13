@@ -1,6 +1,3 @@
-# IMPORTANT NOTE
-I am not actively working on the project anymore. `v3` have almost all the features I need to make captcha and that's why I decided to stop working on this project from here on. I started this project so that I can create captchas for my discord bots easily. `v3` is still active and working perfectly.
-
 # captcha-canvas
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
