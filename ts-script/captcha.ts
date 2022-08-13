@@ -40,11 +40,12 @@ export class Captcha {
         const ctx = canvas.getContext('2d');
         ctx.lineJoin = 'miter';
 		ctx.textBaseline = 'middle';
+        ctx.textAlign = 'center';
         this._canvas = canvas;
         this._ctx = ctx;
         this.async = true;
         this._coordinates = [];
-        this._canvas.gpu = false; 
+        this._canvas.gpu = false;
     }
     /**
      * Get Captcha text.
