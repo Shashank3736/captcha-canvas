@@ -126,6 +126,13 @@ export class Captcha {
         const option = { ...this._captcha, ...captchaOption };
         if(captchaOption.text) option.text = captchaOption.text.slice(0, option.characters);
         if(!option.text) option.text = randomText(option.characters || 6);
+        if(option.text.length != option.characters) {
+            if(captchaOption.text) {
+                throw new Error("Size of text and no. of characters is not matching.");
+            } else {
+                option.text = randomText(option.characters);
+            }
+        }
         this._captcha = option;
 
         if(!this._coordinates[0]) this._coordinates = getRandomCoordinate(this._height, this._width, option.characters || 6);
