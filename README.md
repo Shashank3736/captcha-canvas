@@ -1,6 +1,3 @@
-# IMPORTANT NOTE
-I am not actively working on the project anymore. `v3` have almost all the features I need to make captcha and that's why I decided to stop working on this project from here on. I started this project so that I can create captchas for my discord bots easily. `v3` is still active and working perfectly.
-
 # captcha-canvas
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
@@ -13,7 +10,7 @@ This is an npm package [captcha-canvas](https://npmjs.com/package/captcha-canvas
 
 #### Captcha Image:
 
-![captcha](https://github.com/Shashank3736/captcha-canvas/raw/master/assets/captcha/default.png)
+![captcha](examples/example.png)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FShashank3736%2Fcaptcha-canvas.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FShashank3736%2Fcaptcha-canvas?ref=badge_shield)
 
 ### Features

@@ -11,6 +11,16 @@ This package versioning work like MAJOR.MINOR.PATCH structure.
 
 All the versions before v2.0.2 works very well but have some very small bugs.
 
+### Versions
+#### v1
+v1 is created for simple captcha creations. It is only capable of supporting simple customisation.
+
+#### v2
+v2 is released with more customisation method and a complete new background coding. It may not be wrong to say that I totally changed the code from v1.
+
+#### v3
+v3 is released and I shifted to skia-canvas, also more deeper level customisation is introduced. The whole thing is recoded in Typescript.
+
 ## Reporting a Vulnerability
 
 To report a bug or typos. Create an issue with all the details you have regarding that bug with steps to reproduce it. If you know the way to solve it then you can make a pull request with the solution.

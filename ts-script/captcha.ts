@@ -21,7 +21,7 @@ export class Captcha {
     protected _canvas: Canvas;
     protected _ctx: CanvasRenderingContext2D;
     protected _coordinates: number[][];
-    public async: Boolean;
+    public async: boolean;
     /**
      * Start captcha image creation.
      * @param {number} [width] Width of captcha image.
@@ -40,10 +40,12 @@ export class Captcha {
         const ctx = canvas.getContext('2d');
         ctx.lineJoin = 'miter';
 		ctx.textBaseline = 'middle';
+        ctx.textAlign = 'center';
         this._canvas = canvas;
         this._ctx = ctx;
         this.async = true;
         this._coordinates = [];
+        this._canvas.gpu = false;
     }
     /**
      * Get Captcha text.
@@ -57,8 +59,12 @@ export class Captcha {
      * @returns {Buffer | Promise<Buffer>} Get png image of captcha created.
      */
     get png(): Buffer | Promise<Buffer> {
-        this._canvas.async = this.async;
-        return this._canvas.png;
+        if(this.async) {
+            return this._canvas.toBuffer('png');
+        }
+        else {
+            return this._canvas.toBufferSync('png');
+        }
     }
     /**
      * Draw image on your captcha.
@@ -119,8 +125,16 @@ export class Captcha {
      */
     drawCaptcha(captchaOption: DrawCaptchaOption = {}): Captcha {
         const option = { ...this._captcha, ...captchaOption };
-        if(captchaOption.text) option.text = captchaOption.text.slice(0, option.characters);
-        if(!option.text) option.text = randomText(option.characters || 6);
+        if(captchaOption.text) option.text = captchaOption.text;
+        if(!option.text) option.text = randomText(option.characters);
+        if(option.text.length != option.characters) {
+            if(captchaOption.text) {
+                throw new Error("Size of text and no. of characters is not matching.");
+            }
+            else {
+                option.text = randomText(option.characters);
+            }
+        }
         this._captcha = option;
 
         if(!this._coordinates[0]) this._coordinates = getRandomCoordinate(this._height, this._width, option.characters || 6);
@@ -138,12 +152,8 @@ export class Captcha {
 			if (option.colors && option.colors?.length > 2) {this._ctx.fillStyle = option.colors[getRandom(option.colors.length - 1)];}
 			this._ctx.fillText(option.text[n], 0, 0);
 			this._ctx.restore();
-        };
+        }
 
         return this;
-    }
-
-    toBuffer() {
-        this._canvas.toBuffer('png');
     }
 }

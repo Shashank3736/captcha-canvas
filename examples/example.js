@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { CaptchaGenerator } = require('../js-script');
+const { CaptchaGenerator, Captcha } = require('../js-script');
 
 (async () => {
 	const captcha = new CaptchaGenerator();
@@ -25,5 +25,16 @@ const { CaptchaGenerator } = require('../js-script');
 	fs.writeFileSync('./examples/all.png', await captcha.generate());
 	// console text of captcha
 	console.log(captcha.text);
+	// example captcha
+	const exmCaptcha = new Captcha(600, 200, 8);
+	exmCaptcha.addDecoy({ total: 20, size: 40 });
+	exmCaptcha.drawCaptcha({ size: 40 });
+	exmCaptcha.addDecoy();
+	exmCaptcha.drawTrace();
+
+	exmCaptcha.async = false;
+	console.log('Example captcha text: ' + exmCaptcha.text);
+
+	fs.writeFileSync('./examples/example.png', exmCaptcha.png);
 })();
 
