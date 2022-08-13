@@ -125,8 +125,8 @@ export class Captcha {
      */
     drawCaptcha(captchaOption: DrawCaptchaOption = {}): Captcha {
         const option = { ...this._captcha, ...captchaOption };
-        if(captchaOption.text) option.text = captchaOption.text.slice(0, option.characters);
-        if(!option.text) option.text = randomText(option.characters || 6);
+        if(captchaOption.text) option.text = captchaOption.text;
+        if(!option.text) option.text = randomText(option.characters);
         if(option.text.length != option.characters) {
             if(captchaOption.text) {
                 throw new Error("Size of text and no. of characters is not matching.");
