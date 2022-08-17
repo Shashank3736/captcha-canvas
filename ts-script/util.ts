@@ -18,7 +18,7 @@ export function getRandomCoordinate(height: number, width: number, size: number)
 		const randomHeight = getRandom(30, height - 30);
 		coordinate.push(randomHeight);
 		coordinates.push(coordinate);
-    };
+    }
     coordinates = coordinates.sort((a, b) => a[0] - b[0]);
     return coordinates;
 }
