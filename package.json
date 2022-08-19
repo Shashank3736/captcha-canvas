@@ -31,7 +31,7 @@
   "homepage": "https://captcha-canvas.js.org/",
   "devDependencies": {
     "@types/node": "^14.11.8",
-    "@types/skia-canvas": "^0.9.2",
+    "@types/skia-canvas": "^0.9.28",
     "better-docs": "^2.3.2",
     "canvas": "^2.8.0",
     "eslint": "^7.27.0",
