@@ -149,7 +149,7 @@ export class Captcha {
 			this._ctx.translate(coordinates[n][0], coordinates[n][1]);
 			if (option.skew) {this._ctx.transform(1, Math.random(), getRandom(20) / 100, 1, 0, 0);}
 			if (option.rotate && option.rotate > 0) {this._ctx.rotate(getRandom(-option.rotate, option.rotate) * Math.PI / 180);}
-			if (option.colors && option.colors?.length > 2) {this._ctx.fillStyle = option.colors[getRandom(option.colors.length - 1)];}
+			if (option.colors && option.colors?.length >= 2) {this._ctx.fillStyle = option.colors[getRandom(option.colors.length - 1)];}
 			this._ctx.fillText(option.text[n], 0, 0);
 			this._ctx.restore();
         }
