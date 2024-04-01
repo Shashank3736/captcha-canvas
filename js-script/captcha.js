@@ -138,7 +138,7 @@ class Captcha {
             if (option.rotate && option.rotate > 0) {
                 this._ctx.rotate((0, util_1.getRandom)(-option.rotate, option.rotate) * Math.PI / 180);
             }
-            if (option.colors && ((_a = option.colors) === null || _a === void 0 ? void 0 : _a.length) > 2) {
+            if (option.colors && ((_a = option.colors) === null || _a === void 0 ? void 0 : _a.length) >= 2) {
                 this._ctx.fillStyle = option.colors[(0, util_1.getRandom)(option.colors.length - 1)];
             }
             this._ctx.fillText(option.text[n], 0, 0);
