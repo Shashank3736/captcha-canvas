@@ -66,7 +66,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="Captcha.html">Captcha</a></li><li><a href="CaptchaGenerator.html">CaptchaGenerator</a></li></ul><h3>Global</h3><ul><li><a href="global.html#createCaptcha">createCaptcha</a></li><li><a href="global.html#createCaptchaSync">createCaptchaSync</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="CaptchaGenerator.html">CaptchaGenerator</a></li></ul><h3>Global</h3><ul><li><a href="global.html#defaultCaptchaOptions">defaultCaptchaOptions</a></li><li><a href="global.html#defaultDecoyOptions">defaultDecoyOptions</a></li><li><a href="global.html#defaultTraceOptions">defaultTraceOptions</a></li><li><a href="global.html#getRandom">getRandom</a></li></ul></div>
                 
             </nav>
         </div>
@@ -150,6 +150,244 @@
     
 
     
+        <div class='vertical-section'>
+            <h1>Members</h1>
+            <div class="members">
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type"><a href="global.html#SetCaptchaOptions">SetCaptchaOptions</a></span>
+
+
+    </span>
+
+<h4 class="name" id="defaultCaptchaOptions">
+    <a class="href-link" href="#defaultCaptchaOptions">#</a>
+    
+    <span class="code-name">
+        defaultCaptchaOptions
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Default captcha customisation options.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="constants.js.html" class="button">View Source</a>
+            <span>
+                <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line47">line 47</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type"><a href="global.html#SetDecoyOptions">SetDecoyOptions</a></span>
+
+
+    </span>
+
+<h4 class="name" id="defaultDecoyOptions">
+    <a class="href-link" href="#defaultDecoyOptions">#</a>
+    
+    <span class="code-name">
+        defaultDecoyOptions
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Default Decoy Options</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="constants.js.html" class="button">View Source</a>
+            <span>
+                <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line72">line 72</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type"><a href="global.html#SetTraceOptions">SetTraceOptions</a></span>
+
+
+    </span>
+
+<h4 class="name" id="defaultTraceOptions">
+    <a class="href-link" href="#defaultTraceOptions">#</a>
+    
+    <span class="code-name">
+        defaultTraceOptions
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Default trace line options.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="constants.js.html" class="button">View Source</a>
+            <span>
+                <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line62">line 62</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
 
     
         <div class='vertical-section'>
@@ -160,16 +398,12 @@
 
 
     
-    <h4 class="name" id="createCaptcha">
-        <a class="href-link" href="#createCaptcha">#</a>
-        
-            
-                <span class='tag'>async</span>
-            
+    <h4 class="name" id="getRandom">
+        <a class="href-link" href="#getRandom">#</a>
         
         <span class="code-name">
             
-                createCaptcha<span class="signature">(width, height, option<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+                getRandom<span class="signature">(start, end)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -178,7 +412,7 @@
     
     
     <div class="description">
-        <p>Create custom captcha from scratch.</p>
+        <p>random number in range</p>
     </div>
     
 
@@ -203,8 +437,6 @@
             <th>Type</th>
 
             
-            <th>Attributes</th>
-            
 
             
 
@@ -218,31 +450,23 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>width</code></td>
+      <td class="name"><code>start</code></td>
   
 
   <td class="type">
   
       
-<span class="param-type">number</span>
+<span class="param-type">Number</span>
 
 
   
   </td>
 
   
-      <td class="attributes">
-      
-
-      
-
-      
-      </td>
-  
 
   
 
-  <td class="description last"><p>Width of captcha image.</p></td>
+  <td class="description last"><p>range start num</p></td>
 </tr>
 
 
@@ -251,66 +475,23 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>height</code></td>
+      <td class="name"><code>end</code></td>
   
 
   <td class="type">
   
       
-<span class="param-type">number</span>
+<span class="param-type">Number</span>
 
 
   
   </td>
 
   
-      <td class="attributes">
-      
-
-      
-
-      
-      </td>
-  
 
   
 
-  <td class="description last"><p>Height of captcha image.</p></td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>option</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type"><a href="global.html#CreateCaptchaOptions">CreateCaptchaOptions</a></span>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-          &lt;optional><br>
-      
-
-      
-
-      
-      </td>
-  
-
-  
-
-  <td class="description last"><p>Captcha text.</p></td>
+  <td class="description last"><p>range end num</p></td>
 </tr>
 
 
@@ -356,9 +537,9 @@
 
     
         <p class="tag-source">
-            <a href="extra.js.html" class="button">View Source</a>
+            <a href="main.js.html" class="button">View Source</a>
             <span>
-                <a href="extra.js.html">extra.js</a>, <a href="extra.js.html#line13">line 13</a>
+                <a href="main.js.html">main.js</a>, <a href="main.js.html#line24">line 24</a>
             </span>
         </p>
     
@@ -389,246 +570,7 @@
 
 <div class="columns">
     
-    
-</div>
-
-                
-        </div>
-    </div>
-
-
-
-
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="createCaptchaSync">
-        <a class="href-link" href="#createCaptchaSync">#</a>
-        
-        <span class="code-name">
-            
-                createCaptchaSync<span class="signature">(width, height, option<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        <p>Create captcha in sync mode.</p>
-    </div>
-    
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-<div class="table-container">
-    <table class="params table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-            <th>Attributes</th>
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>width</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">number</span>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-
-      
-
-      
-      </td>
-  
-
-  
-
-  <td class="description last"><p>captcha image width.</p></td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>height</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">number</span>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-
-      
-
-      
-      </td>
-  
-
-  
-
-  <td class="description last"><p>captcha image height.</p></td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>option</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type"><a href="global.html#CreateCaptchaOptions">CreateCaptchaOptions</a></span>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-          &lt;optional><br>
-      
-
-      
-
-      
-      </td>
-  
-
-  
-
-  <td class="description last"><p>Captcha text.</p></td>
-</tr>
-
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="extra.js.html" class="button">View Source</a>
-            <span>
-                <a href="extra.js.html">extra.js</a>, <a href="extra.js.html#line36">line 36</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
+    <div class='param-desc column is-7'><p>random number between start and end</p></div>
     
     
 </div>
@@ -650,628 +592,6 @@
         <div class='vertical-section'>
             <h1>Type Definitions</h1>
             <div class="members">
-            
-                <div class="member">
-
-<h4 class="name" id="CreateCaptchaOptions">
-    <a class="href-link" href="#CreateCaptchaOptions">#</a>
-    
-    <span class="code-name">
-        CreateCaptchaOptions
-    </span>
-    
-</h4>
-
-
-
-
-<div class="description">
-    <p>Create captcha options in functions.</p>
-</div>
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-<div class="table-container">
-    <table class="props table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-            <th>Attributes</th>
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>captcha</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type"><a href="global.html#SetCaptchaOptions">SetCaptchaOptions</a></span>
-
-
-    
-    </td>
-
-    
-        <td class="attributes">
-        
-            &lt;optional><br>
-        
-
-        
-        </td>
-    
-
-    
-
-    <td class="description last"><p>Captcha text options to customise text appearance and value.</p></td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>decoy</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type"><a href="global.html#SetDecoyOptions">SetDecoyOptions</a></span>
-
-
-    
-    </td>
-
-    
-        <td class="attributes">
-        
-            &lt;optional><br>
-        
-
-        
-        </td>
-    
-
-    
-
-    <td class="description last"></td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>trace</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type"><a href="global.html#SetTraceOptions">SetTraceOptions</a></span>
-
-
-    
-    </td>
-
-    
-        <td class="attributes">
-        
-            &lt;optional><br>
-        
-
-        
-        </td>
-    
-
-    
-
-    <td class="description last"></td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>background</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">Image</span>
-
-
-    
-    </td>
-
-    
-        <td class="attributes">
-        
-            &lt;optional><br>
-        
-
-        
-        </td>
-    
-
-    
-
-    <td class="description last"></td>
-</tr>
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="constants.js.html" class="button">View Source</a>
-            <span>
-                <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line89">line 89</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-</div>
-            
-                <div class="member">
-
-<h4 class="name" id="DrawCaptchaOption">
-    <a class="href-link" href="#DrawCaptchaOption">#</a>
-    
-    <span class="code-name">
-        DrawCaptchaOption
-    </span>
-    
-</h4>
-
-
-
-
-<div class="description">
-    <p>Captcha text options to customise text appearance and value.</p>
-</div>
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-<div class="table-container">
-    <table class="props table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-            <th>Attributes</th>
-            
-
-            
-            <th>Default</th>
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>text</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">string</span>
-
-
-    
-    </td>
-
-    
-        <td class="attributes">
-        
-            &lt;optional><br>
-        
-
-        
-        </td>
-    
-
-    
-        <td class="default">
-        
-            "Random UpperCase string"
-        
-        </td>
-    
-
-    <td class="description last"><p>Text of captcha</p></td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>color</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">hexCode</span>
-
-
-    
-    </td>
-
-    
-        <td class="attributes">
-        
-            &lt;optional><br>
-        
-
-        
-        </td>
-    
-
-    
-        <td class="default">
-        
-            "#32cf7e"
-        
-        </td>
-    
-
-    <td class="description last"><p>Color of captcha text.</p></td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>font</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">font</span>
-
-
-    
-    </td>
-
-    
-        <td class="attributes">
-        
-            &lt;optional><br>
-        
-
-        
-        </td>
-    
-
-    
-        <td class="default">
-        
-            "Sans"
-        
-        </td>
-    
-
-    <td class="description last"><p>Font of captcha text.</p></td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>skew</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">boolean</span>
-
-
-    
-    </td>
-
-    
-        <td class="attributes">
-        
-            &lt;optional><br>
-        
-
-        
-        </td>
-    
-
-    
-        <td class="default">
-        
-            true
-        
-        </td>
-    
-
-    <td class="description last"><p>Skew captcha text.</p></td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>colors</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">array</span>
-
-
-    
-    </td>
-
-    
-        <td class="attributes">
-        
-            &lt;optional><br>
-        
-
-        
-        </td>
-    
-
-    
-        <td class="default">
-        
-            []
-        
-        </td>
-    
-
-    <td class="description last"><p>Array of hexCode will override color property.</p></td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>rotate</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">number</span>
-
-
-    
-    </td>
-
-    
-        <td class="attributes">
-        
-            &lt;optional><br>
-        
-
-        
-        </td>
-    
-
-    
-        <td class="default">
-        
-            5
-        
-        </td>
-    
-
-    <td class="description last"><p>Range of angle to rotate text.</p></td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>size</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">number</span>
-
-
-    
-    </td>
-
-    
-        <td class="attributes">
-        
-            &lt;optional><br>
-        
-
-        
-        </td>
-    
-
-    
-        <td class="default">
-        
-            40
-        
-        </td>
-    
-
-    <td class="description last"><p>Size of captcha text.</p></td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>opacity</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">float</span>
-
-
-    
-    </td>
-
-    
-        <td class="attributes">
-        
-            &lt;optional><br>
-        
-
-        
-        </td>
-    
-
-    
-        <td class="default">
-        
-            1
-        
-        </td>
-    
-
-    <td class="description last"><p>Opcaity of captcha text.</p></td>
-</tr>
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="constants.js.html" class="button">View Source</a>
-            <span>
-                <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line9">line 9</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-</div>
             
                 <div class="member">
 
@@ -1696,7 +1016,7 @@
         <p class="tag-source">
             <a href="constants.js.html" class="button">View Source</a>
             <span>
-                <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line31">line 31</a>
+                <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line10">line 10</a>
             </span>
         </p>
     
@@ -1901,41 +1221,6 @@
 </tr>
 
         
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>total</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">number</span>
-
-
-    
-    </td>
-
-    
-        <td class="attributes">
-        
-            &lt;optional><br>
-        
-
-        
-        </td>
-    
-
-    
-        <td class="default">
-        
-        </td>
-    
-
-    <td class="description last"><p>Total count of decoy characters.</p></td>
-</tr>
-
-        
         </tbody>
     </table>
 </div>
@@ -1977,7 +1262,7 @@
         <p class="tag-source">
             <a href="constants.js.html" class="button">View Source</a>
             <span>
-                <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line65">line 65</a>
+                <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line34">line 34</a>
             </span>
         </p>
     
@@ -2153,7 +1438,7 @@
         <p class="tag-source">
             <a href="constants.js.html" class="button">View Source</a>
             <span>
-                <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line79">line 79</a>
+                <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line1">line 1</a>
             </span>
         </p>
     
@@ -2362,7 +1647,7 @@
         <p class="tag-source">
             <a href="constants.js.html" class="button">View Source</a>
             <span>
-                <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line54">line 54</a>
+                <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line26">line 26</a>
             </span>
         </p>
     

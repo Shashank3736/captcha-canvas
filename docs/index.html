@@ -66,7 +66,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="Captcha.html">Captcha</a></li><li><a href="CaptchaGenerator.html">CaptchaGenerator</a></li></ul><h3>Global</h3><ul><li><a href="global.html#createCaptcha">createCaptcha</a></li><li><a href="global.html#createCaptchaSync">createCaptchaSync</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="CaptchaGenerator.html">CaptchaGenerator</a></li></ul><h3>Global</h3><ul><li><a href="global.html#defaultCaptchaOptions">defaultCaptchaOptions</a></li><li><a href="global.html#defaultDecoyOptions">defaultDecoyOptions</a></li><li><a href="global.html#defaultTraceOptions">defaultTraceOptions</a></li><li><a href="global.html#getRandom">getRandom</a></li></ul></div>
                 
             </nav>
         </div>
@@ -101,74 +101,48 @@
 
     <section>
         <article><blockquote>
-<p>Note: for v2 doumentation <a href="v2/index.html">click here</a>.</p>
-</blockquote>
-<h1>Getting Started with captcha-canvas v3</h1>
+            <p>Note: for v3 (skia-canvas) doumentation <a href="v3/index.html">click here</a>.</p>
+            </blockquote>
+            <h1>Getting Started</h1>
 <p>To start using this <a href="https://npmjs.com/package/captcha-canvas">npm module</a>. We first need to install it from npm by using command <code>npm install captcha-canvas</code>.</p>
-<h3>Captcha</h3>
-<p><strong>Document:</strong> <em><a href="Captcha.html">Click Here</a></em></p>
-<pre class="prettyprint source lang-js"><code>const { Captcha } = require('captcha-canvas');
-const { writeFileSync } = require('fs');
-const captcha = new Captcha(); //create a captcha canvas of 100x300.
-captcha.async = false //Sync
-captcha.addDecoy(); //Add decoy text on captcha canvas.
-captcha.drawTrace(); //draw trace lines on captcha canvas.
-captcha.drawCaptcha(); //draw captcha text on captcha canvas.
-
-console.log(captcha.text); //log captcha text. 
-writeFileSync('captcha.png', captcha.png); //create 'captcha.png' file in your directory.
-</code></pre>
-<p><strong>Result:</strong></p>
-<img src="captcha/captcha.png" alt="captcha.png">
-<h3>CaptchaGenerator</h3>
-<p><strong>Document</strong>: <em><a href="CaptchaGenerator.html">Click here</a></em></p>
+<p>Now require this package in your file where you want to create captcha.</p>
 <pre class="prettyprint source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
-const { writeFileSync } = require('fs');
-
+</code></pre>
+<p>We can see here we get <code>CaptchaGenerator</code> class from the module. Now initiate the constructor to start using it.</p>
+<pre class="prettyprint source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
+const captcha = new CaptchaGenerator();
+</code></pre>
+<p>Now we can use all the methods documented <a href="https://captcha-canvas.js.org/CaptchaGenerator.html">here</a> to customize captcha according to our need.</p>
+<p>Like if we want to use different dimension. We can use <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setDimension">setDimension</a> method.</p>
+<pre class="prettyprint source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
+const captcha = new CaptchaGenerator()
+.setDimension(150, 450) 
+</code></pre>
+<p>If we want to change captcha text or its appearance, then we can use <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setCaptcha">setCaptcha</a> method.</p>
+<pre class="prettyprint source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
+const captcha = new CaptchaGenerator()
+.setDimension(150, 450) 
+.setCaptcha({text: &quot;CUSTOM05&quot;, size: 60, color: &quot;deeppink&quot;})
+</code></pre>
+<p>If we want to change appearance of background text (i.e decoy). We can do that easily by using <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setDecoy">setDecoy</a> method.</p>
+<pre class="prettyprint source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
+const captcha = new CaptchaGenerator()
+.setDimension(150, 450) 
+.setCaptcha({text: &quot;CUSTOM05&quot;, size: 60, color: &quot;deeppink&quot;})
+.setDecoy({opacity: 0.5})
+</code></pre>
+<p>You can also customise trace line and add background by using <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setTrace">setTrace</a> and <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setBackground">setBackground</a> method.</p>
+<p>Once you customised everything according to your need then just you can get buffer from <code>generateSync</code> method. And use that buffer to display image in your project.</p>
+<pre class="prettyprint source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
 const captcha = new CaptchaGenerator()
 .setDimension(150, 450) 
 .setCaptcha({text: &quot;CUSTOM05&quot;, size: 60, color: &quot;deeppink&quot;})
 .setDecoy({opacity: 0.5})
 .setTrace({color: &quot;deeppink&quot;});
-const buffer = captcha.generateSync(); //everything is optional simply using `new CaptchaGenerator()` will also work.
-
-captcha.text //returns &quot;CUSTOM05&quot;
-
-writeFileSync('captchaGenerator.png', buffer);
+const buffer = captcha.generateSync();
 </code></pre>
-<p><strong>Result:</strong></p>
-<img src="captcha/captchaGenerator.png">
-<h3>createCaptcha</h3>
-<p><strong>Documentation:</strong> <em><a href="global.html#createCaptcha">Click here</a></em></p>
-<pre class="prettyprint source lang-js"><code>const { createCaptcha } = require('captcha-canvas');
-const { writeFile } = require('fs');
-
-const { image, text } = createCaptcha(300, 100);
-
-(async () => {
-	writeFile('docs/captcha/createCaptcha.png', await image, (err) => {
-        if(err) {
-            console.error(err);
-        } else {
-            console.log(text);
-        }
-    });
-})();
-</code></pre>
-<p><strong>Result:</strong></p>
-<img src="captcha/createCaptcha.png">
-<h3>createCaptchaSync</h3>
-<p><strong>Documentation:</strong> <em><a href="global.html#createCaptchaSync">Click here</a></em></p>
-<pre class="prettyprint source lang-js"><code>const { createCaptchaSync } = require('captcha-canvas');
-const { writeFileSync } = require('fs');
-
-const { image, text } = createCaptchaSync(300, 100);
-
-writeFileSync('createCaptchaSync.png', image);
-console.log(text);
-</code></pre>
-<p><strong>Result:</strong></p>
-<img src="captcha/createCaptchaSync.png">
+<h4>Final Output</h4>
+<p><img src="https://raw.githubusercontent.com/Shashank3736/captcha-canvas/master/examples/all.png" alt="captcha"></p>
 <h2>Support</h2>
 <p>To get help related to this module open an issue in the <a href="https://github.com/Shashank3736/captcha-canvas">github repository</a>.</p></article>
     </section>
