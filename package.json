@@ -43,6 +43,6 @@
     "example": "examples"
   },
   "dependencies": {
-    "skia-canvas": "^1.0.0"
+    "skia-canvas": "^1.0.2"
   }
 }
