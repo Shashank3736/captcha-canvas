@@ -1,13 +1,23 @@
-import { Canvas, CanvasRenderingContext2D, Image } from "skia-canvas";
-import { defaultCaptchaOption, 
-    defaultDecoyOptions, 
-    defaultDimension, 
-    defaultTraceOptions, 
-    SetCaptchaOption, 
+/// <reference lib="dom" />
+
+import { 
+    defaultCaptchaOption, 
+    defaultDecoyOptions,
+    defaultTraceOptions,
     SetDecoyOption, 
     SetTraceOption, 
-    DrawCaptchaOption } from "./constants";
+    DrawCaptchaOption 
+} from "./constants";
+
 import { getRandom, getRandomCoordinate, randomText } from "./util";
+
+/**
+ * Constructor options
+ * @typedef ConstructorOptions
+ * @property {number} [characters=6] Length of captcha text.
+ * @property {CanvasRenderingContext2D} ctx
+ */
+export type ConstructorOptions = { characters?: number, ctx: CanvasRenderingContext2D };
 
 /**
  * Captcha Generator
@@ -15,37 +25,40 @@ import { getRandom, getRandomCoordinate, randomText } from "./util";
 export class Captcha {
     protected _height: number;
     protected _width: number;
-    protected _captcha: SetCaptchaOption;
-    protected _trace: SetTraceOption;
-    protected _decoy: SetDecoyOption;
-    protected _canvas: Canvas;
+    protected _captcha: typeof defaultCaptchaOption;
+    protected _trace: typeof defaultTraceOptions;
+    protected _decoy: typeof defaultDecoyOptions;
     protected _ctx: CanvasRenderingContext2D;
     protected _coordinates: number[][];
     public async: boolean;
     /**
      * Start captcha image creation.
-     * @param {number} [width] Width of captcha image.
-     * @param {number} [height] Height of captcha image.
-     * @param {number} [characters] Size of captcha text.
+     * @param {ConstructorOptions} [option] Size of captcha text.
      * @constructor
      */
-    constructor(width: number = defaultDimension.width, height: number = defaultDimension.height, characters: number = defaultCaptchaOption.characters) {
-        this._height = height;
-        this._width = width;
+    constructor({ 
+        characters = defaultCaptchaOption.characters,
+        ctx,
+    }: ConstructorOptions) {
         this._captcha = defaultCaptchaOption;
         this._captcha.characters = characters;
         this._trace = defaultTraceOptions;
         this._decoy = defaultDecoyOptions;
-        const canvas = new Canvas(width, height);
-        const ctx = canvas.getContext('2d');
         ctx.lineJoin = 'miter';
 		ctx.textBaseline = 'middle';
         ctx.textAlign = 'center';
-        this._canvas = canvas;
+        this._width = ctx.canvas.width
+        this._height = ctx.canvas.height
         this._ctx = ctx;
         this.async = true;
         this._coordinates = [];
-        this._canvas.gpu = false;
+    }
+    /**
+     * Get canvas context.
+     * @returns {CanvasRenderingContext2D}
+     */
+    get context(): CanvasRenderingContext2D {
+        return this._ctx;
     }
     /**
      * Get Captcha text.
@@ -55,23 +68,11 @@ export class Captcha {
         return this._captcha.text || "";
     }
     /**
-     * Get png image of captcha.
-     * @returns {Buffer | Promise<Buffer>} Get png image of captcha created.
-     */
-    get png(): Buffer | Promise<Buffer> {
-        if(this.async) {
-            return this._canvas.toBuffer('png');
-        }
-        else {
-            return this._canvas.toBufferSync('png');
-        }
-    }
-    /**
      * Draw image on your captcha.
      * @param {Image} image Choose image you want to add.
      * @returns {Captcha}
      */
-    drawImage(image: Image): Captcha {
+    drawImage(image: CanvasImageSource): Captcha {
         this._ctx.drawImage(image, 0, 0, this._width, this._height);
         return this;
     }
