@@ -1,5 +1,4 @@
 /// <reference types="node" />
-import { Image } from "skia-canvas";
 import { SetCaptchaOption, SetDecoyOption, SetTraceOption } from "./constants";
 /**
  * Captcha generator class.
@@ -11,6 +10,7 @@ export declare class CaptchaGenerator {
     private trace;
     private decoy;
     private background?;
+    private ctx;
     /**
      * Initatiates the creation of captcha image generation.
      * @example const captcha = new CaptchaGenerator({height: 200, width: 600});
@@ -19,9 +19,10 @@ export declare class CaptchaGenerator {
      * @param {integer} [options.width=300] Width of captcha image.
      * @since 2.0.0
      */
-    constructor(options?: {
-        height: number;
-        width: number;
+    constructor(options: {
+        height?: number;
+        width?: number;
+        ctx: CanvasRenderingContext2D;
     });
     /**
      * Get the text of captcha.
@@ -107,7 +108,7 @@ export declare class CaptchaGenerator {
      * fs.writeFileSync("image.png", buffer)
      * @since 2.0.0
      */
-    generate(): Promise<Buffer>;
+    generate(): Promise<CanvasRenderingContext2D>;
     /**
      * Non asynchronous method to generate captcha image.
      * > Note: It do not use `setBackground` method value for background image. If you want to set background
@@ -126,6 +127,6 @@ export declare class CaptchaGenerator {
      * @since 2.2.0
      */
     generateSync(option?: {
-        background?: Image;
-    }): Buffer;
+        background?: CanvasImageSource;
+    }): CanvasRenderingContext2D;
 }

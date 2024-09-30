@@ -1,4 +1,4 @@
-import { Image } from "skia-canvas";
+/// <reference lib="dom" />
 export interface SetDimensionOption {
     height: number;
     width: number;
@@ -40,7 +40,9 @@ export interface CreateCaptchaOptions {
     captcha?: SetCaptchaOption;
     trace?: SetTraceOption;
     decoy?: SetDecoyOption;
-    background?: Image;
+    background?: CanvasImageSource;
+    dimension?: SetDimensionOption;
+    ctx: CanvasRenderingContext2D;
 }
 /**
  * Captcha text options to customise text appearance and value.
@@ -54,7 +56,16 @@ export interface CreateCaptchaOptions {
  * @property {number} [size=40] Size of captcha text.
  * @property {float} [opacity=1] Opcaity of captcha text.
  */
-export declare const defaultDrawCaptchaOption: DrawCaptchaOption;
+export declare const defaultDrawCaptchaOption: {
+    size: number;
+    font: string;
+    skew: boolean;
+    colors: never[];
+    rotate: number;
+    color: string;
+    opacity: number;
+    text: string;
+};
 /**
  * Captcha text options to customise text appearance and value.
  * @typedef SetCaptchaOptions
@@ -68,14 +79,28 @@ export declare const defaultDrawCaptchaOption: DrawCaptchaOption;
  * @property {number} [size=40] Size of captcha text.
  * @property {float} [opacity=1] Opcaity of captcha text.
  */
-export declare const defaultCaptchaOption: SetCaptchaOption;
+export declare const defaultCaptchaOption: {
+    characters: number;
+    size: number;
+    font: string;
+    skew: boolean;
+    colors: string[] | [];
+    rotate: number;
+    color: string;
+    opacity: number;
+    text: string;
+};
 /**
  * @typedef SetTraceOptions
  * @property {hexCode} [color="#32cf7e"] Color of trace line.
  * @property {number} [size=3] Width of trace line.
  * @property {float} [opacity=1] Opacoty of trace line.
  */
-export declare const defaultTraceOptions: SetTraceOption;
+export declare const defaultTraceOptions: {
+    size: number;
+    color: string;
+    opacity: number;
+};
 /**
  * @typedef SetDecoyOptions
  * @property {hexCode} [color="#646566"] Color of decoy characters.
@@ -84,14 +109,22 @@ export declare const defaultTraceOptions: SetTraceOption;
  * @property {float} [opacity=0.8] Opacity of decoy characters.
  * @property {number} [total] Total count of decoy characters.
  */
-export declare const defaultDecoyOptions: SetDecoyOption;
+export declare const defaultDecoyOptions: {
+    color: string;
+    font: string;
+    size: number;
+    opacity: number;
+};
 /**
  * Customise dimension of captcha image.
  * @typedef SetDimensionOption
  * @property {integer} [height=100] Height of captcha image.
  * @property {integer} [width=300] Width of captcha image.
  */
-export declare const defaultDimension: SetDimensionOption;
+export declare const defaultDimension: {
+    height: number;
+    width: number;
+};
 /**
  * Create captcha options in functions.
  * @typedef CreateCaptchaOptions
