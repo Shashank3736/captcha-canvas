@@ -1,4 +1,4 @@
-import { Image } from "skia-canvas";
+/// <reference lib="dom" />
 
 export interface SetDimensionOption {
     height: number;
@@ -46,7 +46,9 @@ export interface CreateCaptchaOptions {
     captcha?: SetCaptchaOption;
     trace?: SetTraceOption;
     decoy?: SetDecoyOption;
-    background?: Image;
+    background?: CanvasImageSource;
+    dimension?: SetDimensionOption;
+    ctx: CanvasRenderingContext2D;
 }
 
 /**
@@ -61,7 +63,7 @@ export interface CreateCaptchaOptions {
  * @property {number} [size=40] Size of captcha text.
  * @property {float} [opacity=1] Opcaity of captcha text.
  */
- export const defaultDrawCaptchaOption: DrawCaptchaOption = {
+ export const defaultDrawCaptchaOption = {
 	size: 40,
 	font: 'Sans',
 	skew: true,
@@ -69,6 +71,7 @@ export interface CreateCaptchaOptions {
 	rotate: 5,
 	color: '#32cf7e',
 	opacity: 0.8,
+    text: '',
 };
 /**
  * Captcha text options to customise text appearance and value.
@@ -83,15 +86,26 @@ export interface CreateCaptchaOptions {
  * @property {number} [size=40] Size of captcha text.
  * @property {float} [opacity=1] Opcaity of captcha text.
  */
-export const defaultCaptchaOption: SetCaptchaOption = {
+export const defaultCaptchaOption: {
+    characters: number,
+    size: number,
+    font: string,
+    skew: boolean,
+    colors: string[] | [],
+    rotate: number,
+    color: string,
+    opacity: number,
+    text: string
+} = {
     characters: 6,
 	size: 40,
 	font: 'Sans',
-	skew: true,
+	skew: false,
 	colors: [],
-	rotate: 5,
+	rotate: 0,
 	color: '#32cf7e',
 	opacity: 0.8,
+    text: '',
 };
 /**
  * @typedef SetTraceOptions
@@ -99,7 +113,7 @@ export const defaultCaptchaOption: SetCaptchaOption = {
  * @property {number} [size=3] Width of trace line.
  * @property {float} [opacity=1] Opacoty of trace line.
  */
-export const defaultTraceOptions: SetTraceOption = {
+export const defaultTraceOptions = {
 	size: 3,
 	color: '#32cf7e',
 	opacity: 1,
@@ -112,7 +126,7 @@ export const defaultTraceOptions: SetTraceOption = {
  * @property {float} [opacity=0.8] Opacity of decoy characters.
  * @property {number} [total] Total count of decoy characters.
  */
-export const defaultDecoyOptions: SetDecoyOption = {
+export const defaultDecoyOptions = {
 	color: '#646566',
 	font: 'Sans',
 	size: 20,
@@ -124,7 +138,7 @@ export const defaultDecoyOptions: SetDecoyOption = {
  * @property {integer} [height=100] Height of captcha image.
  * @property {integer} [width=300] Width of captcha image.
  */
-export const defaultDimension: SetDimensionOption = {
+export const defaultDimension = {
     height: 100,
     width: 300
 };

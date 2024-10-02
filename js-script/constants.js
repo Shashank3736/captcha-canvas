@@ -1,4 +1,5 @@
 "use strict";
+/// <reference lib="dom" />
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateCaptchaOptions = exports.defaultDimension = exports.defaultDecoyOptions = exports.defaultTraceOptions = exports.defaultCaptchaOption = exports.defaultDrawCaptchaOption = void 0;
 /**
@@ -21,6 +22,7 @@ exports.defaultDrawCaptchaOption = {
     rotate: 5,
     color: '#32cf7e',
     opacity: 0.8,
+    text: '',
 };
 /**
  * Captcha text options to customise text appearance and value.
@@ -39,11 +41,12 @@ exports.defaultCaptchaOption = {
     characters: 6,
     size: 40,
     font: 'Sans',
-    skew: true,
+    skew: false,
     colors: [],
-    rotate: 5,
+    rotate: 0,
     color: '#32cf7e',
     opacity: 0.8,
+    text: '',
 };
 /**
  * @typedef SetTraceOptions

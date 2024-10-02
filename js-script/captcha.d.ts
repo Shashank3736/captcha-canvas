@@ -1,43 +1,49 @@
-/// <reference types="node" />
-import { Canvas, CanvasRenderingContext2D, Image } from "skia-canvas";
-import { SetCaptchaOption, SetDecoyOption, SetTraceOption, DrawCaptchaOption } from "./constants";
+/// <reference lib="dom" />
+import { defaultCaptchaOption, defaultDecoyOptions, defaultTraceOptions, SetDecoyOption, SetTraceOption, DrawCaptchaOption } from "./constants";
+/**
+ * Constructor options
+ * @typedef ConstructorOptions
+ * @property {number} [characters=6] Length of captcha text.
+ * @property {CanvasRenderingContext2D} ctx
+ */
+export declare type ConstructorOptions = {
+    characters?: number;
+    ctx: CanvasRenderingContext2D;
+};
 /**
  * Captcha Generator
  */
 export declare class Captcha {
     protected _height: number;
     protected _width: number;
-    protected _captcha: SetCaptchaOption;
-    protected _trace: SetTraceOption;
-    protected _decoy: SetDecoyOption;
-    protected _canvas: Canvas;
+    protected _captcha: typeof defaultCaptchaOption;
+    protected _trace: typeof defaultTraceOptions;
+    protected _decoy: typeof defaultDecoyOptions;
     protected _ctx: CanvasRenderingContext2D;
     protected _coordinates: number[][];
     async: boolean;
     /**
      * Start captcha image creation.
-     * @param {number} [width] Width of captcha image.
-     * @param {number} [height] Height of captcha image.
-     * @param {number} [characters] Size of captcha text.
+     * @param {ConstructorOptions} [option] Size of captcha text.
      * @constructor
      */
-    constructor(width?: number, height?: number, characters?: number);
+    constructor({ characters, ctx, }: ConstructorOptions);
+    /**
+     * Get canvas context.
+     * @returns {CanvasRenderingContext2D}
+     */
+    get context(): CanvasRenderingContext2D;
     /**
      * Get Captcha text.
      * @returns {string} Get captcha text.
      */
     get text(): string;
     /**
-     * Get png image of captcha.
-     * @returns {Buffer | Promise<Buffer>} Get png image of captcha created.
-     */
-    get png(): Buffer | Promise<Buffer>;
-    /**
      * Draw image on your captcha.
      * @param {Image} image Choose image you want to add.
      * @returns {Captcha}
      */
-    drawImage(image: Image): Captcha;
+    drawImage(image: CanvasImageSource): Captcha;
     /**
      * Add decoy on your captcha image.
      * @param {SetDecoyOptions} [decoyOption] Decoy option you want to customise

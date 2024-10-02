@@ -8,25 +8,68 @@ This is an npm package [captcha-canvas](https://npmjs.com/package/captcha-canvas
 
 [![captcha-canvas](https://nodei.co/npm/captcha-canvas.png)](https://npmjs.com/package/captcha-canvas)
 
-#### Captcha Image:
+## Captcha Image:
 
 ![captcha](examples/example.png)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FShashank3736%2Fcaptcha-canvas.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FShashank3736%2Fcaptcha-canvas?ref=badge_shield)
 
-### Features
+## Features
 
+* Easy to use.
 * Highly customisable you can customise every single value use to make this package.
-* 95% OCR fails to read this captcha image and throw Error.
+* ChatGPT fails to read this captcha image and throw Error.
 * Use class constructor method so you can generate as many frames as many you want by using same values.
 * No bundled dependencies. You need to install them to use the package.
 * Support of background images is also possible.
 * Captcha adapt all the external options very easily.
 
 ## How to use?
-* **v2:** If you are using v2 [click here](https://captcha-canvas.js.org/v2/index.html) for documentation and examples.
-* **v3:** If you are using v3 [click here](https://captcha-canvas.js.org) for documentation and examples.
 
-> Note: v3 also contain alot of functions to create instant captcha like [`createCaptcha`](https://captcha-canvas.js.org/global.html#createCaptcha).
+```js
+const fs = require('fs');
+const { createCanvas } = require('canvas');
+const { createCaptcha } = require('captcha-canvas');
+
+const canvas = createCanvas(300, 100);
+const ctx = canvas.getContext('2d');
+
+const { text } = createCaptcha({ ctx });
+
+console.log(text);
+fs.writeFileSync('./examples/example.png', canvas.toBuffer('image/png'));
+```
+
+You can also customize captcha as much as you want by customizing the placement of layers.
+
+Captcha creation have mainly 3 steps draw trace line, draw decoy text and then draw captcha. If you want you can order them however you want by using `Captcha` class.
+
+```js
+const fs = require('fs');
+const { createCanvas } = require('canvas');
+const { Captcha } = require('captcha-canvas');
+
+const canvas = createCanvas(300, 100);
+const ctx = canvas.getContext('2d');
+
+const captcha = new Captcha({ ctx, characters: 8 });
+
+captcha.drawCaptcha({
+  color: 'deeppink', // optional
+  size: 60, // optional
+});
+captcha.drawTrace({
+  size: 5, // optional
+  color: 'deeppink', // optional
+});
+captcha.addDecoy({
+  total: 100, // optional
+});
+
+const text = captcha.text;
+fs.writeFileSync(`./examples/tmp/${new Date().getTime()}-${text}.png`, canvas.toBuffer('image/png'));
+```
+
+There are many more customization you can do in this module. Check [documentation](https://captcha-canvas.js.org/) for more details.
 
 ## Need Help:
 Open an [issue](https://github.com/Shashank3736/captcha-canvas/issues) if you need help regarding this module or want to report any bug.
