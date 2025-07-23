@@ -28,7 +28,7 @@ export declare class CaptchaGenerator {
      * @type {string}
      * @since 2.0.3
      */
-    get text(): string | undefined;
+    get text(): string;
     /**
      * set dimension for your captcha image
      * @param {integer} height Height of captcha image.
@@ -72,7 +72,7 @@ export declare class CaptchaGenerator {
      * fs.writeFileSync("image.png", buffer)
      * @since 2.0.0
      */
-    setCaptcha(option: SetCaptchaOption): this;
+    setCaptcha(option: SetCaptchaOption | SetCaptchaOption[]): this;
     /**
      * Change trace creation options.
      * @param {SetTraceOptions} options Trace Line appearance options.

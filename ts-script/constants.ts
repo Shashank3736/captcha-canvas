@@ -43,7 +43,7 @@ export interface SetTraceOption {
 }
 
 export interface CreateCaptchaOptions {
-    captcha?: SetCaptchaOption;
+    captcha?: SetCaptchaOption | SetCaptchaOption[];
     trace?: SetTraceOption;
     decoy?: SetDecoyOption;
     background?: Image;

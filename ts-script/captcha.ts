@@ -122,35 +122,67 @@ export class Captcha {
      * @param {DrawCaptchaOption} [captchaOption] 
      * @returns {Captcha}
      */
-    drawCaptcha(captchaOption: DrawCaptchaOption = {}): Captcha {
-        const option = { ...this._captcha, ...captchaOption };
-        if(captchaOption.text) option.text = captchaOption.text;
-        if(!option.text) option.text = randomText((option.characters ?? defaultCaptchaOption.characters) as number);
-        if(option.text.length != option.characters) {
-            if(captchaOption.text) {
-                throw new Error("Size of text and no. of characters is not matching.");
+    drawCaptcha(captchaOption: DrawCaptchaOption | DrawCaptchaOption[] = {}): Captcha {
+        if (Array.isArray(captchaOption)) {
+            let text = "";
+            for (const option of captchaOption) {
+                if (!option.text) throw new Error("Each captcha option in array must have a text property.");
+                text += option.text;
             }
-            else {
-                option.text = randomText((option.characters ?? defaultCaptchaOption.characters) as number);
+            this._captcha.text = text;
+            this._captcha.characters = text.length;
+
+            if(!this._coordinates[0]) this._coordinates = getRandomCoordinate(this._height, this._width, this._captcha.characters || 6);
+            const coordinates: number[][] = this._coordinates;
+            let charIndex = 0;
+
+            for (const option of captchaOption) {
+                const text = option.text || "";
+                for (let i = 0; i < text.length; i++) {
+                    this._ctx.save();
+                    this._ctx.translate(coordinates[charIndex][0], coordinates[charIndex][1]);
+                    this._ctx.font = `${option.size}px ${option.font}`;
+                    this._ctx.globalAlpha = (option.opacity ?? defaultCaptchaOption.opacity) as number;
+                    this._ctx.fillStyle = (option.color ?? defaultCaptchaOption.color) as string;
+                    if (option.skew) {this._ctx.transform(1, Math.random(), getRandom(20) / 100, 1, 0, 0);}
+                    if (option.rotate && option.rotate > 0) {this._ctx.rotate(getRandom(-option.rotate, option.rotate) * Math.PI / 180);}
+                    if (option.colors && option.colors?.length >= 2) {this._ctx.fillStyle = option.colors[getRandom(option.colors.length - 1)];}
+                    this._ctx.fillText(text[i], 0, 0);
+                    this._ctx.restore();
+                    charIndex++;
+                }
             }
-        }
-        this._captcha = option;
 
-        if(!this._coordinates[0]) this._coordinates = getRandomCoordinate(this._height, this._width, option.characters || 6);
-        const coordinates: number[][] = this._coordinates;
-        
-        this._ctx.font = `${option.size}px ${option.font}`;
-		this._ctx.globalAlpha = (option.opacity ?? defaultCaptchaOption.opacity) as number;
-		this._ctx.fillStyle = (option.color ?? defaultCaptchaOption.color) as string;
-
-		for(let n = 0; n < coordinates.length; n++) {
-			this._ctx.save();
-			this._ctx.translate(coordinates[n][0], coordinates[n][1]);
-			if (option.skew) {this._ctx.transform(1, Math.random(), getRandom(20) / 100, 1, 0, 0);}
-			if (option.rotate && option.rotate > 0) {this._ctx.rotate(getRandom(-option.rotate, option.rotate) * Math.PI / 180);}
-			if (option.colors && option.colors?.length >= 2) {this._ctx.fillStyle = option.colors[getRandom(option.colors.length - 1)];}
-			this._ctx.fillText(option.text[n], 0, 0);
-			this._ctx.restore();
+        } else {
+            const option = { ...this._captcha, ...captchaOption };
+            if(captchaOption.text) option.text = captchaOption.text;
+            if(!option.text) option.text = randomText((option.characters ?? defaultCaptchaOption.characters) as number);
+            if(option.text.length != option.characters) {
+                if(captchaOption.text) {
+                    throw new Error("Size of text and no. of characters is not matching.");
+                }
+                else {
+                    option.text = randomText((option.characters ?? defaultCaptchaOption.characters) as number);
+                }
+            }
+            this._captcha = option;
+    
+            if(!this._coordinates[0]) this._coordinates = getRandomCoordinate(this._height, this._width, option.characters || 6);
+            const coordinates: number[][] = this._coordinates;
+            
+            this._ctx.font = `${option.size}px ${option.font}`;
+            this._ctx.globalAlpha = (option.opacity ?? defaultCaptchaOption.opacity) as number;
+            this._ctx.fillStyle = (option.color ?? defaultCaptchaOption.color) as string;
+    
+            for(let n = 0; n < coordinates.length; n++) {
+                this._ctx.save();
+                this._ctx.translate(coordinates[n][0], coordinates[n][1]);
+                if (option.skew) {this._ctx.transform(1, Math.random(), getRandom(20) / 100, 1, 0, 0);}
+                if (option.rotate && option.rotate > 0) {this._ctx.rotate(getRandom(-option.rotate, option.rotate) * Math.PI / 180);}
+                if (option.colors && option.colors?.length >= 2) {this._ctx.fillStyle = option.colors[getRandom(option.colors.length - 1)];}
+                this._ctx.fillText(option.text![n], 0, 0);
+                this._ctx.restore();
+            }
         }
 
         return this;

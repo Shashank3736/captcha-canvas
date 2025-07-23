@@ -23,7 +23,9 @@ class CaptchaGenerator {
         this.captcha = constants_1.defaultCaptchaOption;
         this.trace = constants_1.defaultTraceOptions;
         this.decoy = constants_1.defaultDecoyOptions;
-        this.captcha.text = (0, util_1.randomText)(this.captcha.characters || 6);
+        if (!Array.isArray(this.captcha)) {
+            this.captcha.text = (0, util_1.randomText)(this.captcha.characters || 6);
+        }
     }
     /**
      * Get the text of captcha.
@@ -31,6 +33,9 @@ class CaptchaGenerator {
      * @since 2.0.3
      */
     get text() {
+        if (Array.isArray(this.captcha)) {
+            return this.captcha.map((c) => c.text || "").join("");
+        }
         return this.captcha.text;
     }
     /**
@@ -84,11 +89,26 @@ class CaptchaGenerator {
      * @since 2.0.0
      */
     setCaptcha(option) {
-        this.captcha = { ...this.captcha, ...option };
-        if (option.text)
-            this.captcha.characters = option.text.length;
-        if (!option.text && option.characters)
-            this.captcha.text = (0, util_1.randomText)(option.characters);
+        if (Array.isArray(option)) {
+            this.captcha = option.map((o) => ({ ...constants_1.defaultCaptchaOption, ...o }));
+            for (const o of this.captcha) {
+                if (!o.text)
+                    throw new Error("Each captcha option in array must have a text property.");
+                o.characters = o.text.length;
+            }
+        }
+        else {
+            this.captcha = {
+                ...(Array.isArray(this.captcha) ? constants_1.defaultCaptchaOption : this.captcha),
+                ...option,
+            };
+            if (!Array.isArray(this.captcha)) {
+                if (option.text)
+                    this.captcha.characters = option.text.length;
+                else if (this.captcha.characters)
+                    this.captcha.text = (0, util_1.randomText)(this.captcha.characters);
+            }
+        }
         return this;
     }
     /**
@@ -137,7 +157,7 @@ class CaptchaGenerator {
             captchaCanvas.drawImage(await (0, skia_canvas_1.loadImage)(this.background));
         if (this.decoy.opacity)
             captchaCanvas.addDecoy(this.decoy);
-        if (this.captcha.opacity)
+        if (this.captcha)
             captchaCanvas.drawCaptcha(this.captcha);
         if (this.trace.opacity)
             captchaCanvas.drawTrace(this.trace);
@@ -161,13 +181,15 @@ class CaptchaGenerator {
      * @since 2.2.0
      */
     generateSync(option = {}) {
-        const captchaCanvas = new _1.Captcha(this.width, this.height, this.captcha.characters);
+        const captchaCanvas = new _1.Captcha(this.width, this.height, Array.isArray(this.captcha)
+            ? this.captcha.reduce((acc, val) => acc + (val.characters || 0), 0)
+            : this.captcha.characters);
         captchaCanvas.async = false;
         if (option.background)
             captchaCanvas.drawImage(option.background);
         if (this.decoy.opacity)
             captchaCanvas.addDecoy(this.decoy);
-        if (this.captcha.opacity)
+        if (this.captcha)
             captchaCanvas.drawCaptcha(this.captcha);
         if (this.trace.opacity)
             captchaCanvas.drawTrace(this.trace);

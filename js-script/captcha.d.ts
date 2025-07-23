@@ -57,5 +57,5 @@ export declare class Captcha {
      * @param {DrawCaptchaOption} [captchaOption]
      * @returns {Captcha}
      */
-    drawCaptcha(captchaOption?: DrawCaptchaOption): Captcha;
+    drawCaptcha(captchaOption?: DrawCaptchaOption | DrawCaptchaOption[]): Captcha;
 }
