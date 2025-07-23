@@ -167,6 +167,6 @@ export class CaptchaGenerator {
         if(this.captcha.opacity) captchaCanvas.drawCaptcha(this.captcha);
         if(this.trace.opacity) captchaCanvas.drawTrace(this.trace);
 
-        return captchaCanvas.png;
+        return captchaCanvas.png as Buffer;
     }
 }

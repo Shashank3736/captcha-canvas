@@ -35,7 +35,7 @@ export function createCaptcha(width: number, height: number, option: CreateCaptc
 
     captcha.addDecoy({ opacity: 1 });
 
-    return { image: captcha.png, text: captcha.text };
+    return { image: captcha.png as Promise<Buffer>, text: captcha.text };
 }
 /**
  * Create captcha in sync mode.
@@ -61,5 +61,5 @@ export function createCaptchaSync(width: number, height: number, option: CreateC
 
     captcha.addDecoy({ opacity: 1 });
 
-    return { image: captcha.png, text: captcha.text };
+    return { image: captcha.png as Buffer, text: captcha.text };
 }

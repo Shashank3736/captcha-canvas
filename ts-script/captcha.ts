@@ -29,11 +29,10 @@ export class Captcha {
      * @param {number} [characters] Size of captcha text.
      * @constructor
      */
-    constructor(width: number = defaultDimension.width, height: number = defaultDimension.height, characters: number = defaultCaptchaOption.characters) {
+    constructor(width: number = defaultDimension.width, height: number = defaultDimension.height, characters: number = defaultCaptchaOption.characters ?? 6) {
         this._height = height;
         this._width = width;
-        this._captcha = defaultCaptchaOption;
-        this._captcha.characters = characters;
+        this._captcha = { ...defaultCaptchaOption, characters: characters };
         this._trace = defaultTraceOptions;
         this._decoy = defaultDecoyOptions;
         const canvas = new Canvas(width, height);
@@ -86,8 +85,8 @@ export class Captcha {
 
         const decoyText = randomText(option.total);
         this._ctx.font = `${option.size}px ${option.font}`;
-        this._ctx.globalAlpha = option.opacity;
-        this._ctx.fillStyle = option.color;
+        this._ctx.globalAlpha = (option.opacity ?? defaultDecoyOptions.opacity) as number;
+        this._ctx.fillStyle = (option.color ?? defaultDecoyOptions.color) as string;
 		for(const element of decoyText) {
 			this._ctx.fillText(element, getRandom(30, this._width - 30), getRandom(30, this._height - 30));
 		}
@@ -105,12 +104,12 @@ export class Captcha {
         if(!this._coordinates[0]) this._coordinates = getRandomCoordinate(this._height, this._width, this._captcha.characters || 6);
         const coordinates: number[][] = this._coordinates;
 
-        this._ctx.strokeStyle = option.color;
-		this._ctx.globalAlpha = option.opacity;
+        this._ctx.strokeStyle = (option.color ?? defaultTraceOptions.color) as string;
+  this._ctx.globalAlpha = (option.opacity ?? defaultTraceOptions.opacity) as number;
 
-		this._ctx.beginPath();
-		this._ctx.moveTo(coordinates[0][0], coordinates[0][1]);
-		this._ctx.lineWidth = option.size;
+  this._ctx.beginPath();
+  this._ctx.moveTo(coordinates[0][0], coordinates[0][1]);
+  this._ctx.lineWidth = (option.size ?? defaultTraceOptions.size) as number;
 		for(let i = 1; i < coordinates.length; i++) {
 			this._ctx.lineTo(coordinates[i][0], coordinates[i][1]);
 		}
@@ -126,13 +125,13 @@ export class Captcha {
     drawCaptcha(captchaOption: DrawCaptchaOption = {}): Captcha {
         const option = { ...this._captcha, ...captchaOption };
         if(captchaOption.text) option.text = captchaOption.text;
-        if(!option.text) option.text = randomText(option.characters);
+        if(!option.text) option.text = randomText((option.characters ?? defaultCaptchaOption.characters) as number);
         if(option.text.length != option.characters) {
             if(captchaOption.text) {
                 throw new Error("Size of text and no. of characters is not matching.");
             }
             else {
-                option.text = randomText(option.characters);
+                option.text = randomText((option.characters ?? defaultCaptchaOption.characters) as number);
             }
         }
         this._captcha = option;
@@ -141,8 +140,8 @@ export class Captcha {
         const coordinates: number[][] = this._coordinates;
         
         this._ctx.font = `${option.size}px ${option.font}`;
-		this._ctx.globalAlpha = option.opacity;
-		this._ctx.fillStyle = option.color;
+		this._ctx.globalAlpha = (option.opacity ?? defaultCaptchaOption.opacity) as number;
+		this._ctx.fillStyle = (option.color ?? defaultCaptchaOption.color) as string;
 
 		for(let n = 0; n < coordinates.length; n++) {
 			this._ctx.save();

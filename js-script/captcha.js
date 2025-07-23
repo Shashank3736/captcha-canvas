@@ -15,11 +15,14 @@ class Captcha {
      * @param {number} [characters] Size of captcha text.
      * @constructor
      */
-    constructor(width = constants_1.defaultDimension.width, height = constants_1.defaultDimension.height, characters = constants_1.defaultCaptchaOption.characters) {
+    constructor(width, height, characters) {
+        var _a;
+        if (width === void 0) { width = constants_1.defaultDimension.width; }
+        if (height === void 0) { height = constants_1.defaultDimension.height; }
+        if (characters === void 0) { characters = (_a = constants_1.defaultCaptchaOption.characters) !== null && _a !== void 0 ? _a : 6; }
         this._height = height;
         this._width = width;
-        this._captcha = constants_1.defaultCaptchaOption;
-        this._captcha.characters = characters;
+        this._captcha = { ...constants_1.defaultCaptchaOption, characters: characters };
         this._trace = constants_1.defaultTraceOptions;
         this._decoy = constants_1.defaultDecoyOptions;
         const canvas = new skia_canvas_1.Canvas(width, height);
@@ -67,13 +70,14 @@ class Captcha {
      * @returns {Captcha}
      */
     addDecoy(decoyOption = {}) {
+        var _a, _b;
         const option = { ...this._decoy, ...decoyOption };
         if (!option.total)
             option.total = Math.floor(this._width * this._height / 10000);
         const decoyText = (0, util_1.randomText)(option.total);
         this._ctx.font = `${option.size}px ${option.font}`;
-        this._ctx.globalAlpha = option.opacity;
-        this._ctx.fillStyle = option.color;
+        this._ctx.globalAlpha = ((_a = option.opacity) !== null && _a !== void 0 ? _a : constants_1.defaultDecoyOptions.opacity);
+        this._ctx.fillStyle = ((_b = option.color) !== null && _b !== void 0 ? _b : constants_1.defaultDecoyOptions.color);
         for (const element of decoyText) {
             this._ctx.fillText(element, (0, util_1.getRandom)(30, this._width - 30), (0, util_1.getRandom)(30, this._height - 30));
         }
@@ -87,15 +91,16 @@ class Captcha {
      * @returns {Captcha}
      */
     drawTrace(traceOption = {}) {
+        var _a, _b, _c;
         const option = { ...this._trace, ...traceOption };
         if (!this._coordinates[0])
             this._coordinates = (0, util_1.getRandomCoordinate)(this._height, this._width, this._captcha.characters || 6);
         const coordinates = this._coordinates;
-        this._ctx.strokeStyle = option.color;
-        this._ctx.globalAlpha = option.opacity;
+        this._ctx.strokeStyle = ((_a = option.color) !== null && _a !== void 0 ? _a : constants_1.defaultTraceOptions.color);
+        this._ctx.globalAlpha = ((_b = option.opacity) !== null && _b !== void 0 ? _b : constants_1.defaultTraceOptions.opacity);
         this._ctx.beginPath();
         this._ctx.moveTo(coordinates[0][0], coordinates[0][1]);
-        this._ctx.lineWidth = option.size;
+        this._ctx.lineWidth = ((_c = option.size) !== null && _c !== void 0 ? _c : constants_1.defaultTraceOptions.size);
         for (let i = 1; i < coordinates.length; i++) {
             this._ctx.lineTo(coordinates[i][0], coordinates[i][1]);
         }
@@ -108,18 +113,18 @@ class Captcha {
      * @returns {Captcha}
      */
     drawCaptcha(captchaOption = {}) {
-        var _a;
+        var _a, _b, _c, _d, _e;
         const option = { ...this._captcha, ...captchaOption };
         if (captchaOption.text)
             option.text = captchaOption.text;
         if (!option.text)
-            option.text = (0, util_1.randomText)(option.characters);
+            option.text = (0, util_1.randomText)(((_a = option.characters) !== null && _a !== void 0 ? _a : constants_1.defaultCaptchaOption.characters));
         if (option.text.length != option.characters) {
             if (captchaOption.text) {
                 throw new Error("Size of text and no. of characters is not matching.");
             }
             else {
-                option.text = (0, util_1.randomText)(option.characters);
+                option.text = (0, util_1.randomText)(((_b = option.characters) !== null && _b !== void 0 ? _b : constants_1.defaultCaptchaOption.characters));
             }
         }
         this._captcha = option;
@@ -127,8 +132,8 @@ class Captcha {
             this._coordinates = (0, util_1.getRandomCoordinate)(this._height, this._width, option.characters || 6);
         const coordinates = this._coordinates;
         this._ctx.font = `${option.size}px ${option.font}`;
-        this._ctx.globalAlpha = option.opacity;
-        this._ctx.fillStyle = option.color;
+        this._ctx.globalAlpha = ((_c = option.opacity) !== null && _c !== void 0 ? _c : constants_1.defaultCaptchaOption.opacity);
+        this._ctx.fillStyle = ((_d = option.color) !== null && _d !== void 0 ? _d : constants_1.defaultCaptchaOption.color);
         for (let n = 0; n < coordinates.length; n++) {
             this._ctx.save();
             this._ctx.translate(coordinates[n][0], coordinates[n][1]);
@@ -138,7 +143,7 @@ class Captcha {
             if (option.rotate && option.rotate > 0) {
                 this._ctx.rotate((0, util_1.getRandom)(-option.rotate, option.rotate) * Math.PI / 180);
             }
-            if (option.colors && ((_a = option.colors) === null || _a === void 0 ? void 0 : _a.length) >= 2) {
+            if (option.colors && ((_e = option.colors) === null || _e === void 0 ? void 0 : _e.length) >= 2) {
                 this._ctx.fillStyle = option.colors[(0, util_1.getRandom)(option.colors.length - 1)];
             }
             this._ctx.fillText(option.text[n], 0, 0);
