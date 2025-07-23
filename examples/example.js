@@ -1,4 +1,4 @@
-const { CaptchaGenerator } = require('../dist/index');
+const { CaptchaGenerator } = require('../');
 const fs = require('fs');
 
 (async () => {
