@@ -9,7 +9,8 @@
     "example": "node examples/example.js",
     "start": "node index.js",
     "test": "node test.js",
-    "typetest": ""
+    "typetest": "",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
