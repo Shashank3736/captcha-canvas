@@ -13,12 +13,29 @@ import { createCanvas, loadImage, Image } from 'canvas';
 
 const PD = 30;
 
+/**
+ * @function getRandom
+ * @description Get a random number between two values
+ * @param {number} start - The start value
+ * @param {number} end - The end value
+ * @returns {number} - A random number
+ */
 function getRandom(start: number, end: number): number {
 	start = start || 0;
 	end = end || 0;
 	return Math.round(Math.random() * Math.abs(end - start)) + Math.min(start, end);
 }
-
+/**
+ * @class CaptchaGenerator
+ * @description CaptchaGenerator class
+ * @example
+ * const captcha = new CaptchaGenerator();
+ * captcha.setDimension(150, 450);
+ * captcha.setCaptcha({font: "Comic Sans", size: 60});
+ * captcha.setDecoy({opacity: 0.5});
+ * captcha.setTrace({color: "blue"});
+ * const {buffer, text} = await captcha.generate();
+ */
 class CaptchaGenerator {
 	private height: number;
 	private width: number;
@@ -27,7 +44,10 @@ class CaptchaGenerator {
 	private decoy: SetDecoyOptions;
 	private background?: Buffer | string;
 	private captchaSegments: SetCaptchaOptions[] = [];
-
+	/**
+	 * @constructor
+	 * @param {SetDimensionOption} options - Options for the captcha generator
+	 */
 	constructor(options: SetDimensionOption = {}) {
 		this.height = options.height || 100;
 		this.width = options.width || 300;
@@ -40,22 +60,42 @@ class CaptchaGenerator {
 			.replace(/[^a-z]/gi, '')
 			.substr(0, this.captcha.characters);
 	}
-
+	/**
+	 * @method text
+	 * @description Get the captcha text
+	 * @returns {string} The captcha text
+	 */
 	get text(): string {
 		return this.captcha.text || '';
 	}
-
+	/**
+	 * @method setDimension
+	 * @description Set the dimension of the captcha
+	 * @param {number} height - The height of the captcha
+	 * @param {number} width - The width of the captcha
+	 * @returns {this} The captcha generator instance
+	 */
 	setDimension(height: number, width: number): this {
 		this.height = height;
 		this.width = width;
 		return this;
 	}
-
+	/**
+	 * @method setBackground
+	 * @description Set the background of the captcha
+	 * @param {Buffer | string} image - The background image
+	 * @returns {this} The captcha generator instance
+	 */
 	setBackground(image: Buffer | string): this {
 		this.background = image;
 		return this;
 	}
-
+	/**
+	 * @method setCaptcha
+	 * @description Set the captcha options
+	 * @param {SetCaptchaOptions | SetCaptchaOptions[]} options - The captcha options
+	 * @returns {this} The captcha generator instance
+	 */
 	setCaptcha(options: SetCaptchaOptions | SetCaptchaOptions[]): this {
 		if (Array.isArray(options)) {
 			this.captchaSegments = options;
@@ -86,17 +126,31 @@ class CaptchaGenerator {
 		}
 		return this;
 	}
-
+	/**
+	 * @method setTrace
+	 * @description Set the trace options
+	 * @param {SetTraceOptions} options - The trace options
+	 * @returns {this} The captcha generator instance
+	 */
 	setTrace(options: SetTraceOptions): this {
 		this.trace = merge(this.trace, options) as SetTraceOptions;
 		return this;
 	}
-
+	/**
+	 * @method setDecoy
+	 * @description Set the decoy options
+	 * @param {SetDecoyOptions} options - The decoy options
+	 * @returns {this} The captcha generator instance
+	 */
 	setDecoy(options: SetDecoyOptions): this {
 		this.decoy = merge(this.decoy, options) as SetDecoyOptions;
 		return this;
 	}
-
+	/**
+	 * @method generate
+	 * @description Generate the captcha image
+	 * @returns {Promise<Buffer>} The captcha image buffer
+	 */
 	async generate(): Promise<Buffer> {
 		const canvas = createCanvas(this.width, this.height);
 		const ctx = canvas.getContext('2d');
@@ -189,7 +243,13 @@ class CaptchaGenerator {
 
 		return canvas.toBuffer();
 	}
-
+	/**
+	 * @method generateSync
+	 * @description Generate the captcha image synchronously
+	 * @param {object} options - The options for generating the captcha
+	 * @param {Image} options.background - The background image
+	 * @returns {Buffer} The captcha image buffer
+	 */
 	generateSync(options: { background?: Image } = {}): Buffer {
 		const canvas = createCanvas(this.width, this.height);
 		const ctx = canvas.getContext('2d');

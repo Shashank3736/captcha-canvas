@@ -9,7 +9,6 @@
     "example": "npm run build && node examples/example.js",
     "start": "node index.js",
     "test": "node test.js",
-    "typetest": "",
     "prepublishOnly": "npm run build"
   },
   "repository": {
