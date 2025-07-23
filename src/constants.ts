@@ -13,6 +13,8 @@ export interface SetCaptchaOptions {
 	rotate?: number;
 	size?: number;
 	opacity?: number;
+	start?: number;
+	end?: number;
 }
 
 export interface SetTraceOptions {

@@ -26,6 +26,7 @@ class CaptchaGenerator {
 	private trace: SetTraceOptions;
 	private decoy: SetDecoyOptions;
 	private background?: Buffer | string;
+	private captchaSegments: SetCaptchaOptions[] = [];
 
 	constructor(options: SetDimensionOption = {}) {
 		this.height = options.height || 100;
@@ -55,15 +56,33 @@ class CaptchaGenerator {
 		return this;
 	}
 
-	setCaptcha(options: SetCaptchaOptions): this {
-		this.captcha = merge(this.captcha, options) as SetCaptchaOptions;
-		if (options.text) this.captcha.characters = options.text.length;
-		if (!options.text && options.characters) {
-			this.captcha.text = randomBytes(32)
-				.toString('hex')
-				.toUpperCase()
-				.replace(/[^a-z]/gi, '')
-				.substr(0, options.characters);
+	setCaptcha(options: SetCaptchaOptions | SetCaptchaOptions[]): this {
+		if (Array.isArray(options)) {
+			this.captchaSegments = options;
+			const textFromSegments = options.map(opt => opt.text).filter(Boolean).join('');
+			if (textFromSegments) {
+				this.captcha.text = textFromSegments;
+				this.captcha.characters = textFromSegments.length;
+			} else if (!this.captcha.text || !this.captcha.characters) {
+				this.captcha.characters = this.captcha.characters || defaultCaptchaOptions.characters;
+				this.captcha.text = randomBytes(32)
+					.toString('hex')
+					.toUpperCase()
+					.replace(/[^a-z]/gi, '')
+					.substr(0, this.captcha.characters);
+			}
+
+		} else {
+			this.captchaSegments = [options];
+			this.captcha = merge(this.captcha, options) as SetCaptchaOptions;
+			if (options.text) this.captcha.characters = options.text.length;
+			if (!options.text && options.characters) {
+				this.captcha.text = randomBytes(32)
+					.toString('hex')
+					.toUpperCase()
+					.replace(/[^a-z]/gi, '')
+					.substr(0, options.characters);
+			}
 		}
 		return this;
 	}
@@ -130,26 +149,40 @@ class CaptchaGenerator {
 		}
 
 		if (this.captcha.opacity) {
-			ctx.font = `${this.captcha.size}px ${this.captcha.font}`;
-			ctx.globalAlpha = this.captcha.opacity;
-			ctx.fillStyle = this.captcha.color || '#000000';
 			for (let n = 0; n < coordinates.length; n++) {
+				const char = this.captcha.text ? this.captcha.text[n] : '';
+				let charOptions = { ...this.captcha }; // Default to global captcha options
+
+				// Find specific options for this character
+				for (const segmentOpt of this.captchaSegments) {
+					const start = segmentOpt.start !== undefined ? segmentOpt.start : 0;
+					const end = segmentOpt.end !== undefined ? segmentOpt.end : this.captcha.characters;
+
+					if (n >= start && n < end) {
+						charOptions = merge(charOptions, segmentOpt) as SetCaptchaOptions;
+					}
+				}
+
+				ctx.font = `${charOptions.size}px ${charOptions.font}`;
+				ctx.globalAlpha = charOptions.opacity || 1;
+				ctx.fillStyle = charOptions.color || '#000000';
+
 				ctx.save();
 				ctx.translate(coordinates[n][0], coordinates[n][1]);
-				if (this.captcha.skew) {
+				if (charOptions.skew) {
 					ctx.transform(1, Math.random(), getRandom(0, 20) / 100, 1, 0, 0);
 				}
-				if (this.captcha.rotate && this.captcha.rotate > 0) {
+				if (charOptions.rotate && charOptions.rotate > 0) {
 					ctx.rotate(
-						(getRandom(-this.captcha.rotate, this.captcha.rotate) * Math.PI) / 180
+						(getRandom(-charOptions.rotate, charOptions.rotate) * Math.PI) / 180
 					);
 				}
-				if (this.captcha.colors && this.captcha.colors.length >= 2) {
-					ctx.fillStyle = this.captcha.colors[
-						getRandom(0, this.captcha.colors.length - 1)
+				if (charOptions.colors && charOptions.colors.length >= 2) {
+					ctx.fillStyle = charOptions.colors[
+						getRandom(0, charOptions.colors.length - 1)
 					];
 				}
-				if (this.captcha.text) ctx.fillText(this.captcha.text[n], 0, 0);
+				ctx.fillText(char, 0, 0);
 				ctx.restore();
 			}
 		}
@@ -208,26 +241,40 @@ class CaptchaGenerator {
 		}
 
 		if (this.captcha.opacity) {
-			ctx.font = `${this.captcha.size}px ${this.captcha.font}`;
-			ctx.globalAlpha = this.captcha.opacity;
-			ctx.fillStyle = this.captcha.color || '#000000';
 			for (let n = 0; n < coordinates.length; n++) {
+				const char = this.captcha.text ? this.captcha.text[n] : '';
+				let charOptions = { ...this.captcha }; // Default to global captcha options
+
+				// Find specific options for this character
+				for (const segmentOpt of this.captchaSegments) {
+					const start = segmentOpt.start !== undefined ? segmentOpt.start : 0;
+					const end = segmentOpt.end !== undefined ? segmentOpt.end : this.captcha.characters;
+
+					if (n >= start && n < end) {
+						charOptions = merge(charOptions, segmentOpt) as SetCaptchaOptions;
+					}
+				}
+
+				ctx.font = `${charOptions.size}px ${charOptions.font}`;
+				ctx.globalAlpha = charOptions.opacity || 1;
+				ctx.fillStyle = charOptions.color || '#000000';
+
 				ctx.save();
 				ctx.translate(coordinates[n][0], coordinates[n][1]);
-				if (this.captcha.skew) {
+				if (charOptions.skew) {
 					ctx.transform(1, Math.random(), getRandom(0, 20) / 100, 1, 0, 0);
 				}
-				if (this.captcha.rotate && this.captcha.rotate > 0) {
+				if (charOptions.rotate && charOptions.rotate > 0) {
 					ctx.rotate(
-						(getRandom(-this.captcha.rotate, this.captcha.rotate) * Math.PI) / 180
+						(getRandom(-charOptions.rotate, charOptions.rotate) * Math.PI) / 180
 					);
 				}
-				if (this.captcha.colors && this.captcha.colors.length >= 2) {
-					ctx.fillStyle = this.captcha.colors[
-						getRandom(0, this.captcha.colors.length - 1)
+				if (charOptions.colors && charOptions.colors.length >= 2) {
+					ctx.fillStyle = charOptions.colors[
+						getRandom(0, charOptions.colors.length - 1)
 					];
 				}
-				if (this.captcha.text) ctx.fillText(this.captcha.text[n], 0, 0);
+				ctx.fillText(char, 0, 0);
 				ctx.restore();
 			}
 		}

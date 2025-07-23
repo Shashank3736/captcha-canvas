@@ -25,4 +25,13 @@ const fs = require('fs');
 	fs.writeFileSync('./examples/all.png', captcha.generateSync());
 	// console text of captcha
 	console.log(captcha.text);
+	/* Set Captcha with segments example*/
+	captcha.setCaptcha([
+		{ text: 'AB', color: 'red', size: 60, start: 0, end: 2 },
+		{ text: 'CD', color: 'green', size: 40, start: 2, end: 4 },
+		{ text: 'EF', color: 'blue', size: 50, start: 4, end: 6 },
+	]);
+	captcha.setDimension(150, 450);
+	fs.writeFileSync('./examples/segmented_captcha.png', captcha.generateSync());
+	console.log('Segmented Captcha Text:', captcha.text);
 })();

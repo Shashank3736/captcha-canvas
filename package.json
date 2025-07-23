@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "docsgen": "jsdoc --configure .jsdoc.json --verbose",
-    "example": "node examples/example.js",
+    "example": "npm run build && node examples/example.js",
     "start": "node index.js",
     "test": "node test.js",
     "typetest": "",
