@@ -8,7 +8,7 @@ import { randomText } from "./util";
 export class CaptchaGenerator {
     private height: number;
     private width: number;
-    private captcha: SetCaptchaOption;
+    private captcha: SetCaptchaOption | SetCaptchaOption[];
     private trace: SetTraceOption;
     private decoy: SetDecoyOption;
     private background?: string | Buffer;
@@ -26,15 +26,20 @@ export class CaptchaGenerator {
         this.captcha = defaultCaptchaOption;
         this.trace = defaultTraceOptions;
         this.decoy = defaultDecoyOptions;
-        this.captcha.text = randomText(this.captcha.characters || 6);
+        if(!Array.isArray(this.captcha)) {
+            this.captcha.text = randomText(this.captcha.characters || 6);
+        }
     }
     /**
      * Get the text of captcha.
      * @type {string}
      * @since 2.0.3
      */
-    get text(): string | undefined {
-        return this.captcha.text;
+    get text(): string {
+    	if (Array.isArray(this.captcha)) {
+    		return this.captcha.map((c) => c.text || "").join("");
+    	}
+    	return this.captcha.text!;
     }
     /**
      * set dimension for your captcha image
@@ -86,11 +91,28 @@ export class CaptchaGenerator {
      * fs.writeFileSync("image.png", buffer)
      * @since 2.0.0
      */
-    setCaptcha(option: SetCaptchaOption) {
-        this.captcha = { ...this.captcha, ...option };
-        if(option.text) this.captcha.characters = option.text.length;
-        if(!option.text && option.characters) this.captcha.text = randomText(option.characters);
-        return this;
+    setCaptcha(option: SetCaptchaOption | SetCaptchaOption[]) {
+    	if (Array.isArray(option)) {
+    		this.captcha = option.map((o) => ({ ...defaultCaptchaOption, ...o }));
+    		for (const o of this.captcha) {
+    			if (!o.text)
+    				throw new Error(
+    					"Each captcha option in array must have a text property."
+    				);
+    			o.characters = o.text.length;
+    		}
+    	} else {
+    		this.captcha = {
+    			...(Array.isArray(this.captcha) ? defaultCaptchaOption : this.captcha),
+    			...option,
+    		};
+    		if (!Array.isArray(this.captcha)) {
+    			if (option.text) this.captcha.characters = option.text.length;
+    			else if (this.captcha.characters)
+    				this.captcha.text = randomText(this.captcha.characters);
+    		}
+    	}
+    	return this;
     }
     /**
      * Change trace creation options.
@@ -137,7 +159,7 @@ export class CaptchaGenerator {
 
         if(this.background) captchaCanvas.drawImage(await loadImage(this.background));
         if(this.decoy.opacity) captchaCanvas.addDecoy(this.decoy);
-        if(this.captcha.opacity) captchaCanvas.drawCaptcha(this.captcha);
+        if(this.captcha) captchaCanvas.drawCaptcha(this.captcha as any);
         if(this.trace.opacity) captchaCanvas.drawTrace(this.trace);
         return captchaCanvas.png;
     }
@@ -159,12 +181,18 @@ export class CaptchaGenerator {
      * @since 2.2.0
      */
     generateSync(option: { background?: Image } = {}): Buffer {
-        const captchaCanvas = new Captcha(this.width, this.height, this.captcha.characters);
+        const captchaCanvas = new Captcha(
+        	this.width,
+        	this.height,
+        	Array.isArray(this.captcha)
+        		? this.captcha.reduce((acc, val) => acc + (val.characters || 0), 0)
+        		: this.captcha.characters
+        );
         captchaCanvas.async = false;
 
         if(option.background) captchaCanvas.drawImage(option.background);
         if(this.decoy.opacity) captchaCanvas.addDecoy(this.decoy);
-        if(this.captcha.opacity) captchaCanvas.drawCaptcha(this.captcha);
+        if(this.captcha) captchaCanvas.drawCaptcha(this.captcha as any);
         if(this.trace.opacity) captchaCanvas.drawTrace(this.trace);
 
         return captchaCanvas.png as Buffer;
