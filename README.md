@@ -36,6 +36,27 @@ fs.writeFileSync('image.png', buffer); //will create image.png file of the captc
 ```
 
 You can use many methods like [setCaptcha](https://captcha-canvas.js.org/CaptchaGenerator.html#setCaptcha) and [setTrace](https://captcha-canvas.js.org/CaptchaGenerator.html#setTrace) to customize there appearance and values.
+
+### Segmented Captcha Example
+You can now apply different styles to different segments of the captcha string by passing an array of `SetCaptchaOptions` to the `setCaptcha` method. Each object in the array can define `start` and `end` properties to specify the character range it applies to.
+
+```js
+const { CaptchaGenerator } = require('captcha-canvas');
+const fs = require('fs');
+
+(async () => {
+	const captcha = new CaptchaGenerator();
+	captcha.setCaptcha([
+		{ text: 'AB', color: 'red', size: 60, start: 0, end: 2 },
+		{ text: 'CD', color: 'green', size: 40, start: 2, end: 4 },
+		{ text: 'EF', color: 'blue', size: 50, start: 4, end: 6 },
+	])
+		.setDimension(150, 450);
+	fs.writeFileSync('./examples/segmented_captcha.png', captcha.generateSync());
+	console.log(captcha.text);
+})();
+```
+
 ## Need Help:
 
 I am working on a simple guide for this npm package you can check it out [here](https://github.com/Shashank3736/captcha-canvas/wiki). 

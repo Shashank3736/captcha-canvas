@@ -1,173 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>captcha-canvas</title><meta name="description" content="Documentation for captcha-canvas"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="assets/icons.svg#icon-search"></use></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div><div class="field"><div id="tsd-toolbar-links"></div></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">captcha-canvas</a></div><div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h2>captcha-canvas</h2></div><div class="tsd-panel tsd-typography"><a id="md:captcha-canvas" class="tsd-anchor"></a><h1><a href="#md:captcha-canvas">captcha-canvas</a></h1><!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+<p><a href="#md:contributors-"><img src="https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square" alt="All Contributors"></a></p>
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+<p>This is an npm package <a href="https://npmjs.com/package/captcha-canvas">captcha-canvas</a> helps you to make custom captcha of all types. The package uses <code>canvas</code> to create captcha imagas. See installation section to know how to install. </p>
+<blockquote>
+<p>Install canvas before captcha-canvas installation. As canvas is the peer dependencies.</p>
+</blockquote>
+<p><a href="https://npmjs.com/package/captcha-canvas"><img src="https://nodei.co/npm/captcha-canvas.png" alt="captcha-canvas"></a></p>
+<a id="md:captcha-image" class="tsd-anchor"></a><h4><a href="#md:captcha-image">Captcha Image:</a></h4><p><img src="https://github.com/Shashank3736/captcha-canvas/raw/master/assets/captcha/default.png" alt="captcha">
+<a href="https://app.fossa.com/projects/git%2Bgithub.com%2FShashank3736%2Fcaptcha-canvas?ref=badge_shield"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FShashank3736%2Fcaptcha-canvas.svg?type=shield" alt="FOSSA Status"></a></p>
+<a id="md:features" class="tsd-anchor"></a><h3><a href="#md:features">Features</a></h3><ul>
+<li>Highly customisable you can customise every single value use to make this package.</li>
+<li>95% OCR fails to read this captcha image and throw Error.</li>
+<li>Use class constructor method so you can generate as many frames as many you want by using same values.</li>
+<li>No bundled dependenceris. You need to install them to use the package.</li>
+<li>Support of background images is also possible.</li>
+<li>Captcha adapt all the external options very easily.</li>
+</ul>
+<a id="md:how-to-use" class="tsd-anchor"></a><h2><a href="#md:how-to-use">How to use?</a></h2><p>Here is a quick example on how to use the module. But a well written <a href="https://captcha-canvas.js.org">documentation</a> is available to understand all the mothods and customisation available for your project.</p>
+<pre><code class="language-js"><span class="hl-0">const</span><span class="hl-1"> { </span><span class="hl-2">CaptchaGenerator</span><span class="hl-1"> } = </span><span class="hl-3">require</span><span class="hl-1">(</span><span class="hl-4">&#39;captcha-canvas&#39;</span><span class="hl-1">);  </span><span class="hl-5">//require package here</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">fs</span><span class="hl-1"> = </span><span class="hl-3">require</span><span class="hl-1">(</span><span class="hl-4">&#39;fs&#39;</span><span class="hl-1">); </span><span class="hl-5">//require fs module for saving image in a file</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">options</span><span class="hl-1"> = {</span><span class="hl-6">height:</span><span class="hl-1"> </span><span class="hl-7">200</span><span class="hl-1">, </span><span class="hl-6">width:</span><span class="hl-1"> </span><span class="hl-7">600</span><span class="hl-1">};  </span><span class="hl-5">//options for captcha image</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">captcha</span><span class="hl-1"> = </span><span class="hl-0">new</span><span class="hl-1"> </span><span class="hl-3">CaptchaGenerator</span><span class="hl-1">(</span><span class="hl-6">options</span><span class="hl-1">); </span><span class="hl-5">//getting captcha constructor</span><br/><span class="hl-6">captcha</span><span class="hl-1">.</span><span class="hl-6">text</span><span class="hl-1">; </span><span class="hl-5">//returns text of the captcha image.</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">buffer</span><span class="hl-1"> = </span><span class="hl-8">await</span><span class="hl-1"> </span><span class="hl-6">captcha</span><span class="hl-1">.</span><span class="hl-3">generate</span><span class="hl-1">(); </span><span class="hl-5">//returns buffer of the captcha image</span><br/><br/><span class="hl-6">fs</span><span class="hl-1">.</span><span class="hl-3">writeFileSync</span><span class="hl-1">(</span><span class="hl-4">&#39;image.png&#39;</span><span class="hl-1">, </span><span class="hl-6">buffer</span><span class="hl-1">); </span><span class="hl-5">//will create image.png file of the captcha</span>
+</code><button>Copy</button></pre>
+<p>You can use many methods like <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setCaptcha">setCaptcha</a> and <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setTrace">setTrace</a> to customize there appearance and values.</p>
+<a id="md:segmented-captcha-example" class="tsd-anchor"></a><h3><a href="#md:segmented-captcha-example">Segmented Captcha Example</a></h3><p>You can now apply different styles to different segments of the captcha string by passing an array of <code>SetCaptchaOptions</code> to the <code>setCaptcha</code> method. Each object in the array can define <code>start</code> and <code>end</code> properties to specify the character range it applies to.</p>
+<pre><code class="language-js"><span class="hl-0">const</span><span class="hl-1"> { </span><span class="hl-2">CaptchaGenerator</span><span class="hl-1"> } = </span><span class="hl-3">require</span><span class="hl-1">(</span><span class="hl-4">&#39;captcha-canvas&#39;</span><span class="hl-1">);</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">fs</span><span class="hl-1"> = </span><span class="hl-3">require</span><span class="hl-1">(</span><span class="hl-4">&#39;fs&#39;</span><span class="hl-1">);</span><br/><br/><span class="hl-1">(</span><span class="hl-0">async</span><span class="hl-1"> () </span><span class="hl-0">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">captcha</span><span class="hl-1"> = </span><span class="hl-0">new</span><span class="hl-1"> </span><span class="hl-3">CaptchaGenerator</span><span class="hl-1">();</span><br/><span class="hl-1">    </span><span class="hl-6">captcha</span><span class="hl-1">.</span><span class="hl-3">setCaptcha</span><span class="hl-1">([</span><br/><span class="hl-1">        { </span><span class="hl-6">text:</span><span class="hl-1"> </span><span class="hl-4">&#39;AB&#39;</span><span class="hl-1">, </span><span class="hl-6">color:</span><span class="hl-1"> </span><span class="hl-4">&#39;red&#39;</span><span class="hl-1">, </span><span class="hl-6">size:</span><span class="hl-1"> </span><span class="hl-7">60</span><span class="hl-1">, </span><span class="hl-6">start:</span><span class="hl-1"> </span><span class="hl-7">0</span><span class="hl-1">, </span><span class="hl-6">end:</span><span class="hl-1"> </span><span class="hl-7">2</span><span class="hl-1"> },</span><br/><span class="hl-1">        { </span><span class="hl-6">text:</span><span class="hl-1"> </span><span class="hl-4">&#39;CD&#39;</span><span class="hl-1">, </span><span class="hl-6">color:</span><span class="hl-1"> </span><span class="hl-4">&#39;green&#39;</span><span class="hl-1">, </span><span class="hl-6">size:</span><span class="hl-1"> </span><span class="hl-7">40</span><span class="hl-1">, </span><span class="hl-6">start:</span><span class="hl-1"> </span><span class="hl-7">2</span><span class="hl-1">, </span><span class="hl-6">end:</span><span class="hl-1"> </span><span class="hl-7">4</span><span class="hl-1"> },</span><br/><span class="hl-1">        { </span><span class="hl-6">text:</span><span class="hl-1"> </span><span class="hl-4">&#39;EF&#39;</span><span class="hl-1">, </span><span class="hl-6">color:</span><span class="hl-1"> </span><span class="hl-4">&#39;blue&#39;</span><span class="hl-1">, </span><span class="hl-6">size:</span><span class="hl-1"> </span><span class="hl-7">50</span><span class="hl-1">, </span><span class="hl-6">start:</span><span class="hl-1"> </span><span class="hl-7">4</span><span class="hl-1">, </span><span class="hl-6">end:</span><span class="hl-1"> </span><span class="hl-7">6</span><span class="hl-1"> },</span><br/><span class="hl-1">    ])</span><br/><span class="hl-1">        .</span><span class="hl-3">setDimension</span><span class="hl-1">(</span><span class="hl-7">150</span><span class="hl-1">, </span><span class="hl-7">450</span><span class="hl-1">);</span><br/><span class="hl-1">    </span><span class="hl-6">fs</span><span class="hl-1">.</span><span class="hl-3">writeFileSync</span><span class="hl-1">(</span><span class="hl-4">&#39;./examples/segmented_captcha.png&#39;</span><span class="hl-1">, </span><span class="hl-6">captcha</span><span class="hl-1">.</span><span class="hl-3">generateSync</span><span class="hl-1">());</span><br/><span class="hl-1">    </span><span class="hl-6">console</span><span class="hl-1">.</span><span class="hl-3">log</span><span class="hl-1">(</span><span class="hl-6">captcha</span><span class="hl-1">.</span><span class="hl-6">text</span><span class="hl-1">);</span><br/><span class="hl-1">})();</span>
+</code><button>Copy</button></pre>
+<a id="md:need-help" class="tsd-anchor"></a><h2><a href="#md:need-help">Need Help:</a></h2><p>I am working on a simple guide for this npm package you can check it out <a href="https://github.com/Shashank3736/captcha-canvas/wiki">here</a>. </p>
+<p>Open an <a href="https://github.com/Shashank3736/captcha-canvas/issues">issue</a> if you need help regarding this module or want to report any bug.</p>
+<a id="md:wanna-support-developer" class="tsd-anchor"></a><h2><a href="#md:wanna-support-developer">Wanna support developer?</a></h2><ul>
+<li><p>Star the <a href="https://github.com/Shashank3736/captcha-canvas">github repo</a> of the project. More stars motivate me to work on this project.</p>
+</li>
+<li><p>Open an <a href="https://github.com/Shashank3736/captcha-canvas/issues">issue</a> to recommend some new features or report bug regarding this module.</p>
+</li>
+<li><p>For now, you don&#39;t have anyway to fund this project but maybe in future I update this.</p>
+</li>
+</ul>
+<a id="md:supported-versions" class="tsd-anchor"></a><h2><a href="#md:supported-versions">Supported versions</a></h2><p>We always recommend you to use the most latest version for more methods and better performance. </p>
+<p>If you are at v1.x.y and I launched a new version 2.0.0 do not update it. Because it is major change which may (basically always) break your present code or the output is not as expected.</p>
+<p>If you are at same major change version but a new patch/minor changed version is available install without any fear. Usually minor change comes with some new methods, and patch release comes with bug fixes/updated readme.</p>
+<a id="md:contributors-✨" class="tsd-anchor"></a><h2><a href="#md:contributors-✨">Contributors ✨</a></h2><p>Thanks goes to these wonderful people (<a href="https://allcontributors.org/docs/en/emoji-key">emoji key</a>):</p>
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/Shashank3736"><img src="https://avatars2.githubusercontent.com/u/58896906?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Shashank</b></sub></a><br /><a href="#projectManagement-Shashank3736" title="Project Management">📆</a></td>
+    <td align="center"><a href="https://github.com/TheDeadCraftPT"><img src="https://avatars2.githubusercontent.com/u/46866023?v=4?s=100" width="100px;" alt=""/><br /><sub><b>TheDeadCraftPT</b></sub></a><br /><a href="https://github.com/Shashank3736/captcha-canvas/issues?q=author%3ATheDeadCraftPT" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://ichiidev.xyz"><img src="https://avatars1.githubusercontent.com/u/45918948?v=4?s=100" width="100px;" alt=""/><br /><sub><b>IchiiDev</b></sub></a><br /><a href="https://github.com/Shashank3736/captcha-canvas/issues?q=author%3AIchiiDev" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://t.me/Munn4tic/"><img src="https://avatars1.githubusercontent.com/u/32958839?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ikramullah</b></sub></a><br /><a href="https://github.com/Shashank3736/captcha-canvas/commits?author=skymunn" title="Documentation">📖</a> <a href="https://github.com/Shashank3736/captcha-canvas/commits?author=skymunn" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/ryanhex53"><img src="https://avatars.githubusercontent.com/u/360426?v=4?s=100" width="100px;" alt=""/><br /><sub><b>ryanhex53</b></sub></a><br /><a href="https://github.com/Shashank3736/captcha-canvas/commits?author=ryanhex53" title="Code">💻</a></td>
+  </tr>
+</table>
 
-<head>
-  
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
 
-  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script src="./build/entry.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
-  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
-  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
-  <link type="text/css" rel="stylesheet" href="">
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
-  
-</head>
-
-
-
-<body class="layout small-header">
-    <div id="stickyNavbarOverlay"></div>
-    
-
-<div class="top-nav">
-    <div class="inner">
-        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </a>
-        <div class="logo">
-            
-            
-        </div>
-        <div class="menu">
-            
-            <div class="navigation">
-                <a
-                    href="index.html"
-                    class="link"
-                >
-                    API Documentation
-                </a>
-                
-                
-                
-            </div>
-        </div>
-    </div>
-</div>
-    <div id="main">
-        <div
-            class="sidebar "
-            id="sidebarNav"
-        >
-            
-            <nav>
-                
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="CaptchaGenerator.html">CaptchaGenerator</a></li></ul><h3>Global</h3><ul><li><a href="global.html#defaultCaptchaOptions">defaultCaptchaOptions</a></li><li><a href="global.html#defaultDecoyOptions">defaultDecoyOptions</a></li><li><a href="global.html#defaultTraceOptions">defaultTraceOptions</a></li><li><a href="global.html#getRandom">getRandom</a></li></ul></div>
-                
-            </nav>
-        </div>
-        <div class="core" id="main-content-wrapper">
-            <div class="content">
-                <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
-                </header>
-                
-
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-    <section>
-        <article><h1>Getting Started</h1>
-<p>To start using this <a href="https://npmjs.com/package/captcha-canvas">npm module</a>. We first need to install it from npm by using command <code>npm install captcha-canvas</code>.</p>
-<p>Now require this package in your file where you want to create captcha.</p>
-<pre class="prettyprint source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
-</code></pre>
-<p>We can see here we get <code>CaptchaGenerator</code> class from the module. Now initiate the constructor to start using it.</p>
-<pre class="prettyprint source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
-const captcha = new CaptchaGenerator();
-</code></pre>
-<p>Now we can use all the methods documented <a href="https://captcha-canvas.js.org/CaptchaGenerator.html">here</a> to customize captcha according to our need.</p>
-<p>Like if we want to use different dimension. We can use <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setDimension">setDimension</a> method.</p>
-<pre class="prettyprint source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
-const captcha = new CaptchaGenerator()
-.setDimension(150, 450) 
-</code></pre>
-<p>If we want to change captcha text or its appearance, then we can use <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setCaptcha">setCaptcha</a> method.</p>
-<pre class="prettyprint source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
-const captcha = new CaptchaGenerator()
-.setDimension(150, 450) 
-.setCaptcha({text: &quot;CUSTOM05&quot;, size: 60, color: &quot;deeppink&quot;})
-</code></pre>
-<p>If we want to change appearance of background text (i.e decoy). We can do that easily by using <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setDecoy">setDecoy</a> method.</p>
-<pre class="prettyprint source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
-const captcha = new CaptchaGenerator()
-.setDimension(150, 450) 
-.setCaptcha({text: &quot;CUSTOM05&quot;, size: 60, color: &quot;deeppink&quot;})
-.setDecoy({opacity: 0.5})
-</code></pre>
-<p>You can also customise trace line and add background by using <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setTrace">setTrace</a> and <a href="https://captcha-canvas.js.org/CaptchaGenerator.html#setBackground">setBackground</a> method.</p>
-<p>Once you customised everything according to your need then just you can get buffer from <code>generateSync</code> method. And use that buffer to display image in your project.</p>
-<pre class="prettyprint source lang-js"><code>const { CaptchaGenerator } = require(&quot;captcha-canvas&quot;);
-const captcha = new CaptchaGenerator()
-.setDimension(150, 450) 
-.setCaptcha({text: &quot;CUSTOM05&quot;, size: 60, color: &quot;deeppink&quot;})
-.setDecoy({opacity: 0.5})
-.setTrace({color: &quot;deeppink&quot;});
-const buffer = captcha.generateSync();
-</code></pre>
-<h4>Final Output</h4>
-<p><img src="https://raw.githubusercontent.com/Shashank3736/captcha-canvas/master/examples/all.png" alt="captcha"></p>
-<h2>Support</h2>
-<p>To get help related to this module open an issue in the <a href="https://github.com/Shashank3736/captcha-canvas">github repository</a>.</p></article>
-    </section>
-
-
-
-
-
-
-            </div>
-            
-            <footer class="footer">
-                <div class="content has-text-centered">
-                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
-                    <p class="sidebar-created-by">
-                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
-                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
-                    </p>
-                </div>
-            </footer>
-            
-        </div>
-        <div id="side-nav" class="side-nav">
-        </div>
-    </div>
-<script src="scripts/app.min.js"></script>
-<script>PR.prettyPrint();</script>
-<script src="scripts/linenumber.js"> </script>
-
-</body>
-</html>
+<p>This project follows the <a href="https://github.com/all-contributors/all-contributors">all-contributors</a> specification. Contributions of any kind welcome!</p>
+<a id="md:license" class="tsd-anchor"></a><h2><a href="#md:license">License</a></h2><p><a href="https://app.fossa.com/projects/git%2Bgithub.com%2FShashank3736%2Fcaptcha-canvas?ref=badge_large"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FShashank3736%2Fcaptcha-canvas.svg?type=large" alt="FOSSA Status"></a></p>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-index-accordion"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><h4 class="uppercase">Member Visibility</h4><form><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-private" name="private"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Private</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></form></div><div class="tsd-theme-toggle"><h4 class="uppercase">Theme</h4><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-index-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#md:captcha-canvas"><span>captcha-<wbr/>canvas</span></a><ul><li><ul><li><ul><li><a href="#md:captcha-image"><span>Captcha <wbr/>Image:</span></a></li></ul></li><li><a href="#md:features"><span>Features</span></a></li></ul></li><li><a href="#md:how-to-use"><span>How to use?</span></a></li><li><ul><li><a href="#md:segmented-captcha-example"><span>Segmented <wbr/>Captcha <wbr/>Example</span></a></li></ul></li><li><a href="#md:need-help"><span>Need <wbr/>Help:</span></a></li><li><a href="#md:wanna-support-developer"><span>Wanna support developer?</span></a></li><li><a href="#md:supported-versions"><span>Supported versions</span></a></li><li><a href="#md:contributors-✨"><span>Contributors ✨</span></a></li><li><a href="#md:license"><span>License</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="index.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-1"></use></svg><span>captcha-canvas</span></a><ul class="tsd-small-nested-navigation" id="tsd-nav-container" data-base="."><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>

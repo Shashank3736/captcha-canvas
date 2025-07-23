@@ -1,22 +1,24 @@
 {
-    "compilerOptions": {
-        "strict": true,
-        "moduleResolution": "node",
-        "declaration": false,
-        "removeComments": false,
-        "alwaysStrict": true,
-        "pretty": false,
-        "module": "commonjs",
-        "target": "es2019",
-        "lib": [
-            "esnext",
-            "esnext.array",
-            "esnext.asynciterable",
-            "esnext.intl",
-            "esnext.symbol"
-        ],
-        "sourceMap": false,
-        "skipDefaultLibCheck": true
-    },
-    "exclude": [".github/", "aseets/", "docs/", "examples/", "node_modules/"]
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "rootDir": ".",
+    "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "index.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "examples",
+    "docs"
+  ]
 }
