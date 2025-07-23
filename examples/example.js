@@ -25,6 +25,15 @@ const { CaptchaGenerator, Captcha } = require('../js-script');
 	fs.writeFileSync('./examples/all.png', await captcha.generate());
 	// console text of captcha
 	console.log(captcha.text);
+	/* New array functionality */
+	const captcha2 = new CaptchaGenerator();
+	captcha2.setCaptcha([
+		{ text: 'AB', color: 'red', size: 60, font: 'Arial' },
+		{ text: 'CD', color: 'green', size: 60, font: 'Arial' },
+	]);
+	fs.writeFileSync('./examples/array.png', await captcha2.generate());
+	console.log(captcha2.text);
+
 	// example captcha
 	const exmCaptcha = new Captcha(600, 200, 8);
 	exmCaptcha.addDecoy({ total: 20, size: 40 });
