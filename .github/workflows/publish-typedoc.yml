@@ -1,0 +1,42 @@
+name: Generate and Push Docs
+
+on:
+  push:
+    branches:
+      - v2
+      - master  # Adjust to your branch names
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'  # Use your required Node version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate docs
+        run: npm run docsgen  # Using TypeDoc to generate documentation
+
+      - name: Set destination directory
+        id: set_dest
+        run: |
+          if [[ "${{ github.ref_name }}" == "master" ]]; then
+            echo "dest=v3" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.ref_name }}" == "v2" ]]; then
+            echo "dest=v2" >> $GITHUB_OUTPUT
+          fi
+      - name: Push to docs branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: docs
+          publish_dir: ./docs
+          destination_dir: ${{ steps.set_dest.outputs.dest }}
+          commit_message: "Update docs from ${{ github.ref_name }} [ci skip]"
