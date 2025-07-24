@@ -23,7 +23,7 @@ This is an npm package [captcha-canvas](https://npmjs.com/package/captcha-canvas
 * Captcha adapt all the external options very easily.
 
 ## How to use?
-Here is a quick example on how to use the module. But a well written [documentation](https://captcha-canvas.js.org) is available to understand all the mothods and customisation available for your project.
+Here is a quick example on how to use the module. But a well written [documentation](https://captcha-canvas.js.org/v2/) is available to understand all the mothods and customisation available for your project.
 ```js
 const { CaptchaGenerator } = require('captcha-canvas');  //require package here
 const fs = require('fs'); //require fs module for saving image in a file
@@ -35,7 +35,7 @@ const buffer = await captcha.generate(); //returns buffer of the captcha image
 fs.writeFileSync('image.png', buffer); //will create image.png file of the captcha
 ```
 
-You can use many methods like [setCaptcha](https://captcha-canvas.js.org/CaptchaGenerator.html#setCaptcha) and [setTrace](https://captcha-canvas.js.org/CaptchaGenerator.html#setTrace) to customize there appearance and values.
+You can use many methods like [setCaptcha](https://captcha-canvas.js.org/v2/classes/main.default.html#setCaptcha) and [setTrace](https://captcha-canvas.js.org/v2/classes/main.default.html#setTrace) to customize there appearance and values.
 
 ### Segmented Captcha Example
 You can now apply different styles to different segments of the captcha string by passing an array of `SetCaptchaOptions` to the `setCaptcha` method. Each object in the array can define `start` and `end` properties to specify the character range it applies to.

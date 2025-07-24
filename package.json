@@ -1,6 +1,6 @@
 {
   "name": "captcha-canvas",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "A captcha generator by using canvas module.",
   "main": "dist/index.js",
   "scripts": {
