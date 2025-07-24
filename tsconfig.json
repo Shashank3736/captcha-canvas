@@ -17,9 +17,9 @@
         ],
         "sourceMap": false,
         "skipDefaultLibCheck": true,
-        "outDir": "./js-script",
+        "outDir": "./dist",
         "skipLibCheck": true
     },
     "exclude": [".github/", "assets/", "docs/", "examples/", "node_modules/"],
-    "include": ["ts-script/"]
+    "include": ["src/"]
 }
