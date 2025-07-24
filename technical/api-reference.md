@@ -1,3 +1,9 @@
+---
+title: API Reference
+group: Documents
+category: Guides
+---
+
 # API Reference
 
 This document provides a detailed reference for the `captcha-canvas` API.

@@ -1,3 +1,9 @@
+---
+title: Project Structure
+group: Documents
+category: Guides
+---
+
 # Project Structure
 
 This document outlines the directory and file structure of the `captcha-canvas` project. Understanding the layout of the project is essential for effective development and contribution.

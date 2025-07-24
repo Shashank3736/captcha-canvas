@@ -1,3 +1,9 @@
+---
+title: Usage Examples
+group: Documents
+category: Guides
+---
+
 # Usage Examples
 
 This document provides a collection of usage examples for the `captcha-canvas` library. These examples cover basic to advanced use cases to help you get started quickly.

@@ -3,6 +3,7 @@ title: Technical Guide
 group: Documents
 category: Guides
 children:
+    - ./installation.md
     - ./project-structure.md
     - ./api-reference.md
     - ./usage-examples.md
@@ -14,6 +15,7 @@ Welcome to the technical documentation for `captcha-canvas`. This documentation 
 
 ## Table of Contents
 
+- [Installation](./installation.md)
 - [Project Structure](./project-structure.md)
 - [API Reference](./api-reference.md)
 - [Usage Examples](./usage-examples.md)
