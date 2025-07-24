@@ -1,10 +1,10 @@
 {
   "name": "captcha-canvas",
-  "version": "3.3.2",
+  "version": "3.3.3",
   "description": "A captcha generator by using skia-canvas module.",
   "main": "./dist/index.js",
   "files": [
-    "js-script/*"
+    "dist"
   ],
   "scripts": {
     "docsgen": "typedoc --entryPointStrategy expand --out docs src",
