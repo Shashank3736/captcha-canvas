@@ -79,13 +79,13 @@ export class CaptchaGenerator {
     }
     /**
      * Change captcha text options
-     * @param {SetCaptchaOptions} options Captcha appearance options.
+     * @param {SetCaptchaOptions} option Captcha appearance options.
      * @example
      * const { CaptchaGenerator } = require("captcha-canvas");
      * const fs = require("fs")
      * const captcha = new CaptchaGenerator();
-     * const options = {font: "Comic Sans", size: 60}
-     * captcha.setCaptcha(options)
+     * const option = {font: "Comic Sans", size: 60}
+     * captcha.setCaptcha(option)
      * const buffer = await captcha.generate() //generate image
      *
      * fs.writeFileSync("image.png", buffer)
@@ -116,13 +116,13 @@ export class CaptchaGenerator {
     }
     /**
      * Change trace creation options.
-     * @param {SetTraceOptions} options Trace Line appearance options.
+     * @param {SetTraceOptions} option Trace Line appearance options.
      * @example
      * const { CaptchaGenerator } = require("captcha-canvas");
      * const fs = require("fs")
      * const captcha = new CaptchaGenerator();
-     * const options = {size: 5, color: "deeppink"}
-     * captcha.setTrace(options)
+     * const option = {size: 5, color: "deeppink"}
+     * captcha.setTrace(option)
      * const buffer = await captcha.generate() //generate image
      *
      * fs.writeFileSync("image.png", buffer)
@@ -134,7 +134,7 @@ export class CaptchaGenerator {
     }
     /**
      * Change decoy options
-     * @param {SetDecoyOptions} options Decoy characters customisation options
+     * @param {SetDecoyOptions} option Decoy characters customisation options
      * @since 2.0.0
      */
     setDecoy(option: SetDecoyOption) {
@@ -143,7 +143,6 @@ export class CaptchaGenerator {
     }
     /**
      * Method which returns image buffer
-     * @async
      * @returns {Promise<Buffer>}
      * @example
      * const { CaptchaGenerator } = require("captcha-canvas");
@@ -167,8 +166,8 @@ export class CaptchaGenerator {
      * Non asynchronous method to generate captcha image.
      * > Note: It do not use `setBackground` method value for background image. If you want to set background
      * and also use generateSync method then use background option in genrateSync method.
-     * @param {object} [options] Options to add extra values
-     * @param {Image} [options.background] Add background image.
+     * @param {object} [option] Options to add extra values
+     * @param {Image} [option.background] Add background image.
      * @example
      * const { CaptchaGenerator, resolveImage } = require("captcha-canvas");
      * const fs = require("fs");

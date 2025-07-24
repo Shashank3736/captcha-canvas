@@ -1,25 +1,42 @@
 import { Captcha } from ".";
 import { CreateCaptchaOptions } from "./constants";
 
-interface captchaValueSync {
+/**
+ * Interface for synchronous captcha value containing the image buffer and text
+ */
+export interface CaptchaValueSync {
+    /**
+     * The captcha image as a Buffer
+     */
     image: Buffer,
+    /**
+     * The text content of the captcha
+     */
     text: string
 }
 
-interface captchaValue {
+/**
+ * Interface for asynchronous captcha value containing the image promise and text
+ */
+export interface CaptchaValue {
+    /**
+     * The captcha image as a Promise that resolves to a Buffer
+     */
     image: Promise<Buffer>,
+    /**
+     * The text content of the captcha
+     */
     text: string
 }
 
 /**
  * Create custom captcha from scratch.
- * @async
  * @param {number} width Width of captcha image.
  * @param {number} height Height of captcha image.
  * @param {CreateCaptchaOptions} [option] Captcha text.
- * @returns 
+ * @returns
  */
-export function createCaptcha(width: number, height: number, option: CreateCaptchaOptions = {}): captchaValue {
+export function createCaptcha(width: number, height: number, option: CreateCaptchaOptions = {}): CaptchaValue {
     const captcha = new Captcha(width, height);
     const decoyCount = Math.floor(width*height/2500);
 
@@ -44,7 +61,7 @@ export function createCaptcha(width: number, height: number, option: CreateCaptc
  * @param {CreateCaptchaOptions} [option] Captcha text.
  * @returns
  */
-export function createCaptchaSync(width: number, height: number, option: CreateCaptchaOptions = {}): captchaValueSync {
+export function createCaptchaSync(width: number, height: number, option: CreateCaptchaOptions = {}): CaptchaValueSync {
     const captcha = new Captcha(width, height);
     const decoyCount = Math.floor(width*height/2500);
     captcha.async = false;

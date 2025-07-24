@@ -27,7 +27,6 @@ export class Captcha {
      * @param {number} [width] Width of captcha image.
      * @param {number} [height] Height of captcha image.
      * @param {number} [characters] Size of captcha text.
-     * @constructor
      */
     constructor(width: number = defaultDimension.width, height: number = defaultDimension.height, characters: number = defaultCaptchaOption.characters ?? 6) {
         this._height = height;
