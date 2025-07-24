@@ -1,31 +1,31 @@
 # Usage Examples
 
-This document provides a collection of usage examples for the `captcha-canvas` library.
+This document provides a collection of usage examples for the `captcha-canvas` library. These examples cover basic to advanced use cases to help you get started quickly.
 
 ## Basic Captcha Generation
 
-This example demonstrates how to generate a simple captcha with default settings.
+This example demonstrates how to generate a simple captcha with default settings. The `CaptchaGenerator` class handles all the complexities, making it easy to create a captcha in just a few lines of code.
 
 ```javascript
-const { CaptchaGenerator } = require("captcha-canvas");
-const fs = require("fs");
+import { CaptchaGenerator } from "captcha-canvas";
+import { writeFileSync } from "fs";
 
 (async () => {
   const captcha = new CaptchaGenerator();
   const buffer = await captcha.generate();
 
-  fs.writeFileSync("captcha.png", buffer);
+  writeFileSync("captcha.png", buffer);
   console.log("Captcha generated successfully!");
 })();
 ```
 
 ## Customizing the Captcha
 
-This example shows how to customize the captcha's dimensions, text, and appearance.
+This example shows how to customize the captcha's dimensions, text, and appearance. You can chain multiple methods to configure the captcha to your specific needs.
 
 ```javascript
-const { CaptchaGenerator } = require("captcha-canvas");
-const fs = require("fs");
+import { CaptchaGenerator } from "captcha-canvas";
+import { writeFileSync } from "fs";
 
 (async () => {
   const captcha = new CaptchaGenerator()
@@ -36,18 +36,18 @@ const fs = require("fs");
 
   const buffer = await captcha.generate();
 
-  fs.writeFileSync("custom_captcha.png", buffer);
+  writeFileSync("custom_captcha.png", buffer);
   console.log("Custom captcha generated successfully!");
 })();
 ```
 
 ## Using a Background Image
 
-This example demonstrates how to add a background image to the captcha.
+This example demonstrates how to add a background image to the captcha. The background can be a local file path or a URL.
 
 ```javascript
-const { CaptchaGenerator } = require("captcha-canvas");
-const fs = require("fs");
+import { CaptchaGenerator } from "captcha-canvas";
+import { writeFileSync } from "fs";
 
 (async () => {
   const captcha = new CaptchaGenerator()
@@ -56,26 +56,41 @@ const fs = require("fs");
 
   const buffer = await captcha.generate();
 
-  fs.writeFileSync("background_captcha.png", buffer);
+  writeFileSync("background_captcha.png", buffer);
   console.log("Captcha with background generated successfully!");
 })();
 ```
 
 ## Synchronous Generation
 
-This example shows how to generate a captcha synchronously.
+This example shows how to generate a captcha synchronously. This is useful in scenarios where asynchronous operations are not required.
 
 ```javascript
-const { CaptchaGenerator, resolveImage } = require("captcha-canvas");
-const fs = require("fs");
+import { CaptchaGenerator } from "captcha-canvas";
+import { writeFileSync } from "fs";
 
-(async () => {
-  const backgroundImage = await resolveImage("path/to/your/background.png");
+const captcha = new CaptchaGenerator();
+const buffer = captcha.generateSync();
 
-  const captcha = new CaptchaGenerator();
-  const buffer = captcha.generateSync({ background: backgroundImage });
-
-  fs.writeFileSync("sync_captcha.png", buffer);
-  console.log("Synchronous captcha generated successfully!");
-})();
+writeFileSync("sync_captcha.png", buffer);
+console.log("Synchronous captcha generated successfully!");
 ```
+
+## Advanced Usage with `Captcha`
+
+For more granular control, you can use the lower-level `Captcha` class. This example demonstrates how to build a captcha by manually drawing the components.
+
+```javascript
+import { Captcha } from "captcha-canvas";
+import { writeFileSync } from "fs";
+
+const captcha = new Captcha(300, 100, 6);
+captcha
+  .addDecoy()
+  .drawCaptcha()
+  .drawTrace();
+
+const buffer = captcha.png;
+
+writeFileSync("advanced_captcha.png", buffer);
+console.log("Advanced captcha generated successfully!");
