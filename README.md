@@ -24,9 +24,9 @@ This is an npm package [captcha-canvas](https://npmjs.com/package/captcha-canvas
 
 ## How to use?
 * **v2:** If you are using v2 [click here](https://captcha-canvas.js.org/v2/index.html) for documentation and examples.
-* **v3:** If you are using v3 [click here](https://captcha-canvas.js.org) for documentation and examples.
+* **v3:** If you are using v3 [click here](https://captcha-canvas.js.org/v3) for documentation and examples.
 
-> Note: v3 also contain alot of functions to create instant captcha like [`createCaptcha`](https://captcha-canvas.js.org/global.html#createCaptcha).
+> Note: v3 also contain alot of functions to create instant captcha like [`createCaptcha`](https://captcha-canvas.js.org/v3/functions/extra.createCaptcha.html).
 
 ## Need Help:
 Open an [issue](https://github.com/Shashank3736/captcha-canvas/issues) if you need help regarding this module or want to report any bug.
