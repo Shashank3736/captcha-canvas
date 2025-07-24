@@ -1,0 +1,36 @@
+name: Generate and Push Docs
+
+on:
+  push:
+    branches:
+      - v2
+      - master  # Adjust to your branch names
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'  # Use your required Node version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate docs
+        run: npm run docsgen  # Using TypeDoc to generate documentation
+
+      - name: Push to docs branch
+        uses: s0/git-publish-subdir-action@develop  # Or another action like ad-m/github-push-action
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          repo: ${{ github.repository }}
+          folder: docs  # Folder with generated docs
+          branch: docs  # New branch name; can be docs-v${{ github.ref_name }} for versioned
+          message: "Update docs from ${{ github.ref_name }} [ci skip]"
+          clean: true  # Optional: Clean the target branch before pushing
