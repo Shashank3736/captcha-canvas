@@ -1,7 +1,10 @@
 const fs = require('fs');
-const { CaptchaGenerator, Captcha } = require('../');
+const { CaptchaGenerator, Captcha, createCaptcha } = require('../');
 
 (async () => {
+	const { image, text } = createCaptcha(300, 100);
+	fs.writeFileSync('./examples/short.png', await image);
+	console.log('Captcha text:', text);
 	const captcha = new CaptchaGenerator();
 	fs.writeFileSync('./examples/default.png', captcha.generateSync());
 	/* Set dimension method example*/

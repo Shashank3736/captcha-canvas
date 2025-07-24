@@ -1,50 +1,145 @@
 # captcha-canvas
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-This is an npm package [captcha-canvas](https://npmjs.com/package/captcha-canvas) helps you to make custom captcha of all types. The package uses `skia-canvas` to create captcha imagas. See installation section to know how to install. 
 
-> Install skia-canvas before captcha-canvas installation. As skia-canvas is the peer dependencies.
+[![npm](https://img.shields.io/npm/v/captcha-canvas?style=flat-square)](https://www.npmjs.com/package/captcha-canvas)
+[![npm-bundle-size](https://img.shields.io/bundlephobia/minzip/captcha-canvas?style=flat-square)](https://bundlephobia.com/result?p=captcha-canvas)
+[![npm-downloads](https://img.shields.io/npm/dt/captcha-canvas?style=flat-square)](https://www.npmjs.com/package/captcha-canvas)
+[![all-contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 
-[![captcha-canvas](https://nodei.co/npm/captcha-canvas.png)](https://npmjs.com/package/captcha-canvas)
+A powerful and customizable captcha generator for Node.js, powered by `skia-canvas`.
 
-#### Captcha Image:
+![Captcha Example](examples/example.png)
 
-![captcha](examples/example.png)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FShashank3736%2Fcaptcha-canvas.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FShashank3736%2Fcaptcha-canvas?ref=badge_shield)
+## Features
 
-### Features
+*   **Highly Customizable**: Control every aspect of the captcha, including text, fonts, colors, backgrounds, and more.
+*   **Secure**: Generates complex captchas that are difficult for OCR bots to solve.
+*   **Flexible**: Use the simple `createCaptcha` for quick generation or the `CaptchaGenerator` class for more advanced use cases.
+*   **Background Support**: Add custom background images to your captchas.
+*   **Lightweight**: No bundled dependencies, keeping your project lean.
 
-* Highly customisable you can customise every single value use to make this package.
-* 95% OCR fails to read this captcha image and throw Error.
-* Use class constructor method so you can generate as many frames as many you want by using same values.
-* No bundled dependencies. You need to install them to use the package.
-* Support of background images is also possible.
-* Captcha adapt all the external options very easily.
+## Installation
 
-## How to use?
-* **v2:** If you are using v2 [click here](https://captcha-canvas.js.org/v2/index.html) for documentation and examples.
-* **v3:** If you are using v3 [click here](https://captcha-canvas.js.org/v3) for documentation and examples.
+Before installing `captcha-canvas`, you need to install its peer dependency, `skia-canvas`.
 
-> Note: v3 also contain alot of functions to create instant captcha like [`createCaptcha`](https://captcha-canvas.js.org/v3/functions/extra.createCaptcha.html).
+```bash
+npm install skia-canvas
+npm install captcha-canvas
+```
 
-## Need Help:
-Open an [issue](https://github.com/Shashank3736/captcha-canvas/issues) if you need help regarding this module or want to report any bug.
+## Quick Start
 
-## Wanna support developer?
+The easiest way to generate a captcha is with the `createCaptcha` function.
 
-* Star the [github repo](https://github.com/Shashank3736/captcha-canvas) of the project. More stars motivate me to work on this project.
+```javascript
+const fs = require("fs");
+const { createCaptchaSync } = require("captcha-canvas");
 
-* Open an [issue](https://github.com/Shashank3736/captcha-canvas/issues) to recommend some new features or report bug regarding this module.
+const { image, text } = createCaptchaSync(100, 300);
 
-* For now, you don't have anyway to fund this project but maybe in future I update this.
+fs.writeFileSync("captcha.png", image);
+console.log("Captcha text:", text);
+```
 
-## Supported versions
-We always recommend you to use the most latest version for more methods and better performance. 
+This will generate a file named `captcha.png` with a random captcha image.
 
-If you are at v1.x.y and I launched a new version 2.0.0 do not update it. Because it is major change which may (basically always) break your present code or the output is not as expected.
+## Advanced Usage
 
-If you are at same major change version but a new patch/minor changed version is available install without any fear. Usually minor change comes with some new methods, and patch release comes with bug fixes/updated readme.
+For more control over the captcha generation process, use the `CaptchaGenerator` class.
+
+### Basic Example
+
+```javascript
+const fs = require("fs");
+const { CaptchaGenerator } = require("captcha-canvas");
+
+const captcha = new CaptchaGenerator()
+    .setDimension(150, 450)
+    .setCaptcha({ font: "Comic Sans", size: 60, color: "deeppink" })
+    .setTrace({ color: "deeppink" })
+    .setDecoy({ color: "deeppink" });
+
+const buffer = captcha.generateSync();
+fs.writeFileSync("captcha.png", buffer);
+
+console.log("Captcha text:", captcha.text);
+```
+
+### Customizing the Captcha
+
+You can customize the captcha text, trace lines, and decoy characters.
+
+#### Setting Dimensions
+
+```javascript
+captcha.setDimension(200, 600); // height, width
+```
+
+#### Setting a Background Image
+
+```javascript
+captcha.setBackground("./path/to/background.png");
+```
+
+#### Customizing the Captcha Text
+
+```javascript
+captcha.setCaptcha({
+    text: "MyCustomText",
+    color: "#2D3748",
+    font: "Arial",
+    size: 70,
+    skew: true,
+    rotate: 10, // rotation angle in degrees
+    opacity: 0.8
+});
+```
+
+#### Customizing the Trace Line
+
+The trace line is drawn over the captcha text.
+
+```javascript
+captcha.setTrace({
+    color: "#2D3748",
+    size: 5,
+    opacity: 0.7
+});
+```
+
+#### Customizing the Decoy Characters
+
+Decoy characters are random characters added to the background to make the captcha harder to read for bots.
+
+```javascript
+captcha.setDecoy({
+    color: "#A0AEC0",
+    font: "Arial",
+    size: 40,
+    opacity: 0.5,
+    total: 25 // number of decoy characters
+});
+```
+
+### Asynchronous Generation
+
+If you are using a background image, you should use the asynchronous `generate()` method.
+
+```javascript
+const buffer = await captcha.generate();
+fs.writeFileSync("captcha.png", buffer);
+```
+
+## API Reference
+
+For a full list of options and methods, please see the [API documentation](https://captcha-canvas.js.org/v3/).
+
+## Contributing
+
+Contributions are welcome! Please open an [issue](https://github.com/Shashank3736/captcha-canvas/issues) to report bugs or suggest features.
+
+## License
+
+This project is licensed under the Apache-2.0 License. See the [LICENSE](LICENSE) file for details.
 
 ## Contributors ✨
 
@@ -69,7 +164,3 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
-
-
-## License
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FShashank3736%2Fcaptcha-canvas.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FShashank3736%2Fcaptcha-canvas?ref=badge_large)
