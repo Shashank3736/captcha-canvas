@@ -1,0 +1,6 @@
+{
+  "entryPointStrategy": "expand",
+  "out": "docs",
+  "entryPoints": ["src"],
+  "projectDocuments": ["technical/README.md"],
+}

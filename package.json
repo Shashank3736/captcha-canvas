@@ -7,7 +7,7 @@
     "dist"
   ],
   "scripts": {
-    "docsgen": "typedoc --entryPointStrategy expand --out docs src",
+    "docsgen": "typedoc",
     "example": "npm run build && node examples/example.js",
     "start": "node .",
     "prepublishOnly": "npm run build",
@@ -34,8 +34,8 @@
     "@types/node": "^14.11.8",
     "@types/skia-canvas": "^0.9.28",
     "eslint": "^7.27.0",
-    "typedoc": "^0.25.13",
-    "typescript": "^4.0.2"
+    "typedoc": "^0.28.7",
+    "typescript": "^5.0.2"
   },
   "directories": {
     "doc": "docs",
