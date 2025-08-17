@@ -28,7 +28,7 @@
  * ```
  * 
  * @author Shashank3736
- * @since 3.3.3
+ * @since 3.3.4
  */
 
 // Simple function-based API for quick CAPTCHA generation

@@ -1,6 +1,6 @@
 {
   "name": "captcha-canvas",
-  "version": "3.3.3",
+  "version": "3.3.4",
   "description": "A captcha generator by using skia-canvas module.",
   "main": "./dist/index.js",
   "files": [
