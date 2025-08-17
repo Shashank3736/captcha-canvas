@@ -4,147 +4,467 @@ group: Documents
 category: Guides
 ---
 
-# API Reference
+# Enhanced API Reference
 
-This document provides a detailed reference for the `captcha-canvas` API.
+This document provides a comprehensive overview of the captcha-canvas API with detailed explanations and practical examples.
 
-## `CaptchaGenerator`
+## Table of Contents
 
-The `CaptchaGenerator` class is the primary interface for creating captchas. It simplifies the process by managing the underlying `Captcha` canvas and its various components.
+- [Quick Start](#quick-start)
+- [Simple Function API](#simple-function-api)
+- [Advanced Class API](#advanced-class-api)
+- [Configuration Interfaces](#configuration-interfaces)
+- [Utility Functions](#utility-functions)
+- [Best Practices](#best-practices)
 
-### `new CaptchaGenerator(options)`
+## Quick Start
 
-Creates a new `CaptchaGenerator` instance.
+### Installation
+```bash
+npm install captcha-canvas
+```
 
-- **`options`** `<Object>`
-  - **`height`** `<number>` The height of the captcha image. **Default:** `100`.
-  - **`width`** `<number>` The width of the captcha image. **Default:** `300`.
+### Basic Usage
+```typescript
+import { createCaptcha } from 'captcha-canvas';
+import fs from 'fs';
 
-### `.text`
+// Generate a simple CAPTCHA
+const { image, text } = createCaptcha(300, 100);
+const buffer = await image;
 
-- **Returns:** `<string>` The text of the generated captcha.
+fs.writeFileSync('captcha.png', buffer);
+console.log('Solution:', text);
+```
 
-### `.setDimension(height, width)`
+## Simple Function API
 
-Sets the dimensions of the captcha image.
+### `createCaptcha(width, height, options?)`
 
-- **`height`** `<number>` The height of the captcha image.
-- **`width`** `<number>` The width of the captcha image.
+Creates a CAPTCHA asynchronously with automatic security features.
 
-### `.setBackground(image)`
+**Parameters:**
+- `width: number` - Image width in pixels
+- `height: number` - Image height in pixels  
+- `options?: CreateCaptchaOptions` - Optional configuration
 
-Sets the background image for the captcha.
+**Returns:** `CaptchaValue` - Object with `image: Promise<Buffer>` and `text: string`
 
-- **`image`** `<string> | <Buffer>` The background image for the captcha. This can be a file path, a URL, or a Buffer.
+**Examples:**
 
-### `.setCaptcha(option)`
+```typescript
+// Basic generation
+const { image, text } = createCaptcha(300, 100);
 
-Sets the options for the captcha text.
+// Custom text and styling
+const { image, text } = createCaptcha(400, 150, {
+  captcha: {
+    text: 'HELLO',
+    size: 60,
+    colors: ['#e74c3c', '#3498db']
+  },
+  trace: { color: '#95a5a6', size: 4 },
+  decoy: { total: 30, opacity: 0.3 }
+});
 
-- **`option`** `<SetCaptchaOption> | <SetCaptchaOption[]>` An object or an array of objects containing options for the captcha text.
+// With background image
+import { resolveImage } from 'captcha-canvas';
+const background = await resolveImage('./background.jpg');
+const { image, text } = createCaptcha(300, 100, { background });
+```
 
-### `.setTrace(option)`
+### `createCaptchaSync(width, height, options?)`
 
-Sets the options for the trace lines.
+Creates a CAPTCHA synchronously without async/await.
 
-- **`option`** `<SetTraceOption>` An object containing options for the trace lines.
+**Parameters:**
+- `width: number` - Image width in pixels
+- `height: number` - Image height in pixels
+- `options?: CreateCaptchaOptions` - Optional configuration
 
-### `.setDecoy(option)`
+**Returns:** `CaptchaValueSync` - Object with `image: Buffer` and `text: string`
 
-Sets the options for the decoy characters.
+**Examples:**
 
-- **`option`** `<SetDecoyOption>` An object containing options for the decoy characters.
+```typescript
+// Synchronous generation
+const { image, text } = createCaptchaSync(300, 100);
+fs.writeFileSync('captcha.png', image);
 
-### `.generate()`
+// With pre-loaded background
+const background = await resolveImage('./background.jpg');
+const { image, text } = createCaptchaSync(300, 100, { background });
+```
 
-Generates the captcha image asynchronously.
+## Advanced Class API
 
-- **Returns:** `<Promise<Buffer>>` A Promise that resolves with the captcha image as a Buffer.
+### `CaptchaGenerator`
 
-### `.generateSync(option)`
+Advanced CAPTCHA generator with fluent API for maximum customization.
 
-Generates the captcha image synchronously.
+#### Constructor
 
-- **`option`** `<Object>` (optional)
-  - **`background`** `<Image>` An optional background image.
-- **Returns:** `<Buffer>` The captcha image as a Buffer.
+```typescript
+new CaptchaGenerator(options?: { height?: number, width?: number })
+```
 
-## `Captcha`
+**Examples:**
+```typescript
+const captcha = new CaptchaGenerator(); // 300x100 default
+const captcha = new CaptchaGenerator({ width: 400, height: 150 });
+```
 
-The `Captcha` class provides a lower-level interface for creating captchas, giving you more control over the drawing process.
+#### Methods
 
-### `new Captcha(width, height, characters)`
+##### `setDimension(height, width)`
 
-- **`width`** `<number>` The width of the captcha image.
-- **`height`** `<number>` The height of the captcha image.
-- **`characters`** `<number>` The number of characters in the captcha text.
+Sets canvas dimensions.
 
-### `.text`
+```typescript
+const captcha = new CaptchaGenerator()
+  .setDimension(200, 500);
+```
 
-- **Returns:** `<string>` The text of the captcha.
+##### `setBackground(image)`
 
-### `.png`
+Sets background image from path, URL, or Buffer.
 
-- **Returns:** `<Buffer> | <Promise<Buffer>>` The captcha image as a PNG Buffer. If the captcha is generated synchronously, it returns a Buffer. If generated asynchronously, it returns a Promise that resolves with a Buffer.
+```typescript
+const captcha = new CaptchaGenerator()
+  .setBackground('./noise-pattern.jpg')
+  .setBackground('https://example.com/bg.png')
+  .setBackground(imageBuffer);
+```
 
-### `.drawImage(image)`
+##### `setCaptcha(option)`
 
-Draws an image on the canvas.
+Configures text appearance and content.
 
-- **`image`** `<Image>` The image to draw on the canvas.
+```typescript
+// Basic text
+const captcha = new CaptchaGenerator()
+  .setCaptcha({
+    text: 'SECURE',
+    size: 60,
+    color: '#2c3e50'
+  });
 
-### `.addDecoy(decoyOption)`
+// Multi-color text
+const captcha = new CaptchaGenerator()
+  .setCaptcha({
+    text: 'RAINBOW',
+    colors: ['#e74c3c', '#f39c12', '#f1c40f', '#27ae60', '#3498db']
+  });
 
-Adds decoy characters to the captcha image.
+// Multi-styled segments
+const captcha = new CaptchaGenerator()
+  .setCaptcha([
+    { text: 'SEC', size: 50, color: '#e74c3c' },
+    { text: 'URE', size: 45, color: '#27ae60' }
+  ]);
 
-- **`decoyOption`** `<SetDecoyOption>` Options for the decoy characters.
+// Random generation
+const captcha = new CaptchaGenerator()
+  .setCaptcha({ characters: 8, size: 40 });
+```
 
-### `.drawTrace(traceOption)`
+##### `setTrace(option)`
 
-Draws trace lines on the captcha image.
+Configures connecting trace lines.
 
-- **`traceOption`** `<SetTraceOption>` Options for the trace lines.
+```typescript
+const captcha = new CaptchaGenerator()
+  .setTrace({
+    color: '#95a5a6',
+    size: 3,
+    opacity: 0.8
+  });
+```
 
-### `.drawCaptcha(captchaOption)`
+##### `setDecoy(option)`
 
-Draws the captcha text on the image.
+Configures decoy characters for security.
 
-- **`captchaOption`** `<DrawCaptchaOption> | <DrawCaptchaOption[]>` Options for the captcha text.
+```typescript
+const captcha = new CaptchaGenerator()
+  .setDecoy({
+    total: 40,
+    color: '#7f8c8d',
+    size: 18,
+    opacity: 0.3
+  });
+```
 
-## Type Definitions
+##### `generate()`
+
+Generates the final image asynchronously.
+
+```typescript
+const buffer = await captcha.generate();
+fs.writeFileSync('captcha.png', buffer);
+console.log('Text:', captcha.text);
+```
+
+##### `generateSync(options?)`
+
+Generates the image synchronously.
+
+```typescript
+const buffer = captcha.generateSync();
+// With background
+const buffer = captcha.generateSync({ background: preloadedImage });
+```
+
+#### Properties
+
+##### `text`
+
+Gets the current CAPTCHA solution text.
+
+```typescript
+const captcha = new CaptchaGenerator()
+  .setCaptcha({ text: 'HELLO' });
+console.log(captcha.text); // "HELLO"
+```
+
+### `Captcha`
+
+Low-level canvas operations for fine-grained control.
+
+#### Constructor
+
+```typescript
+new Captcha(width?: number, height?: number, characters?: number)
+```
+
+#### Methods
+
+##### `drawImage(image)`
+
+Draws background image.
+
+```typescript
+const captcha = new Captcha(300, 100);
+captcha.drawImage(backgroundImage);
+```
+
+##### `addDecoy(options?)`
+
+Adds decoy characters.
+
+```typescript
+captcha.addDecoy({
+  total: 25,
+  opacity: 0.3,
+  color: '#95a5a6'
+});
+```
+
+##### `drawCaptcha(options?)`
+
+Draws main CAPTCHA text.
+
+```typescript
+captcha.drawCaptcha({
+  text: 'HELLO',
+  size: 40,
+  rotate: 15,
+  skew: true
+});
+```
+
+##### `drawTrace(options?)`
+
+Draws connecting trace lines.
+
+```typescript
+captcha.drawTrace({
+  color: '#95a5a6',
+  size: 3,
+  opacity: 0.8
+});
+```
+
+#### Properties
+
+##### `text`
+
+Gets the CAPTCHA solution text.
+
+##### `png`
+
+Gets the image as PNG buffer (Promise in async mode, Buffer in sync mode).
+
+```typescript
+// Async mode (default)
+const buffer = await captcha.png;
+
+// Sync mode
+captcha.async = false;
+const buffer = captcha.png as Buffer;
+```
+
+## Configuration Interfaces
 
 ### `SetCaptchaOption`
 
-An object containing options for the captcha text.
+Configuration for CAPTCHA text in CaptchaGenerator.
 
-- **`characters`** `<number>` The number of characters in the captcha text. **Default:** `6`.
-- **`text`** `<string>` The captcha text. If provided, it overrides the `characters` option.
-- **`color`** `<string>` The color of the captcha text (hex code). **Default:** `#32cf7e`.
-- **`font`** `<string>` The font of the captcha text. **Default:** `Sans`.
-- **`skew`** `<boolean>` Whether to skew the captcha text. **Default:** `true`.
-- **`colors`** `<string[]>` An array of color hex codes. If provided, each character will have a random color from this array.
-- **`rotate`** `<number>` The maximum rotation angle for each character (in degrees). **Default:** `5`.
-- **`size`** `<number>` The font size of the captcha text. **Default:** `40`.
-- **`opacity`** `<number>` The opacity of the captcha text. **Default:** `0.8`.
-
-### `DrawCaptchaOption`
-
-This is an alias for `SetCaptchaOption` when used with the `Captcha.drawCaptcha` method.
-
-### `SetDecoyOption`
-
-An object containing options for the decoy characters.
-
-- **`color`** `<string>` The color of the decoy characters (hex code). **Default:** `#646566`.
-- **`font`** `<string>` The font of the decoy characters. **Default:** `Sans`.
-- **`size`** `<number>` The font size of the decoy characters. **Default:** `20`.
-- **`opacity`** `<number>` The opacity of the decoy characters. **Default:** `0.8`.
-- **`total`** `<number>` The number of decoy characters to add.
+```typescript
+interface SetCaptchaOption {
+  characters?: number;    // Random character count
+  text?: string;         // Specific text
+  color?: string;        // Text color
+  font?: string;         // Font family
+  skew?: boolean;        // Apply skewing
+  colors?: string[];     // Multi-color array
+  rotate?: number;       // Rotation range (degrees)
+  size?: number;         // Font size (pixels)
+  opacity?: number;      // Text opacity (0-1)
+}
+```
 
 ### `SetTraceOption`
 
-An object containing options for the trace lines.
+Configuration for trace lines.
 
-- **`color`** `<string>` The color of the trace lines (hex code). **Default:** `#32cf7e`.
-- **`size`** `<number>` The width of the trace lines. **Default:** `3`.
-- **`opacity`** `<number>` The opacity of the trace lines. **Default:** `1`.
+```typescript
+interface SetTraceOption {
+  color?: string;        // Line color
+  size?: number;         // Line width (pixels)
+  opacity?: number;      // Line opacity (0-1)
+}
+```
+
+### `SetDecoyOption`
+
+Configuration for decoy characters.
+
+```typescript
+interface SetDecoyOption {
+  color?: string;        // Decoy color
+  font?: string;         // Font family
+  size?: number;         // Font size (pixels)
+  opacity?: number;      // Decoy opacity (0-1)
+  total?: number;        // Number of decoys
+}
+```
+
+### `CreateCaptchaOptions`
+
+Configuration for simple function API.
+
+```typescript
+interface CreateCaptchaOptions {
+  captcha?: SetCaptchaOption | SetCaptchaOption[];
+  trace?: SetTraceOption;
+  decoy?: SetDecoyOption;
+  background?: Image;
+}
+```
+
+## Utility Functions
+
+### `resolveImage(source)`
+
+Loads images from various sources (re-exported from skia-canvas).
+
+```typescript
+import { resolveImage } from 'captcha-canvas';
+
+const image = await resolveImage('./background.jpg');
+const image = await resolveImage('https://example.com/bg.png');
+const image = await resolveImage(buffer);
+```
+
+## Best Practices
+
+### Security Recommendations
+
+1. **Use Multiple Security Features**
+   ```typescript
+   const captcha = new CaptchaGenerator()
+     .setCaptcha({ characters: 6, rotate: 15, skew: true })
+     .setTrace({ size: 3, opacity: 0.8 })
+     .setDecoy({ total: 30, opacity: 0.3 });
+   ```
+
+2. **Vary CAPTCHA Appearance**
+   ```typescript
+   const colors = ['#e74c3c', '#3498db', '#27ae60', '#f39c12'];
+   const captcha = new CaptchaGenerator()
+     .setCaptcha({ 
+       characters: Math.floor(Math.random() * 3) + 5, // 5-7 chars
+       colors: colors,
+       size: Math.floor(Math.random() * 20) + 40 // 40-60px
+     });
+   ```
+
+3. **Background Images for Enhanced Security**
+   ```typescript
+   const backgrounds = ['bg1.jpg', 'bg2.jpg', 'bg3.jpg'];
+   const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+   
+   const captcha = new CaptchaGenerator()
+     .setBackground(randomBg)
+     .setCaptcha({ opacity: 0.9 }); // Ensure visibility
+   ```
+
+### Performance Optimization
+
+1. **Use Sync Mode When Possible**
+   ```typescript
+   // For batch generation or non-async contexts
+   const { image, text } = createCaptchaSync(300, 100);
+   ```
+
+2. **Pre-load Background Images**
+   ```typescript
+   const backgroundCache = new Map();
+   const bg = backgroundCache.get('noise') || 
+              await resolveImage('./noise.jpg');
+   backgroundCache.set('noise', bg);
+   ```
+
+3. **Reuse Generator Instances**
+   ```typescript
+   const generator = new CaptchaGenerator({ width: 300, height: 100 });
+   
+   // Generate multiple CAPTCHAs
+   for (let i = 0; i < 10; i++) {
+     generator.setCaptcha({ characters: 6 });
+     const buffer = await generator.generate();
+     // Process buffer...
+   }
+   ```
+
+### Accessibility Considerations
+
+1. **Provide Audio Alternative**
+   ```typescript
+   // Generate simple text for audio conversion
+   const { image, text } = createCaptcha(300, 100, {
+     captcha: { 
+       characters: 5,  // Shorter for audio
+       rotate: 0,      // No rotation for clarity
+       skew: false     // No skewing
+     }
+   });
+   ```
+
+2. **High Contrast Mode**
+   ```typescript
+   const captcha = new CaptchaGenerator()
+     .setCaptcha({
+       color: '#000000',
+       size: 50,
+       rotate: 5  // Minimal rotation
+     })
+     .setTrace({ opacity: 0.3 }); // Subtle trace
+   ```
+
+3. **Larger Sizes for Better Readability**
+   ```typescript
+   const captcha = new CaptchaGenerator({ width: 400, height: 150 })
+     .setCaptcha({ size: 60 });
+   ```
