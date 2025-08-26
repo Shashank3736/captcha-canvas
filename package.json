@@ -1,11 +1,11 @@
 {
   "name": "captcha-canvas",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "A captcha generator by using canvas module.",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "docsgen": "typedoc --entryPointStrategy expand --out docs src",
+    "docsgen": "typedoc",
     "example": "npm run build && node examples/example.js",
     "start": "node index.js",
     "test": "node test.js",

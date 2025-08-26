@@ -1,0 +1,70 @@
+{
+  "entryPoints": [
+    "src/main.ts",
+    "src/constants.ts",
+    "src/util.ts",
+    "index.ts"
+  ],
+  "entryPointStrategy": "expand",
+  "out": "docs",
+  "name": "captcha-canvas",
+  "readme": "docs-readme.md",
+  "includeVersion": true,
+  "excludePrivate": true,
+  "excludeProtected": false,
+  "excludeExternals": true,
+  "categorizeByGroup": true,
+  "defaultCategory": "Other",
+  "categoryOrder": [
+    "Classes",
+    "Interfaces",
+    "Functions",
+    "Variables",
+    "*"
+  ],
+  "sort": [
+    "source-order"
+  ],
+  "kindSortOrder": [
+    "Project",
+    "Module",
+    "Namespace",
+    "Enum",
+    "EnumMember",
+    "Class",
+    "Interface",
+    "TypeAlias",
+    "Constructor",
+    "Property",
+    "Variable",
+    "Function",
+    "Accessor",
+    "Method",
+    "Parameter",
+    "TypeParameter",
+    "TypeLiteral",
+    "CallSignature",
+    "ConstructorSignature",
+    "IndexSignature",
+    "GetSignature",
+    "SetSignature"
+  ],
+  "navigation": {
+    "includeCategories": true,
+    "includeGroups": true
+  },
+  "searchInComments": true,
+  "cleanOutputDir": true,
+  "titleLink": "https://captcha-canvas.js.org/v2/",
+  "navigationLinks": {
+    "GitHub": "https://github.com/Shashank3736/captcha-canvas",
+    "NPM": "https://www.npmjs.com/package/captcha-canvas"
+  },
+  "sidebarLinks": {
+    "GitHub Repository": "https://github.com/Shashank3736/captcha-canvas",
+    "Report Issues": "https://github.com/Shashank3736/captcha-canvas/issues",
+    "NPM Package": "https://www.npmjs.com/package/captcha-canvas"
+  },
+  // "customCss": "./docs-assets/custom.css",
+  "theme": "default"
+}

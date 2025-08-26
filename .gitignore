@@ -100,9 +100,10 @@ dist
 
 # TernJS port file
 .tern-port
+docs/
+
 .*
 !.gitignore
 !.npmignore
 !.eslintrc.json
-
-docs/
+!.github
