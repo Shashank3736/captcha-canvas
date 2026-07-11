@@ -32,7 +32,7 @@
   "homepage": "https://captcha-canvas.js.org/",
   "devDependencies": {
     "@types/node": "^14.11.8",
-    "eslint": "^7.27.0",
+    "eslint": "^10.5.0",
     "typedoc": "^0.28.7",
     "typescript": "^5.0.2"
   },
